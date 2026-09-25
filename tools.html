@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
+  <meta
+    name="description"
+    content="Useful tools for LemonGDPS."
+  />
+
+  <title>LemonGDPS | Tools</title>
+
+  <link rel="icon" href="https://lemongdps.alwaysdata.net/dashboard/icon.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      font-family: "Nunito", sans-serif;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 50% -20%, rgba(190, 70, 220, 0.12), transparent 45%),
+        #100b16;
+      overflow-x: hidden;
+    }
+
+    /* =========================
+       STAR BACKGROUND
+    ========================= */
+
+    .stars,
+    .stars::before,
+    .stars::after {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: -1;
+      content: "";
+    }
+
+    .stars {
+      opacity: 0.7;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px),
+        radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px);
+      background-size:
+        110px 110px,
+        170px 170px,
+        230px 230px;
+      background-position:
+        20px 30px,
+        80px 100px,
+        140px 50px;
+    }
+
+    .stars::before {
+      opacity: 0.4;
+      background-image:
+        radial-gradient(circle, #ffffff 1px, transparent 1px),
+        radial-gradient(circle, #d77cff 1px, transparent 1px);
+      background-size: 190px 190px, 260px 260px;
+      background-position: 30px 80px, 120px 30px;
+      animation: starsMove 25s linear infinite;
+    }
+
+    .stars::after {
+      opacity: 0.18;
+      background-image:
+        radial-gradient(circle, #ffffff 1px, transparent 1px);
+      background-size: 320px 320px;
+      background-position: 100px 150px;
+    }
+
+    @keyframes starsMove {
+      from {
+        transform: translateY(0);
+      }
+      to {
+        transform: translateY(120px);
+      }
+    }
+
+    /* =========================
+       NAVBAR
+    ========================= */
+
+    nav {
+      position: sticky;
+      top: 18px;
+      z-index: 100;
+
+      width: min(1100px, calc(100% - 32px));
+      margin: 18px auto 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      padding: 13px 18px;
+
+      background: rgba(28, 20, 35, 0.72);
+      border: 1px solid rgba(217, 76, 255, 0.25);
+      border-radius: 18px;
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+
+      box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.25),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #fff;
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 900;
+    }
+
+    .nav-brand img {
+      width: 34px;
+      height: 34px;
+      border-radius: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-links a {
+      color: rgba(255, 255, 255, 0.76);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+
+      padding: 9px 13px;
+      border-radius: 10px;
+
+      transition: 0.2s ease;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #fff;
+      background: rgba(210, 75, 255, 0.15);
+    }
+
+    /* =========================
+       PAGE
+    ========================= */
+
+    main {
+      width: min(1160px, calc(100% - 32px));
+      margin: 70px auto 80px;
+    }
+
+    .page-header {
+      text-align: center;
+      margin-bottom: 42px;
+    }
+
+    .page-header .badge {
+      display: inline-block;
+
+      padding: 7px 15px;
+      margin-bottom: 14px;
+
+      border-radius: 999px;
+
+      background: linear-gradient(135deg, #c74de2, #a83cd4);
+      box-shadow: 0 5px 18px rgba(205, 74, 231, 0.25);
+
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .page-header h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      font-weight: 900;
+      line-height: 1.05;
+      letter-spacing: -1px;
+
+      background: linear-gradient(
+        90deg,
+        #ffffff,
+        #f1b4ff,
+        #ffffff
+      );
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .page-header p {
+      max-width: 600px;
+      margin: 14px auto 0;
+
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    /* =========================
+       TOOLS GRID
+    ========================= */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+    }
+
+    .tool-card {
+      position: relative;
+      min-height: 220px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      padding: 32px 30px;
+
+      text-align: center;
+
+      background:
+        linear-gradient(
+          180deg,
+          rgba(43, 34, 52, 0.94),
+          rgba(32, 25, 40, 0.94)
+        );
+
+      border: 1px solid rgba(44, 190, 255, 0.8);
+      border-radius: 17px;
+
+      overflow: hidden;
+
+      box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+      transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+    }
+
+    /* Top gradient line */
+    .tool-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+
+      height: 5px;
+
+      background: linear-gradient(
+        90deg,
+        #d94de8,
+        #a743df,
+        #d94de8
+      );
+    }
+
+    .tool-card:hover {
+      transform: translateY(-5px);
+
+      border-color: rgba(68, 207, 255, 0.95);
+
+      box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.3),
+        0 0 22px rgba(201, 67, 232, 0.08);
+    }
+
+    .tool-tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 6px 12px;
+      margin-bottom: 14px;
+
+      border-radius: 999px;
+
+      color: #fff;
+      background: linear-gradient(
+        135deg,
+        #c84be1,
+        #a33bd0
+      );
+
+      font-size: 13px;
+      font-weight: 900;
+
+      box-shadow:
+        0 5px 14px rgba(198, 69, 223, 0.18);
+    }
+
+    .tool-card h2 {
+      font-size: 25px;
+      font-weight: 900;
+      margin-bottom: 10px;
+    }
+
+    .tool-card p {
+      max-width: 480px;
+
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.5;
+
+      margin-bottom: 20px;
+    }
+
+    .tool-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+
+      min-width: 104px;
+
+      padding: 9px 20px;
+
+      border-radius: 999px;
+
+      color: #19101e;
+      background: linear-gradient(
+        135deg,
+        #f18bea,
+        #e977ed
+      );
+
+      font-size: 14px;
+      font-weight: 900;
+      text-decoration: underline;
+
+      box-shadow:
+        0 7px 18px rgba(239, 115, 234, 0.25);
+
+      transition:
+        transform 0.2s ease,
+        filter 0.2s ease,
+        box-shadow 0.2s ease;
+    }
+
+    .tool-button:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.08);
+
+      box-shadow:
+        0 9px 22px rgba(239, 115, 234, 0.35);
+    }
+
+    .external-icon {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      width: min(1100px, calc(100% - 32px));
+      margin: 0 auto 30px;
+
+      padding-top: 25px;
+
+      border-top: 1px solid rgba(255, 255, 255, 0.07);
+
+      text-align: center;
+
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    footer a {
+      color: rgba(235, 157, 255, 0.8);
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================= */
+
+    @media (max-width: 850px) {
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .tool-card {
+        min-height: 210px;
+      }
+
+      .nav-links a {
+        padding: 8px 9px;
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        top: 10px;
+        margin-top: 10px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      main {
+        margin-top: 50px;
+      }
+
+      .tools-grid {
+        gap: 20px;
+      }
+
+      .tool-card {
+        padding: 30px 20px;
+      }
+    }
+
+    @media (max-width: 430px) {
+      main {
+        width: min(100% - 22px, 1160px);
+      }
+
+      .page-header h1 {
+        font-size: 36px;
+      }
+
+      .page-header p {
+        font-size: 14px;
+      }
+
+      .tool-card h2 {
+        font-size: 22px;
+      }
+
+      .tool-card p {
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="stars"></div>
+
+  <!-- Navigation -->
+  <nav>
+    <a class="nav-brand" href="/">
+      <img
+        src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+        alt="LemonGDPS"
+      />
+      <span>LemonGDPS</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="/">Home</a>
+      <a href="/download.html">Download</a>
+      <a href="/tools.html" class="active">Tools</a>
+      <a href="/credit.html">Credits</a>
+    </div>
+  </nav>
+
+  <main>
+
+    <section class="page-header">
+      <div class="badge">LemonGDPS Tools</div>
+
+      <h1>Tools</h1>
+
+      <p>
+        Useful tools and resources for LemonGDPS players and creators.
+      </p>
+    </section>
+
+    <section class="tools-grid">
+
+      <!-- Upload Song with Link -->
+      <article class="tool-card">
+        <span class="tool-tag">Upload Song</span>
+
+        <h2>Upload with link</h2>
+
+        <p>
+          Reupload your song with links, etc.
+        </p>
+
+        <!-- Change # to your link -->
+        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/reupload/songAdd.php" target="_blank" rel="noopener">
+          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+          </svg>
+          View
+        </a>
+      </article>
+
+      <!-- Upload Song with File -->
+      <article class="tool-card">
+        <span class="tool-tag">Upload Song</span>
+
+        <h2>Upload with file</h2>
+
+        <p>
+          Reupload your song with files, etc.
+        </p>
+
+        <!-- Change # to your link -->
+        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/songs" target="_blank" rel="noopener">
+          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+          </svg>
+          View
+        </a>
+      </article>
+
+      <!-- Dashboard -->
+      <article class="tool-card">
+        <span class="tool-tag">Search Song</span>
+
+        <h2>Dashboard</h2>
+
+        <p>
+          Search uploaded songs for your level if you want.
+        </p>
+
+        <!-- Change # to your link -->
+        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/stats/songList.php" target="_blank" rel="noopener">
+          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+          </svg>
+          View
+        </a>
+      </article>
+
+      <!-- Level Re-up -->
+      <article class="tool-card">
+        <span class="tool-tag">Reupload Level</span>
+
+        <h2>Level Re-up</h2>
+
+        <p>
+          Reupload your level in another GDPS, not in original server.
+        </p>
+
+        <!-- Change # to your link -->
+        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/levels/levelReupload.php" target="_blank" rel="noopener">
+          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="2.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <path d="M14 3h7v7"></path>
+            <path d="M10 14L21 3"></path>
+            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
+          </svg>
+          View
+        </a>
+      </article>
+
+    </section>
+  </main>
+
+  <footer>
+    Website by <strong>Lem0n</strong> • LemonGDPS © 2026
+    <br />
+
+    <a href="/terms.html">Terms</a>
+    &nbsp;•&nbsp;
+    <a href="/feedback">Feedback Board</a>
+    &nbsp;•&nbsp;
+    <a href="/contact.html">Contact</a>
+  </footer>
+
+</body>
+</html>
