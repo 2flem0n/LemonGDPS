@@ -1,35 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <meta
     name="description"
-    content="LemonGDPS - A fresh Geometry Dash Private Server made for players and creators.">
+    content="LemonGDPS - A fresh Geometry Dash Private Server made for players and creators."
+  />
 
-  <title>LemonGDPS - Geometry Dash Private Server</title>
+  <title>LemonGDPS</title>
 
-  <link rel="icon" href="/dashboard/icon.png">
-
-  <!-- Fonts -->
   <link
+    rel="icon"
+    href="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+  />
+
+  <link rel="manifest" href="/manifest.json" />
+
+  <!-- Poppins -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap">
+  />
 
   <!-- Font Awesome -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+  />
 
-  <!-- Shared CSS -->
-  <link rel="stylesheet" href="/style.css">
+  <!-- LemonGDPS Shared Styles -->
+  <link rel="stylesheet" href="/style.css" />
 </head>
 
 <body>
 
   <!-- Background -->
-  <div class="bg-animation">
+  <div class="bg-animation" aria-hidden="true">
     <span></span>
     <span></span>
     <span></span>
@@ -38,105 +46,120 @@
   </div>
 
 
-  <!-- =========================
-       TOP NAVIGATION
-  ========================== -->
-
+  <!-- Navigation -->
   <div class="top-nav-wrapper">
     <nav class="top-nav">
 
       <a href="/" class="nav-brand">
-        <img src="/dashboard/icon.png" alt="LemonGDPS">
+        <img
+          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+          alt="LemonGDPS Icon"
+        />
         <span>LemonGDPS</span>
       </a>
 
       <div class="nav-links">
 
         <a href="/" class="nav-link active">
-          <i class="fa-solid fa-house"></i>
+          <i class="fas fa-home"></i>
           <span>Home</span>
         </a>
 
         <a href="/download.html" class="nav-link">
-          <i class="fa-solid fa-download"></i>
+          <i class="fas fa-download"></i>
           <span>Download</span>
         </a>
 
         <a href="/tools.html" class="nav-link">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <i class="fas fa-tools"></i>
           <span>Tools</span>
         </a>
 
         <a href="#community" class="nav-link">
-          <i class="fa-solid fa-users"></i>
+          <i class="fas fa-users"></i>
           <span>Community</span>
         </a>
 
         <div class="nav-more">
 
           <button class="nav-link nav-more-button">
-            <i class="fa-solid fa-ellipsis"></i>
+            <i class="fas fa-ellipsis"></i>
             <span>More</span>
-            <i class="fa-solid fa-chevron-down nav-chevron"></i>
+            <i class="fas fa-chevron-down nav-chevron"></i>
           </button>
 
           <div class="nav-dropdown">
 
-            <a href="https://lemongdps.stpg.dev" target="_blank">
-              <i class="fa-solid fa-server"></i>
+            <a
+              href="https://lemongdps.stpg.dev"
+              target="_blank"
+            >
+              <i class="fas fa-server"></i>
               Server Status
             </a>
 
-            <a href="https://upsilongdpsdl.pages.dev/" target="_blank">
-              <i class="fa-solid fa-skull"></i>
+            <a
+              href="https://upsilongdpsdl.pages.dev/"
+              target="_blank"
+            >
+              <i class="fas fa-skull"></i>
               Demon List
             </a>
 
-            <a href="https://upsilongdpscl.pages.dev/" target="_blank">
-              <i class="fa-solid fa-bolt"></i>
+            <a
+              href="https://upsilongdpscl.pages.dev/"
+              target="_blank"
+            >
+              <i class="fas fa-bolt"></i>
               Challenge List
             </a>
 
-            <a href="https://upsilongdpspl.pages.dev/" target="_blank">
-              <i class="fa-solid fa-person-running"></i>
+            <a
+              href="https://upsilongdpspl.pages.dev/"
+              target="_blank"
+            >
+              <i class="fas fa-person-running"></i>
               Platformer List
             </a>
 
             <a href="/credit.html">
-              <i class="fa-solid fa-circle-info"></i>
+              <i class="fas fa-hands-helping"></i>
               Credits
             </a>
 
             <a href="/terms.html">
-              <i class="fa-solid fa-file-contract"></i>
+              <i class="fas fa-file-contract"></i>
               Terms of Service
             </a>
 
           </div>
+
         </div>
 
       </div>
+
     </nav>
   </div>
 
 
   <main>
 
-    <!-- =========================
-         HERO
-    ========================== -->
 
+    <!-- Hero -->
     <section class="hero">
 
       <div class="hero-logo-wrapper">
         <img
-          src="/dashboard/icon.png"
-          alt="LemonGDPS Logo"
-          class="hero-logo">
+          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+          class="hero-logo"
+          alt="LemonGDPS Icon"
+          width="125"
+          height="125"
+        />
       </div>
 
       <div class="hero-badge">
-        <i class="fa-solid fa-lemon"></i>
+        <i class="fas fa-lemon"></i>
         Welcome to LemonGDPS
       </div>
 
@@ -152,20 +175,20 @@
       <div class="hero-buttons">
 
         <a href="/download.html" class="hero-button primary">
-          <i class="fa-solid fa-download"></i>
+          <i class="fas fa-download"></i>
           Download
         </a>
 
         <a
           href="https://discord.gg/KwgR2EBEeh"
           target="_blank"
-          class="hero-button secondary">
-          <i class="fa-brands fa-discord"></i>
+          class="hero-button secondary"
+        >
+          <i class="fab fa-discord"></i>
           Join Discord
         </a>
 
       </div>
-
 
       <div class="hero-stats">
 
@@ -184,82 +207,91 @@
     </section>
 
 
-    <!-- =========================
-         QUICK LINKS
-    ========================== -->
-
+    <!-- Quick Links -->
     <section class="section">
 
       <div class="section-heading">
-        <span class="section-label">QUICK ACCESS</span>
-        <h2>Explore LemonGDPS</h2>
+
+        <span class="section-label">
+          QUICK ACCESS
+        </span>
+
+        <h2>
+          Explore LemonGDPS
+        </h2>
+
         <p>
           Everything you need, all in one place.
         </p>
+
       </div>
 
 
       <div class="quick-links">
 
         <a href="/download.html" class="quick-link">
-          <i class="fa-solid fa-download"></i>
+          <i class="fas fa-download"></i>
           <span>Download</span>
         </a>
 
         <a href="/tools.html" class="quick-link">
-          <i class="fa-solid fa-screwdriver-wrench"></i>
+          <i class="fas fa-tools"></i>
           <span>Tools</span>
         </a>
 
         <a href="/feedback" class="quick-link">
-          <i class="fa-solid fa-comment-dots"></i>
+          <i class="fas fa-comment-dots"></i>
           <span>Feedback Board</span>
         </a>
 
         <a
           href="https://lemongdps.stpg.dev"
           target="_blank"
-          class="quick-link">
-          <i class="fa-solid fa-server"></i>
+          class="quick-link"
+        >
+          <i class="fas fa-server"></i>
           <span>Server Status</span>
         </a>
 
         <a
           href="https://upsilongdpsdl.pages.dev/"
           target="_blank"
-          class="quick-link">
-          <i class="fa-solid fa-skull"></i>
+          class="quick-link"
+        >
+          <i class="fas fa-skull"></i>
           <span>Demon List</span>
         </a>
 
         <a
           href="https://upsilongdpscl.pages.dev/"
           target="_blank"
-          class="quick-link">
-          <i class="fa-solid fa-bolt"></i>
+          class="quick-link"
+        >
+          <i class="fas fa-bolt"></i>
           <span>Challenge List</span>
         </a>
 
         <a
           href="https://upsilongdpspl.pages.dev/"
           target="_blank"
-          class="quick-link">
-          <i class="fa-solid fa-person-running"></i>
+          class="quick-link"
+        >
+          <i class="fas fa-person-running"></i>
           <span>Platformer List</span>
         </a>
 
         <a href="/credit.html" class="quick-link">
-          <i class="fa-solid fa-circle-info"></i>
+          <i class="fas fa-hands-helping"></i>
           <span>Credits</span>
         </a>
 
         <a href="/terms.html" class="quick-link">
-          <i class="fa-solid fa-file-contract"></i>
+          <i class="fas fa-file-contract"></i>
           <span>Terms of Service</span>
         </a>
 
         <a href="/contact.html" class="quick-link">
-          <i class="fa-solid fa-envelope"></i>
+          <i class="fas fa-envelope"></i>
           <span>Contact</span>
         </a>
 
@@ -268,32 +300,46 @@
     </section>
 
 
-    <!-- =========================
-         RATE STANDARDS
-    ========================== -->
-
+    <!-- Rate Standards -->
     <section class="section">
 
       <div class="section-heading">
-        <span class="section-label">LEVEL RATING</span>
-        <h2>Fair and Low Rate Standards</h2>
+
+        <span class="section-label">
+          LEVEL RATING
+        </span>
+
+        <h2>
+          Fair and Low Rate Standards
+        </h2>
+
         <p>
           Clear standards for rating levels while keeping the system fair.
         </p>
+
       </div>
+
 
       <div class="card rate-info">
 
         <div class="card-header">
+
           <div class="feature-icon">
-            <i class="fa-solid fa-star"></i>
+            <i class="fas fa-star"></i>
           </div>
 
           <div>
-            <h3>Rate Standards</h3>
-            <p>Simple rules for level ratings.</p>
+            <h3>
+              Rate Standards
+            </h3>
+
+            <p>
+              Simple rules for level ratings.
+            </p>
           </div>
+
         </div>
+
 
         <div class="card-content">
 
@@ -306,8 +352,9 @@
           <a
             href="https://upsilongdps.carrd.co/#ratestandards"
             target="_blank"
-            class="hero-button secondary">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            class="hero-button secondary"
+          >
+            <i class="fas fa-arrow-up-right-from-square"></i>
             View Rate Standards
           </a>
 
@@ -318,76 +365,100 @@
     </section>
 
 
-    <!-- =========================
-         LIVE CHAT
-    ========================== -->
-
+    <!-- Live Chatbox -->
     <section class="section">
 
       <div class="section-heading">
-        <span class="section-label">COMMUNITY CHAT</span>
-        <h2>Live Chatbox</h2>
+
+        <span class="section-label">
+          COMMUNITY CHAT
+        </span>
+
+        <h2>
+          Live Chatbox
+        </h2>
+
         <p>
           Talk with other LemonGDPS players.
         </p>
+
       </div>
+
 
       <div class="card chatbox-card">
 
         <iframe
-          src="https://www3.cbox.ws/box/?boxid=3560814&boxtag=9FbJcQ"
+          src="https://www3.cbox.ws/box/?boxid=3560814&boxtag=17tcN7"
+          width="100%"
+          height="500"
           allowtransparency="yes"
           allow="autoplay"
           frameborder="0"
           marginheight="0"
-          marginwidth="0">
-        </iframe>
+          marginwidth="0"
+          scrolling="auto"
+          title="LemonGDPS Live Chatbox"
+        ></iframe>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         DISCORD COMMUNITY
-    ========================== -->
-
+    <!-- Community Hub -->
     <section class="section" id="community">
 
       <div class="section-heading">
-        <span class="section-label">DISCORD</span>
-        <h2>Community Hub</h2>
+
+        <span class="section-label">
+          DISCORD
+        </span>
+
+        <h2>
+          Community Hub
+        </h2>
+
         <p>
           Join the LemonGDPS Discord and stay connected with the community.
         </p>
+
       </div>
+
 
       <div class="card discord-card">
 
         <iframe
           src="https://discord.com/widget?id=1541070802823155774&theme=dark"
+          width="100%"
+          height="500"
           allowtransparency="true"
           frameborder="0"
-          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
-        </iframe>
+          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
+          title="LemonGDPS Discord"
+        ></iframe>
 
       </div>
 
     </section>
 
 
-    <!-- =========================
-         FEATURES
-    ========================== -->
-
+    <!-- Features -->
     <section class="section">
 
       <div class="section-heading">
-        <span class="section-label">WHY LEMON</span>
-        <h2>Made for the Community</h2>
+
+        <span class="section-label">
+          WHY LEMON
+        </span>
+
+        <h2>
+          Made for the Community
+        </h2>
+
         <p>
           LemonGDPS is built around players, creators, and the community.
         </p>
+
       </div>
 
 
@@ -396,10 +467,12 @@
         <div class="feature-card">
 
           <div class="feature-icon">
-            <i class="fa-solid fa-users"></i>
+            <i class="fas fa-users"></i>
           </div>
 
-          <h3>Made for the Community</h3>
+          <h3>
+            Made for the Community
+          </h3>
 
           <p>
             A place where players can share levels, meet other creators,
@@ -412,10 +485,12 @@
         <div class="feature-card">
 
           <div class="feature-icon">
-            <i class="fa-solid fa-paintbrush"></i>
+            <i class="fas fa-paintbrush"></i>
           </div>
 
-          <h3>Built for Creators</h3>
+          <h3>
+            Built for Creators
+          </h3>
 
           <p>
             Create your own levels, improve your skills, and get your work
@@ -428,10 +503,12 @@
         <div class="feature-card">
 
           <div class="feature-icon">
-            <i class="fa-solid fa-lemon"></i>
+            <i class="fas fa-lemon"></i>
           </div>
 
-          <h3>Fresh Experience</h3>
+          <h3>
+            Fresh Experience
+          </h3>
 
           <p>
             A clean and simple GDPS experience with a community-focused
@@ -447,10 +524,7 @@
   </main>
 
 
-  <!-- =========================
-       FOOTER
-  ========================== -->
-
+  <!-- Footer -->
   <footer>
 
     <div class="footer-inner">
@@ -458,12 +532,18 @@
       <div class="footer-brand">
 
         <img
-          src="/dashboard/icon.png"
-          alt="LemonGDPS">
+          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+          alt="LemonGDPS Icon"
+        />
 
         <div>
-          <strong>LemonGDPS</strong>
-          <span>The freshest Geometry Dash experience.</span>
+          <strong>
+            LemonGDPS
+          </strong>
+
+          <span>
+            The freshest Geometry Dash experience.
+          </span>
         </div>
 
       </div>
@@ -471,15 +551,36 @@
 
       <div class="footer-links">
 
-        <a href="/download.html">Download</a>
-        <a href="/tools.html">Tools</a>
-        <a href="/credit.html">Credits</a>
-        <a href="/terms.html">Terms</a>
-        <a href="/contact.html">Contact</a>
+        <a href="/download.html">
+          <i class="fas fa-download"></i>
+          Download
+        </a>
+
+        <a href="/tools.html">
+          <i class="fas fa-tools"></i>
+          Tools
+        </a>
+
+        <a href="/credit.html">
+          <i class="fas fa-hands-helping"></i>
+          Credits
+        </a>
+
+        <a href="/terms.html">
+          <i class="fas fa-file-contract"></i>
+          Terms
+        </a>
+
+        <a href="/contact.html">
+          <i class="fas fa-envelope"></i>
+          Contact
+        </a>
 
         <a
           href="https://discord.gg/KwgR2EBEeh"
-          target="_blank">
+          target="_blank"
+        >
+          <i class="fab fa-discord"></i>
           Discord
         </a>
 
@@ -489,7 +590,7 @@
       <div class="footer-bottom">
 
         <span>
-          © 2026 LemonGDPS. All rights reserved.
+          LemonGDPS &copy; <span id="year"></span>
         </span>
 
         <span>
@@ -503,21 +604,16 @@
   </footer>
 
 
-  <!-- =========================
-       SIMPLE REVEAL ANIMATION
-  ========================== -->
-
+  <!-- Scripts -->
   <script>
-    const revealElements = document.querySelectorAll(
-      '.section, .feature-card, .quick-link'
-    );
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
+            entry.target.classList.add("visible");
           }
         });
       },
@@ -526,10 +622,12 @@
       }
     );
 
-    revealElements.forEach((element) => {
-      element.classList.add('reveal');
-      observer.observe(element);
-    });
+    document
+      .querySelectorAll(".section, .feature-card, .quick-link")
+      .forEach((element) => {
+        element.classList.add("reveal");
+        observer.observe(element);
+      });
   </script>
 
 </body>
