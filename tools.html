@@ -1,31 +1,57 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
-  <meta
-    name="description"
-    content="Useful tools for LemonGDPS."
-  />
+  <meta name="description" content="LemonGDPS - Useful tools for players and creators." />
 
-  <title>LemonGDPS | Tools</title>
+  <title>LemonGDPS - Tools</title>
 
   <link rel="icon" href="https://lemongdps.alwaysdata.net/dashboard/icon.png" />
+  <link rel="manifest" href="/manifest.json" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
-    href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet"
-  />
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
 
   <style>
+    :root {
+      --yellow: #fff070;
+      --yellow-light: #fdff91;
+      --yellow-soft: #fffaaa;
+      --yellow-hover: #ffffc4;
+
+      --bg: #101000;
+      --bg-2: #171700;
+      --bg-3: #202000;
+
+      --text: #ffffff;
+      --text-soft: #fdff91;
+      --text-muted: rgba(255,255,255,0.62);
+
+      --glass: rgba(35, 35, 3, 0.48);
+      --glass-strong: rgba(25, 25, 2, 0.64);
+      --glass-hover: rgba(48, 48, 5, 0.58);
+
+      --border: rgba(255, 240, 112, 0.14);
+      --border-hover: rgba(255, 240, 112, 0.32);
+
+      --radius: 20px;
+      --transition: 0.25s ease;
+    }
+
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     html {
@@ -33,101 +59,228 @@
     }
 
     body {
-      min-height: 100vh;
-      font-family: "Nunito", sans-serif;
-      color: #ffffff;
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text);
+
       background:
-        radial-gradient(circle at 50% -20%, rgba(190, 70, 220, 0.12), transparent 45%),
-        #100b16;
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(255, 240, 112, 0.045),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(255, 240, 112, 0.035),
+          transparent 30%
+        ),
+        var(--bg);
+
+      min-height: 100vh;
       overflow-x: hidden;
+      line-height: 1.6;
     }
 
-    /* =========================
-       STAR BACKGROUND
-    ========================= */
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-    .stars,
-    .stars::before,
-    .stars::after {
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    .bg-animation {
       position: fixed;
       inset: 0;
+      overflow: hidden;
       pointer-events: none;
-      z-index: -1;
+      z-index: -5;
+    }
+
+    .bg-animation span {
+      position: absolute;
+      display: block;
+
+      background: rgba(255, 233, 111, 0.08);
+      border: 1px solid rgba(255, 240, 112, 0.04);
+
+      bottom: -180px;
+      border-radius: 10px;
+
+      animation: moveUp 22s linear infinite;
+    }
+
+    .bg-animation span:nth-child(1) {
+      left: 10%;
+      width: 140px;
+      height: 140px;
+    }
+
+    .bg-animation span:nth-child(2) {
+      left: 25%;
+      width: 36px;
+      height: 36px;
+      animation-delay: 2s;
+      animation-duration: 14s;
+    }
+
+    .bg-animation span:nth-child(3) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 4s;
+    }
+
+    .bg-animation span:nth-child(4) {
+      left: 60%;
+      width: 24px;
+      height: 24px;
+      animation-delay: 1s;
+      animation-duration: 18s;
+    }
+
+    .bg-animation span:nth-child(5) {
+      left: 75%;
+      width: 120px;
+      height: 120px;
+      animation-delay: 5s;
+    }
+
+    .bg-animation span:nth-child(6) {
+      left: 85%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 7s;
+      animation-duration: 16s;
+    }
+
+    .bg-animation span:nth-child(7) {
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      animation-delay: 10s;
+    }
+
+    .bg-animation span:nth-child(8) {
+      left: 5%;
+      width: 28px;
+      height: 28px;
+      animation-delay: 12s;
+      animation-duration: 30s;
+    }
+
+    .bg-animation span:nth-child(9) {
+      left: 90%;
+      width: 18px;
+      height: 18px;
+      animation-delay: 8s;
+      animation-duration: 26s;
+    }
+
+    .bg-animation span:nth-child(10) {
+      left: 35%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 3s;
+      animation-duration: 20s;
+    }
+
+    @keyframes moveUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-1200px) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    body::before {
       content: "";
+      position: fixed;
+
+      width: 520px;
+      height: 520px;
+
+      top: 5%;
+      left: -220px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.055);
+      filter: blur(110px);
+
+      pointer-events: none;
+      z-index: -4;
     }
 
-    .stars {
-      opacity: 0.7;
-      background-image:
-        radial-gradient(circle, rgba(255,255,255,0.8) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.55) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px);
-      background-size:
-        110px 110px,
-        170px 170px,
-        230px 230px;
-      background-position:
-        20px 30px,
-        80px 100px,
-        140px 50px;
+    body::after {
+      content: "";
+      position: fixed;
+
+      width: 480px;
+      height: 480px;
+
+      right: -200px;
+      bottom: 0;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.04);
+      filter: blur(120px);
+
+      pointer-events: none;
+      z-index: -4;
     }
 
-    .stars::before {
-      opacity: 0.4;
-      background-image:
-        radial-gradient(circle, #ffffff 1px, transparent 1px),
-        radial-gradient(circle, #d77cff 1px, transparent 1px);
-      background-size: 190px 190px, 260px 260px;
-      background-position: 30px 80px, 120px 30px;
-      animation: starsMove 25s linear infinite;
+    /* =========================================================
+       TOP NAVIGATION
+    ========================================================= */
+
+    .top-nav-wrapper {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 1000;
+
+      padding: 14px 20px;
+
+      pointer-events: none;
     }
 
-    .stars::after {
-      opacity: 0.18;
-      background-image:
-        radial-gradient(circle, #ffffff 1px, transparent 1px);
-      background-size: 320px 320px;
-      background-position: 100px 150px;
-    }
+    .top-nav {
+      max-width: 1180px;
+      height: 64px;
 
-    @keyframes starsMove {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(120px);
-      }
-    }
-
-    /* =========================
-       NAVBAR
-    ========================= */
-
-    nav {
-      position: sticky;
-      top: 18px;
-      z-index: 100;
-
-      width: min(1100px, calc(100% - 32px));
-      margin: 18px auto 0;
+      margin: 0 auto;
+      padding: 0 18px;
 
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 20px;
 
-      padding: 13px 18px;
+      background: var(--glass-strong);
 
-      background: rgba(28, 20, 35, 0.72);
-      border: 1px solid rgba(217, 76, 255, 0.25);
+      border: 1px solid var(--border);
       border-radius: 18px;
 
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
 
       box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.25),
-        inset 0 1px 0 rgba(255, 255, 255, 0.05);
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+      pointer-events: auto;
     }
 
     .nav-brand {
@@ -135,345 +288,524 @@
       align-items: center;
       gap: 10px;
 
-      color: #fff;
-      text-decoration: none;
-      font-size: 18px;
-      font-weight: 900;
+      font-size: 1rem;
+      font-weight: 700;
+
+      white-space: nowrap;
     }
 
     .nav-brand img {
-      width: 34px;
-      height: 34px;
-      border-radius: 10px;
+      width: 36px;
+      height: 36px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+      border: 2px solid rgba(255, 240, 112, 0.5);
+
+      box-shadow:
+        0 0 0 4px rgba(255, 240, 112, 0.04);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 4px;
     }
 
-    .nav-links a {
-      color: rgba(255, 255, 255, 0.76);
-      text-decoration: none;
-      font-size: 14px;
-      font-weight: 700;
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
 
-      padding: 9px 13px;
-      border-radius: 10px;
+      padding: 9px 12px;
+
+      border-radius: 12px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+      font-weight: 500;
+
+      transition: var(--transition);
+    }
+
+    .nav-link i {
+      color: var(--yellow);
+      font-size: 0.85rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-more {
+      position: relative;
+    }
+
+    .nav-more-menu {
+      position: absolute;
+
+      top: calc(100% + 10px);
+      right: 0;
+
+      width: 220px;
+
+      padding: 8px;
+
+      background: rgba(24,24,3,0.78);
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
 
       transition: 0.2s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: #fff;
-      background: rgba(210, 75, 255, 0.15);
+    .nav-more:hover .nav-more-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
     }
 
-    /* =========================
-       PAGE
-    ========================= */
+    .nav-more-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 10px 12px;
+
+      border-radius: 10px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+
+      transition: var(--transition);
+    }
+
+    .nav-more-menu a i {
+      width: 18px;
+      color: var(--yellow);
+      text-align: center;
+    }
+
+    .nav-more-menu a:hover {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
 
     main {
-      width: min(1160px, calc(100% - 32px));
-      margin: 70px auto 80px;
+      width: 100%;
+      max-width: 1180px;
+
+      margin: 0 auto;
+
+      padding: 125px 20px 60px;
     }
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
 
     .page-header {
       text-align: center;
-      margin-bottom: 42px;
+
+      padding: 55px 20px 45px;
     }
 
-    .page-header .badge {
-      display: inline-block;
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
 
-      padding: 7px 15px;
-      margin-bottom: 14px;
+      padding: 7px 14px;
 
+      margin-bottom: 18px;
+
+      border: 1px solid rgba(255,240,112,0.16);
       border-radius: 999px;
 
-      background: linear-gradient(135deg, #c74de2, #a83cd4);
-      box-shadow: 0 5px 18px rgba(205, 74, 231, 0.25);
+      background: rgba(255,240,112,0.055);
 
-      font-size: 13px;
-      font-weight: 900;
-    }
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
 
-    .page-header h1 {
-      font-size: clamp(34px, 5vw, 52px);
-      font-weight: 900;
-      line-height: 1.05;
-      letter-spacing: -1px;
+      color: var(--yellow-light);
 
-      background: linear-gradient(
-        90deg,
-        #ffffff,
-        #f1b4ff,
-        #ffffff
-      );
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .page-header p {
-      max-width: 600px;
-      margin: 14px auto 0;
-
-      color: rgba(255, 255, 255, 0.65);
-      font-size: 16px;
+      font-size: 0.78rem;
       font-weight: 600;
     }
 
-    /* =========================
-       TOOLS GRID
-    ========================= */
+    .page-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+
+      line-height: 1.1;
+
+      font-weight: 800;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 14px;
+
+      background: linear-gradient(
+        135deg,
+        #ffffff 15%,
+        var(--yellow) 60%,
+        var(--yellow-light)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .page-header p {
+      max-width: 650px;
+
+      margin: 0 auto;
+
+      color: rgba(255,255,255,0.58);
+
+      font-size: 0.92rem;
+
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       TOOLS
+    ========================================================= */
 
     .tools-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 30px;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
     }
 
     .tool-card {
       position: relative;
-      min-height: 220px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
 
-      padding: 32px 30px;
+      min-height: 245px;
+
+      padding: 30px 28px;
 
       text-align: center;
 
-      background:
-        linear-gradient(
-          180deg,
-          rgba(43, 34, 52, 0.94),
-          rgba(32, 25, 40, 0.94)
-        );
+      background: var(--glass);
 
-      border: 1px solid rgba(44, 190, 255, 0.8);
-      border-radius: 17px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.035);
 
       overflow: hidden;
 
-      box-shadow:
-        0 14px 35px rgba(0, 0, 0, 0.22),
-        inset 0 1px 0 rgba(255, 255, 255, 0.035);
-
       transition:
-        transform 0.25s ease,
-        border-color 0.25s ease,
-        box-shadow 0.25s ease;
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
     }
 
-    /* Top gradient line */
     .tool-card::before {
       content: "";
+
       position: absolute;
+
       top: 0;
       left: 0;
       right: 0;
 
-      height: 5px;
+      height: 2px;
 
       background: linear-gradient(
         90deg,
-        #d94de8,
-        #a743df,
-        #d94de8
+        transparent,
+        rgba(255,240,112,0.5),
+        transparent
       );
+
+      opacity: 0.8;
     }
 
     .tool-card:hover {
       transform: translateY(-5px);
 
-      border-color: rgba(68, 207, 255, 0.95);
+      background: var(--glass-hover);
+
+      border-color: var(--border-hover);
 
       box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.3),
-        0 0 22px rgba(201, 67, 232, 0.08);
+        0 16px 45px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.05);
     }
 
-    .tool-tag {
-      display: inline-flex;
+    .tool-icon {
+      width: 52px;
+      height: 52px;
+
+      display: flex;
       align-items: center;
       justify-content: center;
 
-      padding: 6px 12px;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
 
-      border-radius: 999px;
+      border-radius: 15px;
 
-      color: #fff;
-      background: linear-gradient(
-        135deg,
-        #c84be1,
-        #a33bd0
-      );
+      color: var(--yellow);
 
-      font-size: 13px;
-      font-weight: 900;
+      background: rgba(255,240,112,0.065);
+
+      border: 1px solid rgba(255,240,112,0.1);
+
+      font-size: 1.25rem;
 
       box-shadow:
-        0 5px 14px rgba(198, 69, 223, 0.18);
+        0 8px 25px rgba(0,0,0,0.16);
     }
 
     .tool-card h2 {
-      font-size: 25px;
-      font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+
+      font-size: 1.15rem;
+
+      font-weight: 700;
     }
 
     .tool-card p {
-      max-width: 480px;
+      max-width: 430px;
 
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 16px;
-      font-weight: 600;
-      line-height: 1.5;
+      margin-bottom: 22px;
 
-      margin-bottom: 20px;
+      color: rgba(255,255,255,0.55);
+
+      font-size: 0.82rem;
+
+      line-height: 1.7;
     }
 
     .tool-button {
+      margin-top: auto;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
 
-      min-width: 104px;
+      min-width: 100px;
 
-      padding: 9px 20px;
+      padding: 10px 18px;
 
-      border-radius: 999px;
+      border-radius: 12px;
 
-      color: #19101e;
-      background: linear-gradient(
-        135deg,
-        #f18bea,
-        #e977ed
-      );
+      color: #282600;
 
-      font-size: 14px;
-      font-weight: 900;
-      text-decoration: underline;
+      background: var(--yellow);
+
+      font-size: 0.8rem;
+      font-weight: 600;
 
       box-shadow:
-        0 7px 18px rgba(239, 115, 234, 0.25);
+        0 8px 22px rgba(255,240,112,0.1);
 
-      transition:
-        transform 0.2s ease,
-        filter 0.2s ease,
-        box-shadow 0.2s ease;
+      transition: var(--transition);
     }
 
     .tool-button:hover {
+      background: var(--yellow-hover);
+
       transform: translateY(-2px);
-      filter: brightness(1.08);
 
       box-shadow:
-        0 9px 22px rgba(239, 115, 234, 0.35);
+        0 12px 28px rgba(255,240,112,0.17);
     }
 
-    .external-icon {
-      width: 15px;
-      height: 15px;
-      flex-shrink: 0;
+    .tool-button i {
+      font-size: 0.75rem;
     }
 
-    /* =========================
+    /* =========================================================
        FOOTER
-    ========================= */
+    ========================================================= */
 
     footer {
-      width: min(1100px, calc(100% - 32px));
-      margin: 0 auto 30px;
+      width: 100%;
 
-      padding-top: 25px;
+      max-width: 1180px;
 
-      border-top: 1px solid rgba(255, 255, 255, 0.07);
+      margin: 40px auto 0;
+
+      padding: 30px 20px 35px;
 
       text-align: center;
 
-      color: rgba(255, 255, 255, 0.45);
-      font-size: 13px;
-      font-weight: 600;
+      border-top: 1px solid rgba(255,240,112,0.08);
+
+      color: rgba(255,255,255,0.42);
+
+      font-size: 0.75rem;
     }
 
-    footer a {
-      color: rgba(235, 157, 255, 0.8);
-      text-decoration: none;
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 18px;
+
+      margin-top: 12px;
     }
 
-    footer a:hover {
-      text-decoration: underline;
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+
+      transition: var(--transition);
     }
 
-    /* =========================
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
        RESPONSIVE
-    ========================= */
+    ========================================================= */
 
-    @media (max-width: 850px) {
+    @media (max-width: 950px) {
+      .nav-link span {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 10px;
+      }
+
+      .nav-brand span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 700px) {
       .tools-grid {
         grid-template-columns: 1fr;
-      }
-
-      .tool-card {
-        min-height: 210px;
-      }
-
-      .nav-links a {
-        padding: 8px 9px;
-        font-size: 13px;
       }
     }
 
     @media (max-width: 650px) {
-      nav {
-        top: 10px;
-        margin-top: 10px;
+      .top-nav-wrapper {
+        padding: 10px;
+      }
+
+      .top-nav {
+        height: 58px;
+        padding: 0 10px;
+
+        border-radius: 15px;
       }
 
       .nav-links {
-        display: none;
+        gap: 1px;
+      }
+
+      .nav-link {
+        padding: 8px;
+      }
+
+      .nav-link i {
+        font-size: 0.8rem;
+      }
+
+      .nav-more-menu {
+        right: -5px;
       }
 
       main {
-        margin-top: 50px;
+        padding-top: 90px;
+        padding-left: 14px;
+        padding-right: 14px;
       }
 
-      .tools-grid {
-        gap: 20px;
+      .page-header {
+        padding: 40px 10px 30px;
+      }
+
+      .page-header h1 {
+        font-size: 2.6rem;
+      }
+
+      .page-header p {
+        font-size: 0.82rem;
       }
 
       .tool-card {
-        padding: 30px 20px;
+        min-height: 230px;
+
+        padding: 25px 20px;
+
+        border-radius: 17px;
       }
     }
 
     @media (max-width: 430px) {
-      main {
-        width: min(100% - 22px, 1160px);
-      }
-
       .page-header h1 {
-        font-size: 36px;
-      }
-
-      .page-header p {
-        font-size: 14px;
+        font-size: 2.3rem;
       }
 
       .tool-card h2 {
-        font-size: 22px;
+        font-size: 1.05rem;
       }
 
       .tool-card p {
-        font-size: 14px;
+        font-size: 0.76rem;
       }
     }
   </style>
@@ -481,145 +813,342 @@
 
 <body>
 
-  <div class="stars"></div>
+  <!-- =======================================================
+       BACKGROUND
+  ======================================================== -->
 
-  <!-- Navigation -->
-  <nav>
-    <a class="nav-brand" href="/">
-      <img
-        src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
-        alt="LemonGDPS"
-      />
-      <span>LemonGDPS</span>
-    </a>
+  <div class="bg-animation" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-    <div class="nav-links">
-      <a href="/">Home</a>
-      <a href="/download.html">Download</a>
-      <a href="/tools.html" class="active">Tools</a>
-      <a href="/credit.html">Credits</a>
-    </div>
-  </nav>
+
+  <!-- =======================================================
+       TOP NAV
+  ======================================================== -->
+
+  <div class="top-nav-wrapper">
+    <nav class="top-nav">
+
+      <a href="/" class="nav-brand">
+        <img
+          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+          alt="LemonGDPS"
+        >
+        <span>LemonGDPS</span>
+      </a>
+
+      <div class="nav-links">
+
+        <a href="/" class="nav-link">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </a>
+
+        <a href="/download" class="nav-link">
+          <i class="fas fa-download"></i>
+          <span>Download</span>
+        </a>
+
+        <a href="/tools" class="nav-link active">
+          <i class="fas fa-wrench"></i>
+          <span>Tools</span>
+        </a>
+
+        <a
+          href="https://discord.gg/KwgR2EBEeh"
+          target="_blank"
+          class="nav-link"
+        >
+          <i class="fab fa-discord"></i>
+          <span>Community</span>
+        </a>
+
+        <div class="nav-more">
+
+          <a href="#" class="nav-link">
+            <i class="fas fa-ellipsis"></i>
+            <span>More</span>
+          </a>
+
+          <div class="nav-more-menu">
+
+            <a href="https://lemongdps.stpg.dev">
+              <i class="fas fa-server"></i>
+              Server Status
+            </a>
+
+            <a href="https://lemongdpsdl.pages.dev/">
+              <i class="fas fa-skull"></i>
+              Demon List
+            </a>
+
+            <a href="https://upsilongdpscl.pages.dev/">
+              <i class="fas fa-fire"></i>
+              Challenge List
+            </a>
+
+            <a href="https://upsilongdpspl.pages.dev/">
+              <i class="fas fa-mountain"></i>
+              Platformer List
+            </a>
+
+            <a href="/credit">
+              <i class="fas fa-hands-helping"></i>
+              Credits
+            </a>
+
+            <a href="/terms">
+              <i class="fas fa-file-contract"></i>
+              Terms of Service
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </nav>
+  </div>
+
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
 
   <main>
 
-    <section class="page-header">
-      <div class="badge">LemonGDPS Tools</div>
+    <!-- PAGE HEADER -->
+
+    <section class="page-header reveal">
+
+      <div class="page-badge">
+        <i class="fas fa-wrench"></i>
+        LemonGDPS Tools
+      </div>
 
       <h1>Tools</h1>
 
       <p>
         Useful tools and resources for LemonGDPS players and creators.
       </p>
+
     </section>
+
+
+    <!-- TOOLS -->
 
     <section class="tools-grid">
 
       <!-- Upload Song with Link -->
-      <article class="tool-card">
-        <span class="tool-tag">Upload Song</span>
+
+      <article class="tool-card reveal">
+
+        <div class="tool-icon">
+          <i class="fas fa-link"></i>
+        </div>
 
         <h2>Upload with link</h2>
 
         <p>
-          Reupload your song with links, etc.
+          Reupload your song using a direct link or other supported sources.
         </p>
 
-        <!-- Change # to your link -->
-        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/reupload/songAdd.php" target="_blank" rel="noopener">
-          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3h7v7"></path>
-            <path d="M10 14L21 3"></path>
-            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
-          </svg>
+        <!-- Replace # with your link -->
+        <a
+          href="https://lemongdps.alwaysdata.net/dashboard/reupload/songAdd.php"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tool-button"
+        >
+          <i class="fas fa-arrow-up-right-from-square"></i>
           View
         </a>
+
       </article>
 
+
       <!-- Upload Song with File -->
-      <article class="tool-card">
-        <span class="tool-tag">Upload Song</span>
+
+      <article class="tool-card reveal">
+
+        <div class="tool-icon">
+          <i class="fas fa-file-arrow-up"></i>
+        </div>
 
         <h2>Upload with file</h2>
 
         <p>
-          Reupload your song with files, etc.
+          Reupload your song using a file and other supported resources.
         </p>
 
-        <!-- Change # to your link -->
-        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/songs" target="_blank" rel="noopener">
-          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3h7v7"></path>
-            <path d="M10 14L21 3"></path>
-            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
-          </svg>
+        <!-- Replace # with your link -->
+        <a
+          href="https://lemongdps.alwaysdata.net/dashboard/songs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tool-button"
+        >
+          <i class="fas fa-arrow-up-right-from-square"></i>
           View
         </a>
+
       </article>
 
+
       <!-- Dashboard -->
-      <article class="tool-card">
-        <span class="tool-tag">Search Song</span>
+
+      <article class="tool-card reveal">
+
+        <div class="tool-icon">
+          <i class="fas fa-magnifying-glass"></i>
+        </div>
 
         <h2>Dashboard</h2>
 
         <p>
-          Search uploaded songs for your level if you want.
+          Search uploaded songs and find something to use for your level.
         </p>
 
-        <!-- Change # to your link -->
-        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/stats/songList.php" target="_blank" rel="noopener">
-          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3h7v7"></path>
-            <path d="M10 14L21 3"></path>
-            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
-          </svg>
+        <!-- Replace # with your link -->
+        <a
+          href="https://lemongdps.alwaysdata.net/dashboard/stats/songList.php"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tool-button"
+        >
+          <i class="fas fa-arrow-up-right-from-square"></i>
           View
         </a>
+
       </article>
 
+
       <!-- Level Re-up -->
-      <article class="tool-card">
-        <span class="tool-tag">Reupload Level</span>
+
+      <article class="tool-card reveal">
+
+        <div class="tool-icon">
+          <i class="fas fa-repeat"></i>
+        </div>
 
         <h2>Level Re-up</h2>
 
         <p>
-          Reupload your level in another GDPS, not in original server.
+          Reupload your level to another GDPS instead of the original server.
         </p>
 
-        <!-- Change # to your link -->
-        <a class="tool-button" href="https://lemongdps.alwaysdata.net/dashboard/levels/levelReupload.php" target="_blank" rel="noopener">
-          <svg class="external-icon" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="2.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <path d="M14 3h7v7"></path>
-            <path d="M10 14L21 3"></path>
-            <path d="M21 14v5a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5"></path>
-          </svg>
+        <!-- Replace # with your link -->
+        <a
+          href="https://lemongdps.alwaysdata.net/dashboard/levels/levelReupload.php"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="tool-button"
+        >
+          <i class="fas fa-arrow-up-right-from-square"></i>
           View
         </a>
+
       </article>
 
     </section>
+
   </main>
 
-  <footer>
-    Website by <strong>Lem0n</strong> • LemonGDPS © 2026
-    <br />
 
-    <a href="/terms.html">Terms</a>
-    &nbsp;•&nbsp;
-    <a href="/feedback">Feedback Board</a>
-    &nbsp;•&nbsp;
-    <a href="/contact.html">Contact</a>
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <p>
+      Website by Lem0n • LemonGDPS &copy;
+      <span id="year"></span>
+    </p>
+
+    <div class="footer-links">
+
+      <a href="/terms">
+        <i class="fas fa-file-contract"></i>
+        Terms of Service
+      </a>
+
+      <a href="/feedback">
+        <i class="fas fa-question-circle"></i>
+        Feedback Board
+      </a>
+
+      <a href="/contact">
+        <i class="fas fa-envelope"></i>
+        Contact
+      </a>
+
+      <a href="https://lemongdps.stpg.dev">
+        <i class="fas fa-server"></i>
+        Server Status
+      </a>
+
+    </div>
+
   </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* Current year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Scroll reveal */
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
+
+        observer.observe(element);
+
+      });
+
+  </script>
 
 </body>
 </html>
+```
