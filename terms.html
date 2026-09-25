@@ -1,0 +1,1488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
+  <meta
+    name="description"
+    content="LemonGDPS Terms of Service."
+  />
+
+  <title>LemonGDPS | Terms of Service</title>
+
+  <link
+    rel="icon"
+    href="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+  />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+
+  <style>
+    :root {
+      --yellow: #fff070;
+      --yellow-light: #fdff91;
+      --yellow-hover: #ffffc4;
+
+      --bg: #101000;
+
+      --text: #ffffff;
+      --text-soft: #fdff91;
+
+      --glass: rgba(35, 35, 3, 0.48);
+      --glass-strong: rgba(25, 25, 2, 0.64);
+      --glass-hover: rgba(48, 48, 5, 0.58);
+
+      --border: rgba(255, 240, 112, 0.14);
+      --border-hover: rgba(255, 240, 112, 0.32);
+
+      --radius: 20px;
+      --transition: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(255, 240, 112, 0.045),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(255, 240, 112, 0.035),
+          transparent 30%
+        ),
+        var(--bg);
+
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    .bg-animation {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -5;
+    }
+
+    .bg-animation span {
+      position: absolute;
+      display: block;
+
+      background: rgba(255, 233, 111, 0.08);
+      border: 1px solid rgba(255, 240, 112, 0.04);
+
+      bottom: -180px;
+      border-radius: 10px;
+
+      animation: moveUp 22s linear infinite;
+    }
+
+    .bg-animation span:nth-child(1) {
+      left: 10%;
+      width: 140px;
+      height: 140px;
+    }
+
+    .bg-animation span:nth-child(2) {
+      left: 25%;
+      width: 36px;
+      height: 36px;
+      animation-delay: 2s;
+      animation-duration: 14s;
+    }
+
+    .bg-animation span:nth-child(3) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 4s;
+    }
+
+    .bg-animation span:nth-child(4) {
+      left: 60%;
+      width: 24px;
+      height: 24px;
+      animation-delay: 1s;
+      animation-duration: 18s;
+    }
+
+    .bg-animation span:nth-child(5) {
+      left: 75%;
+      width: 120px;
+      height: 120px;
+      animation-delay: 5s;
+    }
+
+    .bg-animation span:nth-child(6) {
+      left: 85%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 7s;
+      animation-duration: 16s;
+    }
+
+    .bg-animation span:nth-child(7) {
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      animation-delay: 10s;
+    }
+
+    .bg-animation span:nth-child(8) {
+      left: 5%;
+      width: 28px;
+      height: 28px;
+      animation-delay: 12s;
+      animation-duration: 30s;
+    }
+
+    .bg-animation span:nth-child(9) {
+      left: 90%;
+      width: 18px;
+      height: 18px;
+      animation-delay: 8s;
+      animation-duration: 26s;
+    }
+
+    .bg-animation span:nth-child(10) {
+      left: 35%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 3s;
+      animation-duration: 20s;
+    }
+
+    @keyframes moveUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-1200px) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+
+      width: 520px;
+      height: 520px;
+
+      top: 5%;
+      left: -220px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.055);
+      filter: blur(110px);
+
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+
+      width: 480px;
+      height: 480px;
+
+      right: -200px;
+      bottom: 0;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.04);
+      filter: blur(120px);
+
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .top-nav-wrapper {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 1000;
+
+      padding: 14px 20px;
+
+      pointer-events: none;
+    }
+
+    .top-nav {
+      max-width: 1180px;
+      height: 64px;
+
+      margin: 0 auto;
+      padding: 0 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: var(--glass-strong);
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+      pointer-events: auto;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 1rem;
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+      border: 2px solid rgba(255, 240, 112, 0.5);
+
+      box-shadow:
+        0 0 0 4px rgba(255, 240, 112, 0.04);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 12px;
+
+      border-radius: 12px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+      font-weight: 500;
+
+      transition: var(--transition);
+    }
+
+    .nav-link i {
+      color: var(--yellow);
+      font-size: 0.85rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-more {
+      position: relative;
+    }
+
+    .nav-more-menu {
+      position: absolute;
+
+      top: calc(100% + 10px);
+      right: 0;
+
+      width: 220px;
+
+      padding: 8px;
+
+      background: rgba(24,24,3,0.78);
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+
+      transition: 0.2s ease;
+    }
+
+    .nav-more:hover .nav-more-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-more-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 10px 12px;
+
+      border-radius: 10px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+
+      transition: var(--transition);
+    }
+
+    .nav-more-menu a i {
+      width: 18px;
+      color: var(--yellow);
+      text-align: center;
+    }
+
+    .nav-more-menu a:hover {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    main {
+      width: 100%;
+      max-width: 980px;
+
+      margin: 0 auto;
+
+      padding: 120px 20px 60px;
+    }
+
+    /* =========================================================
+       PAGE HEADER
+    ========================================================= */
+
+    .page-header {
+      text-align: center;
+
+      padding: 55px 20px 40px;
+    }
+
+    .page-icon {
+      width: 76px;
+      height: 76px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      border: 2px solid var(--yellow);
+
+      box-shadow:
+        0 0 0 7px rgba(255,240,112,0.035),
+        0 15px 40px rgba(0,0,0,0.35);
+
+      margin-bottom: 22px;
+    }
+
+    .page-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 14px;
+
+      margin-bottom: 15px;
+
+      border: 1px solid rgba(255,240,112,0.16);
+      border-radius: 999px;
+
+      background: rgba(255,240,112,0.055);
+
+      color: var(--yellow-light);
+
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .page-header h1 {
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+
+      line-height: 1.05;
+
+      font-weight: 800;
+
+      letter-spacing: -3px;
+
+      margin-bottom: 14px;
+
+      background: linear-gradient(
+        135deg,
+        #ffffff 15%,
+        var(--yellow) 60%,
+        var(--yellow-light)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .page-header p {
+      max-width: 650px;
+
+      margin: 0 auto;
+
+      color: rgba(255,255,255,0.52);
+
+      font-size: 0.84rem;
+    }
+
+    /* =========================================================
+       TERMS CONTENT
+    ========================================================= */
+
+    .terms-card {
+      background: var(--glass);
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      padding: 34px;
+
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.035);
+    }
+
+    .last-updated {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 30px;
+
+      color: rgba(255,255,255,0.42);
+
+      font-size: 0.7rem;
+    }
+
+    .last-updated i {
+      color: var(--yellow);
+    }
+
+    .terms-section {
+      padding-bottom: 28px;
+      margin-bottom: 28px;
+
+      border-bottom: 1px solid rgba(255,240,112,0.07);
+    }
+
+    .terms-section:last-child {
+      padding-bottom: 0;
+      margin-bottom: 0;
+
+      border-bottom: none;
+    }
+
+    .terms-section h2 {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      margin-bottom: 12px;
+
+      font-size: 1.1rem;
+      font-weight: 650;
+    }
+
+    .terms-section h2 i {
+      width: 34px;
+      height: 34px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
+      color: var(--yellow);
+
+      background: rgba(255,240,112,0.065);
+
+      border: 1px solid rgba(255,240,112,0.08);
+
+      font-size: 0.85rem;
+    }
+
+    .terms-section p {
+      color: rgba(255,255,255,0.58);
+
+      font-size: 0.8rem;
+
+      line-height: 1.85;
+    }
+
+    .terms-section ul {
+      margin-top: 10px;
+      padding-left: 22px;
+
+      color: rgba(255,255,255,0.58);
+
+      font-size: 0.8rem;
+
+      line-height: 1.9;
+    }
+
+    .terms-section li::marker {
+      color: var(--yellow);
+    }
+
+    .terms-section strong {
+      color: rgba(255,255,255,0.82);
+    }
+
+    .highlight {
+      color: var(--yellow-light);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      width: 100%;
+
+      max-width: 1180px;
+
+      margin: 40px auto 0;
+
+      padding: 30px 20px 35px;
+
+      text-align: center;
+
+      border-top: 1px solid rgba(255,240,112,0.08);
+
+      color: rgba(255,255,255,0.42);
+
+      font-size: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 18px;
+
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 950px) {
+
+      .nav-link span {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 10px;
+      }
+
+      .nav-brand span {
+        display: none;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .top-nav-wrapper {
+        padding: 10px;
+      }
+
+      .top-nav {
+        height: 58px;
+        padding: 0 10px;
+
+        border-radius: 15px;
+      }
+
+      .nav-links {
+        gap: 1px;
+      }
+
+      .nav-link {
+        padding: 8px;
+      }
+
+      .nav-link i {
+        font-size: 0.8rem;
+      }
+
+      .nav-more-menu {
+        right: -5px;
+      }
+
+      main {
+        padding-top: 90px;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .page-header {
+        padding: 45px 10px 30px;
+      }
+
+      .page-icon {
+        width: 68px;
+        height: 68px;
+      }
+
+      .page-header h1 {
+        font-size: clamp(2.3rem, 13vw, 4rem);
+        letter-spacing: -2px;
+      }
+
+      .terms-card {
+        padding: 22px 18px;
+
+        border-radius: 17px;
+      }
+
+      .terms-section {
+        padding-bottom: 23px;
+        margin-bottom: 23px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =======================================================
+       BACKGROUND
+  ======================================================== -->
+
+  <div class="bg-animation" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+
+  <!-- =======================================================
+       TOP NAV
+  ======================================================== -->
+
+  <div class="top-nav-wrapper">
+
+    <nav class="top-nav">
+
+      <a href="/" class="nav-brand">
+
+        <img
+          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+          alt="LemonGDPS"
+        >
+
+        <span>LemonGDPS</span>
+
+      </a>
+
+
+      <div class="nav-links">
+
+        <a href="/" class="nav-link">
+
+          <i class="fas fa-home"></i>
+
+          <span>Home</span>
+
+        </a>
+
+
+        <a href="/download.html" class="nav-link">
+
+          <i class="fas fa-download"></i>
+
+          <span>Download</span>
+
+        </a>
+
+
+        <a href="/tools.html" class="nav-link">
+
+          <i class="fas fa-wrench"></i>
+
+          <span>Tools</span>
+
+        </a>
+
+
+        <a
+          href="https://discord.gg/KwgR2EBEeh"
+          target="_blank"
+          class="nav-link"
+        >
+
+          <i class="fab fa-discord"></i>
+
+          <span>Community</span>
+
+        </a>
+
+
+        <div class="nav-more">
+
+          <a href="#" class="nav-link active">
+
+            <i class="fas fa-ellipsis"></i>
+
+            <span>More</span>
+
+          </a>
+
+
+          <div class="nav-more-menu">
+
+            <a href="https://lemongdps.stpg.dev">
+
+              <i class="fas fa-server"></i>
+
+              Server Status
+
+            </a>
+
+
+            <a href="https://lemongdpsdl.pages.dev/">
+
+              <i class="fas fa-skull"></i>
+
+              Demon List
+
+            </a>
+
+
+            <a href="https://upsilongdpscl.pages.dev/">
+
+              <i class="fas fa-fire"></i>
+
+              Challenge List
+
+            </a>
+
+
+            <a href="https://upsilongdpspl.pages.dev/">
+
+              <i class="fas fa-mountain"></i>
+
+              Platformer List
+
+            </a>
+
+
+            <a href="/credit.html">
+
+              <i class="fas fa-hands-helping"></i>
+
+              Credits
+
+            </a>
+
+
+            <a href="/terms.html">
+
+              <i class="fas fa-file-contract"></i>
+
+              Terms of Service
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </div>
+
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
+  <main>
+
+
+    <!-- PAGE HEADER -->
+
+    <section class="page-header">
+
+      <img
+        src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+        alt="LemonGDPS Icon"
+        class="page-icon"
+      >
+
+      <div class="page-badge">
+
+        <i class="fas fa-file-contract"></i>
+
+        LemonGDPS Policies
+
+      </div>
+
+      <h1>Terms of Service</h1>
+
+      <p>
+        Please read these terms before using LemonGDPS and its services.
+      </p>
+
+    </section>
+
+
+    <!-- TERMS -->
+
+    <section class="terms-card reveal">
+
+
+      <div class="last-updated">
+
+        <i class="fas fa-clock"></i>
+
+        Last updated: September 25, 2026
+
+      </div>
+
+
+      <!-- 1 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-handshake"></i>
+
+          1. Acceptance of Terms
+
+        </h2>
+
+        <p>
+          By accessing or using <strong>LemonGDPS</strong>, you agree to
+          follow these Terms of Service. These terms apply to the
+          LemonGDPS game server, website, Discord community, and other
+          services operated as part of LemonGDPS.
+        </p>
+
+        <p style="margin-top: 10px;">
+          If you do not agree with these terms, please do not use
+          LemonGDPS or its services.
+        </p>
+
+      </div>
+
+
+      <!-- 2 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-user"></i>
+
+          2. User Accounts
+
+        </h2>
+
+        <p>
+          You are responsible for the activity performed through your
+          LemonGDPS account. You should keep your account information
+          secure and should not intentionally share your account with
+          other users.
+        </p>
+
+        <ul>
+
+          <li>
+            Do not impersonate another user or member of the LemonGDPS team.
+          </li>
+
+          <li>
+            Do not use another user's account without permission.
+          </li>
+
+          <li>
+            Do not attempt to access accounts or data that do not belong to you.
+          </li>
+
+          <li>
+            You are responsible for activity performed using your account.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- 3 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-gamepad"></i>
+
+          3. Server Usage
+
+        </h2>
+
+        <p>
+          LemonGDPS is intended to provide a fun and community-focused
+          Geometry Dash experience. Users are expected to use the server
+          fairly and respectfully.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Any attempt to intentionally damage, disrupt, exploit, or
+          interfere with the LemonGDPS server or its services may result
+          in moderation action.
+        </p>
+
+      </div>
+
+
+      <!-- 4 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-ban"></i>
+
+          4. Prohibited Activities
+
+        </h2>
+
+        <p>
+          The following activities are not allowed on LemonGDPS:
+        </p>
+
+        <ul>
+
+          <li>
+            Exploiting or intentionally abusing server bugs.
+          </li>
+
+          <li>
+            Attempting to gain unauthorized access to the server,
+            website, accounts, or other systems.
+          </li>
+
+          <li>
+            Using malicious software, scripts, or attacks against
+            LemonGDPS services.
+          </li>
+
+          <li>
+            Impersonating LemonGDPS staff or other community members.
+          </li>
+
+          <li>
+            Harassing, threatening, or intentionally targeting other
+            members of the community.
+          </li>
+
+          <li>
+            Sending spam or intentionally disruptive content.
+          </li>
+
+          <li>
+            Using cheats or exploits to gain an unfair advantage in
+            competitive activities.
+          </li>
+
+        </ul>
+
+      </div>
+
+
+      <!-- 5 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-comments"></i>
+
+          5. Community Conduct
+
+        </h2>
+
+        <p>
+          LemonGDPS includes community spaces such as Discord and other
+          communication channels. Users are expected to behave
+          respectfully and follow the rules of the specific community
+          platform they are using.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Additional rules may apply to specific channels, events,
+          competitions, or community features.
+        </p>
+
+      </div>
+
+
+      <!-- 6 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-layer-group"></i>
+
+          6. User-Created Content
+
+        </h2>
+
+        <p>
+          Users may create and submit levels, messages, comments, or
+          other content through LemonGDPS. You are responsible for the
+          content you submit.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Content that violates these terms, server rules, or applicable
+          platform rules may be removed. LemonGDPS may also take
+          moderation action when necessary to protect the community.
+        </p>
+
+      </div>
+
+
+      <!-- 7 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-star"></i>
+
+          7. Level Rating & Moderation
+
+        </h2>
+
+        <p>
+          Level ratings, features, leaderboards, lists, and other
+          community decisions may be subject to moderation standards
+          established by LemonGDPS.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Rating decisions may be changed or removed when a level is
+          found to violate the applicable standards or server rules.
+        </p>
+
+      </div>
+
+
+      <!-- 8 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-server"></i>
+
+          8. Service Availability
+
+        </h2>
+
+        <p>
+          LemonGDPS is provided as a community project. Services may
+          occasionally be unavailable because of maintenance, updates,
+          technical problems, or circumstances outside of our control.
+        </p>
+
+        <p style="margin-top: 10px;">
+          We may update, modify, suspend, or discontinue parts of the
+          service when necessary.
+        </p>
+
+      </div>
+
+
+      <!-- 9 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-gavel"></i>
+
+          9. Enforcement
+
+        </h2>
+
+        <p>
+          LemonGDPS staff may take appropriate moderation action when
+          these terms or applicable community rules are violated.
+        </p>
+
+        <ul>
+
+          <li>Warnings</li>
+          <li>Content removal</li>
+          <li>Temporary restrictions</li>
+          <li>Temporary bans</li>
+          <li>Permanent bans</li>
+
+        </ul>
+
+        <p style="margin-top: 10px;">
+          The type of action may depend on the severity and circumstances
+          of the violation.
+        </p>
+
+      </div>
+
+
+      <!-- 10 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-shield-halved"></i>
+
+          10. Security
+
+        </h2>
+
+        <p>
+          Do not attempt to compromise the security or availability of
+          LemonGDPS systems. This includes unauthorized access attempts,
+          abuse of vulnerabilities, denial-of-service attacks, and other
+          actions intended to disrupt the service.
+        </p>
+
+        <p style="margin-top: 10px;">
+          If you discover a security issue, please report it to the
+          LemonGDPS team instead of publicly exploiting it.
+        </p>
+
+      </div>
+
+
+      <!-- 11 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-link"></i>
+
+          11. Third-Party Services
+
+        </h2>
+
+        <p>
+          LemonGDPS may use third-party services such as Discord,
+          hosting providers, embedded chat services, and external
+          websites. These services may have their own terms and privacy
+          policies.
+        </p>
+
+        <p style="margin-top: 10px;">
+          LemonGDPS is not responsible for the policies or availability
+          of third-party services.
+        </p>
+
+      </div>
+
+
+      <!-- 12 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-rotate"></i>
+
+          12. Changes to These Terms
+
+        </h2>
+
+        <p>
+          These Terms of Service may be updated from time to time.
+          Changes will be reflected on this page with an updated
+          revision date.
+        </p>
+
+        <p style="margin-top: 10px;">
+          Continued use of LemonGDPS after changes are published means
+          that you acknowledge the updated terms.
+        </p>
+
+      </div>
+
+
+      <!-- 13 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-envelope"></i>
+
+          13. Contact
+
+        </h2>
+
+        <p>
+          If you have questions about these Terms of Service or need to
+          report an issue related to the service, please contact the
+          LemonGDPS team through the available community or contact
+          channels.
+        </p>
+
+      </div>
+
+
+      <!-- 14 -->
+
+      <div class="terms-section">
+
+        <h2>
+
+          <i class="fas fa-circle-check"></i>
+
+          14. Final Agreement
+
+        </h2>
+
+        <p>
+          By using LemonGDPS, you acknowledge that you have read and
+          understood these Terms of Service and agree to follow them.
+        </p>
+
+      </div>
+
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+    <p>
+      Website by Lem0n • LemonGDPS &copy;
+      <span id="year"></span>
+    </p>
+
+
+    <div class="footer-links">
+
+      <a href="/terms.html">
+
+        <i class="fas fa-file-contract"></i>
+
+        Terms of Service
+
+      </a>
+
+
+      <a href="/feedback">
+
+        <i class="fas fa-question-circle"></i>
+
+        Feedback Board
+
+      </a>
+
+
+      <a href="/contact.html">
+
+        <i class="fas fa-envelope"></i>
+
+        Contact
+
+      </a>
+
+
+      <a href="https://lemongdps.stpg.dev">
+
+        <i class="fas fa-server"></i>
+
+        Server Status
+
+      </a>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* Current year */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* Scroll reveal */
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+
+        entries.forEach((entry) => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
+          }
+
+        });
+
+      },
+      {
+        threshold: 0.08
+      }
+    );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
+
+        observer.observe(element);
+
+      });
+
+  </script>
+
+</body>
+</html>
