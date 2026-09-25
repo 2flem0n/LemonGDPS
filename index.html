@@ -1,43 +1,1124 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta
-    name="description"
-    content="LemonGDPS - A fresh Geometry Dash Private Server made for players and creators."
-  />
+  <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
+  <meta name="description" content="LemonGDPS - The Freshest Geometry Dash Experience." />
 
   <title>LemonGDPS</title>
 
-  <link
-    rel="icon"
-    href="https://lemongdps.alwaysdata.net/dashboard/icon.png"
-  />
-
+  <link rel="icon" href="https://lemongdps.alwaysdata.net/dashboard/icon.png" />
   <link rel="manifest" href="/manifest.json" />
 
-  <!-- Poppins -->
   <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet"
-  />
+  >
 
-  <!-- Font Awesome -->
   <link
     rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-  />
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
 
-  <!-- LemonGDPS Shared Styles -->
-  <link rel="stylesheet" href="/style.css" />
+  <style>
+    :root {
+      --yellow: #fff070;
+      --yellow-light: #fdff91;
+      --yellow-soft: #fffaaa;
+      --yellow-hover: #ffffc4;
+
+      --bg: #101000;
+      --bg-2: #171700;
+      --bg-3: #202000;
+
+      --text: #ffffff;
+      --text-soft: #fdff91;
+      --text-muted: rgba(255,255,255,0.62);
+
+      --glass: rgba(35, 35, 3, 0.48);
+      --glass-strong: rgba(25, 25, 2, 0.64);
+      --glass-hover: rgba(48, 48, 5, 0.58);
+
+      --border: rgba(255, 240, 112, 0.14);
+      --border-hover: rgba(255, 240, 112, 0.32);
+
+      --radius: 20px;
+      --transition: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(255, 240, 112, 0.045),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(255, 240, 112, 0.035),
+          transparent 30%
+        ),
+        var(--bg);
+
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    .bg-animation {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -5;
+    }
+
+    .bg-animation span {
+      position: absolute;
+      display: block;
+
+      background: rgba(255, 233, 111, 0.08);
+      border: 1px solid rgba(255, 240, 112, 0.04);
+
+      bottom: -180px;
+      border-radius: 10px;
+
+      animation: moveUp 22s linear infinite;
+    }
+
+    .bg-animation span:nth-child(1) {
+      left: 10%;
+      width: 140px;
+      height: 140px;
+    }
+
+    .bg-animation span:nth-child(2) {
+      left: 25%;
+      width: 36px;
+      height: 36px;
+      animation-delay: 2s;
+      animation-duration: 14s;
+    }
+
+    .bg-animation span:nth-child(3) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 4s;
+    }
+
+    .bg-animation span:nth-child(4) {
+      left: 60%;
+      width: 24px;
+      height: 24px;
+      animation-delay: 1s;
+      animation-duration: 18s;
+    }
+
+    .bg-animation span:nth-child(5) {
+      left: 75%;
+      width: 120px;
+      height: 120px;
+      animation-delay: 5s;
+    }
+
+    .bg-animation span:nth-child(6) {
+      left: 85%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 7s;
+      animation-duration: 16s;
+    }
+
+    .bg-animation span:nth-child(7) {
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      animation-delay: 10s;
+    }
+
+    .bg-animation span:nth-child(8) {
+      left: 5%;
+      width: 28px;
+      height: 28px;
+      animation-delay: 12s;
+      animation-duration: 30s;
+    }
+
+    .bg-animation span:nth-child(9) {
+      left: 90%;
+      width: 18px;
+      height: 18px;
+      animation-delay: 8s;
+      animation-duration: 26s;
+    }
+
+    .bg-animation span:nth-child(10) {
+      left: 35%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 3s;
+      animation-duration: 20s;
+    }
+
+    @keyframes moveUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-1200px) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+
+      width: 520px;
+      height: 520px;
+
+      top: 5%;
+      left: -220px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.055);
+      filter: blur(110px);
+
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+
+      width: 480px;
+      height: 480px;
+
+      right: -200px;
+      bottom: 0;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.04);
+      filter: blur(120px);
+
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    /* =========================================================
+       TOP NAVIGATION
+    ========================================================= */
+
+    .top-nav-wrapper {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 1000;
+
+      padding: 14px 20px;
+
+      pointer-events: none;
+    }
+
+    .top-nav {
+      max-width: 1180px;
+      height: 64px;
+
+      margin: 0 auto;
+      padding: 0 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: var(--glass-strong);
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+      pointer-events: auto;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 1rem;
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+      border: 2px solid rgba(255, 240, 112, 0.5);
+
+      box-shadow:
+        0 0 0 4px rgba(255, 240, 112, 0.04);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 12px;
+
+      border-radius: 12px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+      font-weight: 500;
+
+      transition: var(--transition);
+    }
+
+    .nav-link i {
+      color: var(--yellow);
+      font-size: 0.85rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-more {
+      position: relative;
+    }
+
+    .nav-more-menu {
+      position: absolute;
+
+      top: calc(100% + 10px);
+      right: 0;
+
+      width: 220px;
+
+      padding: 8px;
+
+      background: rgba(24,24,3,0.78);
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+
+      transition: 0.2s ease;
+    }
+
+    .nav-more:hover .nav-more-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-more-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 10px 12px;
+
+      border-radius: 10px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+
+      transition: var(--transition);
+    }
+
+    .nav-more-menu a i {
+      width: 18px;
+      color: var(--yellow);
+      text-align: center;
+    }
+
+    .nav-more-menu a:hover {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    main {
+      width: 100%;
+      max-width: 1180px;
+
+      margin: 0 auto;
+      padding: 115px 20px 60px;
+    }
+
+    /* =========================================================
+       HERO
+    ========================================================= */
+
+    .hero {
+      position: relative;
+
+      min-height: 620px;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+
+      padding: 80px 20px;
+
+      overflow: hidden;
+    }
+
+    .hero-pattern {
+      position: absolute;
+      inset: 0;
+
+      background:
+        radial-gradient(
+          circle at center,
+          rgba(255,240,112,0.075),
+          transparent 45%
+        );
+
+      pointer-events: none;
+    }
+
+    .hero-pattern::after {
+      content: "";
+
+      position: absolute;
+      inset: 10%;
+
+      border: 1px solid rgba(255,240,112,0.025);
+      border-radius: 50%;
+
+      transform: scaleX(1.4);
+    }
+
+    .hero-icon {
+      position: relative;
+
+      width: 112px;
+      height: 112px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+
+      border: 3px solid var(--yellow);
+
+      box-shadow:
+        0 0 0 8px rgba(255,240,112,0.045),
+        0 20px 60px rgba(0,0,0,0.45);
+
+      margin-bottom: 28px;
+
+      animation: heroFloat 5s ease-in-out infinite;
+    }
+
+    @keyframes heroFloat {
+      0%, 100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 14px;
+
+      margin-bottom: 18px;
+
+      border: 1px solid rgba(255,240,112,0.16);
+      border-radius: 999px;
+
+      background: rgba(255,240,112,0.055);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+
+      color: var(--yellow-light);
+
+      font-size: 0.78rem;
+      font-weight: 600;
+    }
+
+    .hero h1 {
+      position: relative;
+
+      font-size: clamp(3rem, 8vw, 6rem);
+
+      line-height: 1;
+
+      font-weight: 800;
+
+      letter-spacing: -4px;
+
+      margin-bottom: 22px;
+
+      background: linear-gradient(
+        135deg,
+        #ffffff 15%,
+        var(--yellow) 60%,
+        var(--yellow-light)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .hero p {
+      max-width: 680px;
+
+      color: rgba(255,255,255,0.62);
+
+      font-size: 1rem;
+
+      line-height: 1.8;
+
+      margin-bottom: 30px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+
+      margin-bottom: 40px;
+    }
+
+    .hero-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 12px 20px;
+
+      border-radius: 13px;
+
+      font-size: 0.86rem;
+      font-weight: 600;
+
+      transition: var(--transition);
+    }
+
+    .hero-button.primary {
+      color: #282600;
+      background: var(--yellow);
+
+      box-shadow:
+        0 8px 25px rgba(255,240,112,0.12);
+    }
+
+    .hero-button.primary:hover {
+      background: var(--yellow-hover);
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 32px rgba(255,240,112,0.2);
+    }
+
+    .hero-button.secondary {
+      color: white;
+
+      background: rgba(255,255,255,0.035);
+
+      border: 1px solid rgba(255,255,255,0.1);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .hero-button.secondary:hover {
+      background: rgba(255,240,112,0.07);
+      border-color: rgba(255,240,112,0.25);
+
+      transform: translateY(-3px);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 10px;
+    }
+
+    .stat {
+      min-width: 130px;
+
+      padding: 13px 20px;
+
+      border-radius: 15px;
+
+      background: rgba(35,35,3,0.38);
+
+      border: 1px solid rgba(255,240,112,0.1);
+
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+    }
+
+    .stat strong {
+      display: block;
+
+      color: var(--yellow);
+
+      font-size: 1rem;
+    }
+
+    .stat span {
+      display: block;
+
+      color: rgba(255,255,255,0.5);
+
+      font-size: 0.68rem;
+    }
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .section {
+      margin-top: 45px;
+    }
+
+    .section-heading {
+      margin-bottom: 18px;
+    }
+
+    .section-heading span {
+      color: var(--yellow);
+
+      font-size: 0.7rem;
+      font-weight: 700;
+
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      margin-top: 5px;
+
+      font-size: clamp(1.6rem, 4vw, 2.2rem);
+
+      font-weight: 700;
+    }
+
+    .section-heading p {
+      margin-top: 5px;
+
+      color: rgba(255,255,255,0.52);
+
+      font-size: 0.88rem;
+    }
+
+    /* =========================================================
+       GLASS CARDS
+    ========================================================= */
+
+    .card {
+      background: var(--glass);
+
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+
+      padding: 24px;
+
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.035);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .card:hover {
+      background: var(--glass-hover);
+
+      border-color: var(--border-hover);
+
+      box-shadow:
+        0 16px 45px rgba(0,0,0,0.28),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .card-header {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+
+      margin-bottom: 18px;
+    }
+
+    .card-header i {
+      width: 38px;
+      height: 38px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 11px;
+
+      color: var(--yellow);
+
+      background: rgba(255,240,112,0.07);
+
+      border: 1px solid rgba(255,240,112,0.08);
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    .card-content {
+      color: var(--text-soft);
+    }
+
+    /* =========================================================
+       MEDIA
+    ========================================================= */
+
+    .media {
+      width: 100%;
+
+      overflow: hidden;
+
+      border-radius: 14px;
+
+      border: 1px solid rgba(255,255,255,0.06);
+
+      background: rgba(0,0,0,0.15);
+    }
+
+    iframe {
+      display: block;
+
+      width: 100%;
+
+      border: none;
+    }
+
+    /* =========================================================
+       FEATURES
+    ========================================================= */
+
+    .features {
+      display: grid;
+
+      grid-template-columns: repeat(3, 1fr);
+
+      gap: 16px;
+    }
+
+    .feature {
+      padding: 26px 22px;
+
+      text-align: center;
+
+      background: rgba(35,35,3,0.44);
+
+      border: 1px solid var(--border);
+
+      border-radius: 20px;
+
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+
+      transition: var(--transition);
+    }
+
+    .feature:hover {
+      transform: translateY(-5px);
+
+      background: rgba(48,48,5,0.56);
+
+      border-color: var(--border-hover);
+
+      box-shadow:
+        0 15px 40px rgba(0,0,0,0.25);
+    }
+
+    .feature i {
+      width: 54px;
+      height: 54px;
+
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      margin-bottom: 15px;
+
+      border-radius: 16px;
+
+      color: var(--yellow);
+
+      background: rgba(255,240,112,0.065);
+
+      border: 1px solid rgba(255,240,112,0.1);
+
+      font-size: 1.4rem;
+    }
+
+    .feature h3 {
+      margin-bottom: 7px;
+
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .feature p {
+      color: rgba(255,255,255,0.52);
+
+      font-size: 0.8rem;
+
+      line-height: 1.65;
+    }
+
+    /* =========================================================
+       QUICK LINKS
+    ========================================================= */
+
+    .quick-links {
+      display: grid;
+
+      grid-template-columns: repeat(4, 1fr);
+
+      gap: 12px;
+    }
+
+    .quick-link {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 15px;
+
+      border-radius: 15px;
+
+      background: rgba(35,35,3,0.4);
+
+      border: 1px solid var(--border);
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.8rem;
+
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+
+      transition: var(--transition);
+    }
+
+    .quick-link i {
+      color: var(--yellow);
+    }
+
+    .quick-link:hover {
+      color: white;
+
+      background: rgba(255,240,112,0.07);
+
+      border-color: var(--border-hover);
+
+      transform: translateY(-2px);
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      width: 100%;
+
+      max-width: 1180px;
+
+      margin: 40px auto 0;
+
+      padding: 30px 20px 35px;
+
+      text-align: center;
+
+      border-top: 1px solid rgba(255,240,112,0.08);
+
+      color: rgba(255,255,255,0.42);
+
+      font-size: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 18px;
+
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 950px) {
+      .nav-link span {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 10px;
+      }
+
+      .nav-brand span {
+        display: none;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .quick-links {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 650px) {
+      .top-nav-wrapper {
+        padding: 10px;
+      }
+
+      .top-nav {
+        height: 58px;
+        padding: 0 10px;
+
+        border-radius: 15px;
+      }
+
+      .nav-links {
+        gap: 1px;
+      }
+
+      .nav-link {
+        padding: 8px;
+      }
+
+      .nav-link i {
+        font-size: 0.8rem;
+      }
+
+      .nav-more-menu {
+        right: -5px;
+      }
+
+      main {
+        padding-top: 90px;
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .hero {
+        min-height: 550px;
+
+        padding: 50px 10px;
+      }
+
+      .hero-icon {
+        width: 92px;
+        height: 92px;
+      }
+
+      .hero h1 {
+        font-size: clamp(2.8rem, 15vw, 4.5rem);
+
+        letter-spacing: -3px;
+      }
+
+      .hero p {
+        font-size: 0.85rem;
+      }
+
+      .stats {
+        width: 100%;
+      }
+
+      .stat {
+        flex: 1;
+        min-width: 100px;
+      }
+
+      .card {
+        padding: 18px;
+        border-radius: 17px;
+      }
+
+      .quick-links {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero-buttons {
+        width: 100%;
+        flex-direction: column;
+      }
+
+      .hero-button {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .stat {
+        min-width: 0;
+        padding: 11px 5px;
+      }
+
+      .stat strong {
+        font-size: 0.8rem;
+      }
+
+      .stat span {
+        font-size: 0.58rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-  <!-- Background -->
+  <!-- =======================================================
+       BACKGROUND
+  ======================================================== -->
+
   <div class="bg-animation" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
     <span></span>
     <span></span>
     <span></span>
@@ -46,15 +1127,18 @@
   </div>
 
 
-  <!-- Navigation -->
+  <!-- =======================================================
+       TOP NAV
+  ======================================================== -->
+
   <div class="top-nav-wrapper">
     <nav class="top-nav">
 
       <a href="/" class="nav-brand">
         <img
           src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
-          alt="LemonGDPS Icon"
-        />
+          alt="LemonGDPS"
+        >
         <span>LemonGDPS</span>
       </a>
 
@@ -71,54 +1155,50 @@
         </a>
 
         <a href="/tools.html" class="nav-link">
-          <i class="fas fa-tools"></i>
+          <i class="fas fa-wrench"></i>
           <span>Tools</span>
         </a>
 
-        <a href="#community" class="nav-link">
-          <i class="fas fa-users"></i>
+        <a
+          href="https://discord.gg/KwgR2EBEeh"
+          target="_blank"
+          class="nav-link"
+        >
+          <i class="fab fa-discord"></i>
           <span>Community</span>
         </a>
 
         <div class="nav-more">
 
-          <button class="nav-link nav-more-button">
+          <a href="#" class="nav-link">
             <i class="fas fa-ellipsis"></i>
             <span>More</span>
-            <i class="fas fa-chevron-down nav-chevron"></i>
-          </button>
+          </a>
 
-          <div class="nav-dropdown">
+          <div class="nav-more-menu">
 
-            <a
-              href="https://lemongdps.stpg.dev"
-              target="_blank"
-            >
+            <a href="https://upsilongdps.carrd.co/#ratestandards">
+              <i class="fas fa-star"></i>
+              Rate Standards
+            </a>
+
+            <a href="https://lemongdps.stpg.dev">
               <i class="fas fa-server"></i>
               Server Status
             </a>
 
-            <a
-              href="https://upsilongdpsdl.pages.dev/"
-              target="_blank"
-            >
+            <a href="https://upsilongdpsdl.pages.dev/">
               <i class="fas fa-skull"></i>
               Demon List
             </a>
 
-            <a
-              href="https://upsilongdpscl.pages.dev/"
-              target="_blank"
-            >
-              <i class="fas fa-bolt"></i>
+            <a href="https://upsilongdpscl.pages.dev/">
+              <i class="fas fa-fire"></i>
               Challenge List
             </a>
 
-            <a
-              href="https://upsilongdpspl.pages.dev/"
-              target="_blank"
-            >
-              <i class="fas fa-person-running"></i>
+            <a href="https://upsilongdpspl.pages.dev/">
+              <i class="fas fa-mountain"></i>
               Platformer List
             </a>
 
@@ -142,34 +1222,34 @@
   </div>
 
 
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
   <main>
 
+    <!-- HERO -->
 
-    <!-- Hero -->
     <section class="hero">
 
-      <div class="hero-logo-wrapper">
-        <img
-          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
-          class="hero-logo"
-          alt="LemonGDPS Icon"
-          width="125"
-          height="125"
-        />
-      </div>
+      <div class="hero-pattern"></div>
+
+      <img
+        src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+        alt="LemonGDPS Icon"
+        class="hero-icon"
+      >
 
       <div class="hero-badge">
         <i class="fas fa-lemon"></i>
         Welcome to LemonGDPS
       </div>
 
-      <h1>
-        Lemon<span>GDPS</span>
-      </h1>
+      <h1>LemonGDPS</h1>
 
-      <p class="hero-description">
-        The freshest Geometry Dash experience for players and creators.
-        Explore new levels, create something amazing, and enjoy the community.
+      <p>
+        The Freshest Geometry Dash Experience for you!
+        Play, create, compete, and connect with the LemonGDPS community.
       </p>
 
       <div class="hero-buttons">
@@ -190,14 +1270,19 @@
 
       </div>
 
-      <div class="hero-stats">
+      <div class="stats">
 
-        <div class="hero-stat">
+        <div class="stat">
           <strong>GDPS</strong>
           <span>Private Server</span>
         </div>
 
-        <div class="hero-stat">
+        <div class="stat">
+          <strong>PC & Android</strong>
+          <span>Platforms</span>
+        </div>
+
+        <div class="stat">
           <strong>Community</strong>
           <span>Driven</span>
         </div>
@@ -207,315 +1292,226 @@
     </section>
 
 
-    <!-- Quick Links -->
-    <section class="section">
+    <!-- FEATURES -->
+
+    <section class="section reveal">
 
       <div class="section-heading">
-
-        <span class="section-label">
-          QUICK ACCESS
-        </span>
-
-        <h2>
-          Explore LemonGDPS
-        </h2>
-
+        <span>Why LemonGDPS?</span>
+        <h2>Built for the community.</h2>
         <p>
-          Everything you need, all in one place.
+          A place for players and creators to enjoy Geometry Dash together.
         </p>
+      </div>
+
+      <div class="features">
+
+        <div class="feature">
+
+          <i class="fas fa-star"></i>
+
+          <h3>Low Rate Standards</h3>
+
+          <p>
+            Including fair and low rate standards that are accessible for everyone.
+          </p>
+
+        </div>
+
+        <div class="feature">
+
+          <i class="fas fa-rocket"></i>
+
+          <h3>Best Experience</h3>
+
+          <p>
+            Enjoy the best experience with optimized gameplay and useful features.
+          </p>
+
+        </div>
+
+        <div class="feature">
+
+          <i class="fas fa-globe"></i>
+
+          <h3>Join Community</h3>
+
+          <p>
+            Join the community and connect with other LemonGDPS players.
+          </p>
+
+        </div>
 
       </div>
 
+    </section>
+
+
+    <!-- LIVE CHAT -->
+
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <span>Community</span>
+        <h2>Live Chatbox</h2>
+        <p>
+          Talk with other LemonGDPS players directly from the website.
+        </p>
+      </div>
+
+      <div class="card">
+
+        <div class="card-header">
+
+          <i class="fas fa-comments"></i>
+
+          <h2 class="card-title">
+            Live Chatbox
+          </h2>
+
+        </div>
+
+        <div class="card-content">
+
+          <div class="media">
+
+            <iframe
+              src="https://www3.cbox.ws/box/?boxid=3560814&boxtag=9FbJcQ"
+              height="269"
+              allowtransparency="yes"
+              allow="autoplay"
+              scrolling="auto"
+            ></iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- DISCORD WIDGET -->
+
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <span>Discord</span>
+        <h2>Community Hub</h2>
+        <p>
+          See the LemonGDPS Discord community directly on the website.
+        </p>
+      </div>
+
+      <div class="card">
+
+        <div class="card-header">
+
+          <i class="fab fa-discord"></i>
+
+          <h2 class="card-title">
+            Community Hub
+          </h2>
+
+        </div>
+
+        <div class="card-content">
+
+          <div class="media">
+
+            <iframe
+              height="450"
+              loading="lazy"
+              src="https://discord.com/widget?id=1541070802823155774&theme=dark"
+            ></iframe>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- QUICK LINKS -->
+
+    <section class="section reveal">
+
+      <div class="section-heading">
+        <span>Explore</span>
+        <h2>Quick Links</h2>
+        <p>
+          Everything you need, right at your fingertips.
+        </p>
+      </div>
 
       <div class="quick-links">
 
-        <a href="/download.html" class="quick-link">
+        <a
+          href="/download.html"
+          class="quick-link"
+        >
           <i class="fas fa-download"></i>
-          <span>Download</span>
+          Download
         </a>
 
-        <a href="/tools.html" class="quick-link">
-          <i class="fas fa-tools"></i>
-          <span>Tools</span>
+        <a
+          href="/tools.html"
+          class="quick-link"
+        >
+          <i class="fas fa-wrench"></i>
+          Tools
         </a>
 
-        <a href="/feedback" class="quick-link">
-          <i class="fas fa-comment-dots"></i>
-          <span>Feedback Board</span>
+        <a
+          href="https://upsilongdps.carrd.co/#ratestandards"
+          class="quick-link"
+        >
+          <i class="fas fa-star"></i>
+          Rate Standards
         </a>
 
         <a
           href="https://lemongdps.stpg.dev"
-          target="_blank"
           class="quick-link"
         >
           <i class="fas fa-server"></i>
-          <span>Server Status</span>
+          Server Status
         </a>
 
         <a
           href="https://upsilongdpsdl.pages.dev/"
-          target="_blank"
           class="quick-link"
         >
           <i class="fas fa-skull"></i>
-          <span>Demon List</span>
+          Demon List
         </a>
 
         <a
           href="https://upsilongdpscl.pages.dev/"
-          target="_blank"
           class="quick-link"
         >
-          <i class="fas fa-bolt"></i>
-          <span>Challenge List</span>
+          <i class="fas fa-fire"></i>
+          Challenge List
         </a>
 
         <a
           href="https://upsilongdpspl.pages.dev/"
-          target="_blank"
           class="quick-link"
         >
-          <i class="fas fa-person-running"></i>
-          <span>Platformer List</span>
+          <i class="fas fa-mountain"></i>
+          Platformer List
         </a>
 
-        <a href="/credit.html" class="quick-link">
+        <a
+          href="/credit.html"
+          class="quick-link"
+        >
           <i class="fas fa-hands-helping"></i>
-          <span>Credits</span>
+          Credits
         </a>
-
-        <a href="/terms.html" class="quick-link">
-          <i class="fas fa-file-contract"></i>
-          <span>Terms of Service</span>
-        </a>
-
-        <a href="/contact.html" class="quick-link">
-          <i class="fas fa-envelope"></i>
-          <span>Contact</span>
-        </a>
-
-      </div>
-
-    </section>
-
-
-    <!-- Rate Standards -->
-    <section class="section">
-
-      <div class="section-heading">
-
-        <span class="section-label">
-          LEVEL RATING
-        </span>
-
-        <h2>
-          Fair and Low Rate Standards
-        </h2>
-
-        <p>
-          Clear standards for rating levels while keeping the system fair.
-        </p>
-
-      </div>
-
-
-      <div class="card rate-info">
-
-        <div class="card-header">
-
-          <div class="feature-icon">
-            <i class="fas fa-star"></i>
-          </div>
-
-          <div>
-            <h3>
-              Rate Standards
-            </h3>
-
-            <p>
-              Simple rules for level ratings.
-            </p>
-          </div>
-
-        </div>
-
-
-        <div class="card-content">
-
-          <p>
-            We want level ratings to stay fair and consistent for everyone.
-            Levels are reviewed based on their gameplay, quality, and overall
-            presentation.
-          </p>
-
-          <a
-            href="https://upsilongdps.carrd.co/#ratestandards"
-            target="_blank"
-            class="hero-button secondary"
-          >
-            <i class="fas fa-arrow-up-right-from-square"></i>
-            View Rate Standards
-          </a>
-
-        </div>
-
-      </div>
-
-    </section>
-
-
-    <!-- Live Chatbox -->
-    <section class="section">
-
-      <div class="section-heading">
-
-        <span class="section-label">
-          COMMUNITY CHAT
-        </span>
-
-        <h2>
-          Live Chatbox
-        </h2>
-
-        <p>
-          Talk with other LemonGDPS players.
-        </p>
-
-      </div>
-
-
-      <div class="card chatbox-card">
-
-        <iframe
-          src="https://www3.cbox.ws/box/?boxid=3560814&boxtag=17tcN7"
-          width="100%"
-          height="500"
-          allowtransparency="yes"
-          allow="autoplay"
-          frameborder="0"
-          marginheight="0"
-          marginwidth="0"
-          scrolling="auto"
-          title="LemonGDPS Live Chatbox"
-        ></iframe>
-
-      </div>
-
-    </section>
-
-
-    <!-- Community Hub -->
-    <section class="section" id="community">
-
-      <div class="section-heading">
-
-        <span class="section-label">
-          DISCORD
-        </span>
-
-        <h2>
-          Community Hub
-        </h2>
-
-        <p>
-          Join the LemonGDPS Discord and stay connected with the community.
-        </p>
-
-      </div>
-
-
-      <div class="card discord-card">
-
-        <iframe
-          src="https://discord.com/widget?id=1541070802823155774&theme=dark"
-          width="100%"
-          height="500"
-          allowtransparency="true"
-          frameborder="0"
-          sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"
-          title="LemonGDPS Discord"
-        ></iframe>
-
-      </div>
-
-    </section>
-
-
-    <!-- Features -->
-    <section class="section">
-
-      <div class="section-heading">
-
-        <span class="section-label">
-          WHY LEMON
-        </span>
-
-        <h2>
-          Made for the Community
-        </h2>
-
-        <p>
-          LemonGDPS is built around players, creators, and the community.
-        </p>
-
-      </div>
-
-
-      <div class="feature-grid">
-
-        <div class="feature-card">
-
-          <div class="feature-icon">
-            <i class="fas fa-users"></i>
-          </div>
-
-          <h3>
-            Made for the Community
-          </h3>
-
-          <p>
-            A place where players can share levels, meet other creators,
-            and enjoy Geometry Dash together.
-          </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon">
-            <i class="fas fa-paintbrush"></i>
-          </div>
-
-          <h3>
-            Built for Creators
-          </h3>
-
-          <p>
-            Create your own levels, improve your skills, and get your work
-            discovered by other players.
-          </p>
-
-        </div>
-
-
-        <div class="feature-card">
-
-          <div class="feature-icon">
-            <i class="fas fa-lemon"></i>
-          </div>
-
-          <h3>
-            Fresh Experience
-          </h3>
-
-          <p>
-            A clean and simple GDPS experience with a community-focused
-            environment.
-          </p>
-
-        </div>
 
       </div>
 
@@ -524,111 +1520,90 @@
   </main>
 
 
-  <!-- Footer -->
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
   <footer>
 
-    <div class="footer-inner">
+    <p>
+      Website by Lem0n • LemonGDPS &copy;
+      <span id="year"></span>
+    </p>
 
-      <div class="footer-brand">
+    <div class="footer-links">
 
-        <img
-          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
-          alt="LemonGDPS Icon"
-        />
+      <a href="/terms.html">
+        <i class="fas fa-file-contract"></i>
+        Terms of Service
+      </a>
 
-        <div>
-          <strong>
-            LemonGDPS
-          </strong>
+      <a href="/feedback">
+        <i class="fas fa-question-circle"></i>
+        Feedback Board
+      </a>
 
-          <span>
-            The freshest Geometry Dash experience.
-          </span>
-        </div>
+      <a href="/contact.html">
+        <i class="fas fa-envelope"></i>
+        Contact
+      </a>
 
-      </div>
-
-
-      <div class="footer-links">
-
-        <a href="/download.html">
-          <i class="fas fa-download"></i>
-          Download
-        </a>
-
-        <a href="/tools.html">
-          <i class="fas fa-tools"></i>
-          Tools
-        </a>
-
-        <a href="/credit.html">
-          <i class="fas fa-hands-helping"></i>
-          Credits
-        </a>
-
-        <a href="/terms.html">
-          <i class="fas fa-file-contract"></i>
-          Terms
-        </a>
-
-        <a href="/contact.html">
-          <i class="fas fa-envelope"></i>
-          Contact
-        </a>
-
-        <a
-          href="https://discord.gg/KwgR2EBEeh"
-          target="_blank"
-        >
-          <i class="fab fa-discord"></i>
-          Discord
-        </a>
-
-      </div>
-
-
-      <div class="footer-bottom">
-
-        <span>
-          LemonGDPS &copy; <span id="year"></span>
-        </span>
-
-        <span>
-          Made for the Geometry Dash community.
-        </span>
-
-      </div>
+      <a href="https://lemongdps.stpg.dev">
+        <i class="fas fa-server"></i>
+        Server Status
+      </a>
 
     </div>
 
   </footer>
 
 
-  <!-- Scripts -->
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
   <script>
+
+    /* Current year */
+
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
+
+    /* Scroll reveal */
+
     const observer = new IntersectionObserver(
       (entries) => {
+
         entries.forEach((entry) => {
+
           if (entry.isIntersecting) {
+
             entry.target.classList.add("visible");
+
+            observer.unobserve(entry.target);
+
           }
+
         });
+
       },
       {
         threshold: 0.08
       }
     );
 
+
     document
-      .querySelectorAll(".section, .feature-card, .quick-link")
+      .querySelectorAll(".reveal")
       .forEach((element) => {
-        element.classList.add("reveal");
+
         observer.observe(element);
+
       });
+
   </script>
 
 </body>
 </html>
+```
