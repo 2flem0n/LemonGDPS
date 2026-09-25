@@ -420,7 +420,7 @@
 
       margin: 0 auto;
 
-      padding: 125px 20px 60px;
+      padding: 115px 20px 60px;
     }
 
     /* =========================================================
@@ -430,7 +430,7 @@
     .page-header {
       text-align: center;
 
-      padding: 55px 20px 45px;
+      padding: 55px 20px 40px;
     }
 
     .page-badge {
@@ -457,15 +457,15 @@
     }
 
     .page-header h1 {
-      font-size: clamp(2.5rem, 6vw, 4.2rem);
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
 
-      line-height: 1.1;
+      line-height: 1;
 
       font-weight: 800;
 
-      letter-spacing: -2px;
+      letter-spacing: -3px;
 
-      margin-bottom: 14px;
+      margin-bottom: 18px;
 
       background: linear-gradient(
         135deg,
@@ -493,7 +493,7 @@
     }
 
     /* =========================================================
-       TOOLS
+       TOOLS GRID
     ========================================================= */
 
     .tools-grid {
@@ -504,16 +504,21 @@
       gap: 18px;
     }
 
+    /* =========================================================
+       TOOL CARD
+    ========================================================= */
+
     .tool-card {
       position: relative;
+
+      min-height: 250px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
 
-      min-height: 245px;
-
-      padding: 30px 28px;
+      padding: 30px;
 
       text-align: center;
 
@@ -552,23 +557,34 @@
       background: linear-gradient(
         90deg,
         transparent,
-        rgba(255,240,112,0.5),
+        rgba(255,240,112,0.55),
         transparent
       );
 
-      opacity: 0.8;
+      opacity: 0.9;
+
+      transition: opacity var(--transition);
     }
 
-    .tool-card:hover {
-      transform: translateY(-5px);
+    /* IMPORTANT:
+       This selector keeps the hover transform from being
+       overridden by the scroll reveal transform.
+    */
+
+    .tool-card.reveal.visible:hover {
+      transform: translateY(-6px);
 
       background: var(--glass-hover);
 
       border-color: var(--border-hover);
 
       box-shadow:
-        0 16px 45px rgba(0,0,0,0.28),
+        0 18px 48px rgba(0,0,0,0.32),
         inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .tool-card.reveal.visible:hover::before {
+      opacity: 1;
     }
 
     .tool-icon {
@@ -591,8 +607,18 @@
 
       font-size: 1.25rem;
 
-      box-shadow:
-        0 8px 25px rgba(0,0,0,0.16);
+      transition:
+        transform var(--transition),
+        background var(--transition),
+        border-color var(--transition);
+    }
+
+    .tool-card.reveal.visible:hover .tool-icon {
+      transform: translateY(-2px) scale(1.04);
+
+      background: rgba(255,240,112,0.09);
+
+      border-color: rgba(255,240,112,0.18);
     }
 
     .tool-card h2 {
@@ -604,7 +630,7 @@
     }
 
     .tool-card p {
-      max-width: 430px;
+      max-width: 440px;
 
       margin-bottom: 22px;
 
@@ -616,8 +642,6 @@
     }
 
     .tool-button {
-      margin-top: auto;
-
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -720,6 +744,7 @@
     ========================================================= */
 
     @media (max-width: 950px) {
+
       .nav-link span {
         display: none;
       }
@@ -731,15 +756,19 @@
       .nav-brand span {
         display: none;
       }
+
     }
 
     @media (max-width: 700px) {
+
       .tools-grid {
         grid-template-columns: 1fr;
       }
+
     }
 
     @media (max-width: 650px) {
+
       .top-nav-wrapper {
         padding: 10px;
       }
@@ -778,7 +807,8 @@
       }
 
       .page-header h1 {
-        font-size: 2.6rem;
+        font-size: 2.7rem;
+        letter-spacing: -2px;
       }
 
       .page-header p {
@@ -792,11 +822,13 @@
 
         border-radius: 17px;
       }
+
     }
 
     @media (max-width: 430px) {
+
       .page-header h1 {
-        font-size: 2.3rem;
+        font-size: 2.35rem;
       }
 
       .tool-card h2 {
@@ -806,6 +838,7 @@
       .tool-card p {
         font-size: 0.76rem;
       }
+
     }
   </style>
 </head>
@@ -838,76 +871,124 @@
     <nav class="top-nav">
 
       <a href="/" class="nav-brand">
+
         <img
           src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
           alt="LemonGDPS"
         >
+
         <span>LemonGDPS</span>
+
       </a>
+
 
       <div class="nav-links">
 
         <a href="/" class="nav-link">
+
           <i class="fas fa-home"></i>
+
           <span>Home</span>
+
         </a>
+
 
         <a href="/download" class="nav-link">
+
           <i class="fas fa-download"></i>
+
           <span>Download</span>
+
         </a>
 
+
         <a href="/tools" class="nav-link active">
+
           <i class="fas fa-wrench"></i>
+
           <span>Tools</span>
+
         </a>
+
 
         <a
           href="https://discord.gg/KwgR2EBEeh"
           target="_blank"
+          rel="noopener noreferrer"
           class="nav-link"
         >
+
           <i class="fab fa-discord"></i>
+
           <span>Community</span>
+
         </a>
+
 
         <div class="nav-more">
 
           <a href="#" class="nav-link">
+
             <i class="fas fa-ellipsis"></i>
+
             <span>More</span>
+
           </a>
+
 
           <div class="nav-more-menu">
 
             <a href="https://lemongdps.stpg.dev">
+
               <i class="fas fa-server"></i>
+
               Server Status
+
             </a>
+
 
             <a href="https://lemongdpsdl.pages.dev/">
+
               <i class="fas fa-skull"></i>
+
               Demon List
+
             </a>
+
 
             <a href="https://upsilongdpscl.pages.dev/">
+
               <i class="fas fa-fire"></i>
+
               Challenge List
+
             </a>
+
 
             <a href="https://upsilongdpspl.pages.dev/">
+
               <i class="fas fa-mountain"></i>
+
               Platformer List
+
             </a>
+
 
             <a href="/credit">
+
               <i class="fas fa-hands-helping"></i>
+
               Credits
+
             </a>
 
+
             <a href="/terms">
+
               <i class="fas fa-file-contract"></i>
+
               Terms of Service
+
             </a>
 
           </div>
@@ -926,16 +1007,24 @@
 
   <main>
 
-    <!-- PAGE HEADER -->
+
+    <!-- =====================================================
+         PAGE HEADER
+    ====================================================== -->
 
     <section class="page-header reveal">
 
       <div class="page-badge">
+
         <i class="fas fa-wrench"></i>
+
         LemonGDPS Tools
+
       </div>
 
+
       <h1>Tools</h1>
+
 
       <p>
         Useful tools and resources for LemonGDPS players and creators.
@@ -944,61 +1033,82 @@
     </section>
 
 
-    <!-- TOOLS -->
+    <!-- =====================================================
+         TOOLS
+    ====================================================== -->
 
     <section class="tools-grid">
 
-      <!-- Upload Song with Link -->
+
+      <!-- Upload with Link -->
 
       <article class="tool-card reveal">
 
         <div class="tool-icon">
+
           <i class="fas fa-link"></i>
+
         </div>
 
+
         <h2>Upload with link</h2>
+
 
         <p>
           Reupload your song using a direct link or other supported sources.
         </p>
 
-        <!-- Replace # with your link -->
+
+        <!-- Put your URL in href -->
+
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/reupload/songAdd.php"
           target="_blank"
           rel="noopener noreferrer"
           class="tool-button"
         >
+
           <i class="fas fa-arrow-up-right-from-square"></i>
+
           View
+
         </a>
 
       </article>
 
 
-      <!-- Upload Song with File -->
+      <!-- Upload with File -->
 
       <article class="tool-card reveal">
 
         <div class="tool-icon">
+
           <i class="fas fa-file-arrow-up"></i>
+
         </div>
 
+
         <h2>Upload with file</h2>
+
 
         <p>
           Reupload your song using a file and other supported resources.
         </p>
 
-        <!-- Replace # with your link -->
+
+        <!-- Put your URL in href -->
+
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/songs"
           target="_blank"
           rel="noopener noreferrer"
           class="tool-button"
         >
+
           <i class="fas fa-arrow-up-right-from-square"></i>
+
           View
+
         </a>
 
       </article>
@@ -1009,24 +1119,33 @@
       <article class="tool-card reveal">
 
         <div class="tool-icon">
+
           <i class="fas fa-magnifying-glass"></i>
+
         </div>
 
+
         <h2>Dashboard</h2>
+
 
         <p>
           Search uploaded songs and find something to use for your level.
         </p>
 
-        <!-- Replace # with your link -->
+
+        <!-- Put your URL in href -->
+
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/stats/songList.php"
           target="_blank"
           rel="noopener noreferrer"
           class="tool-button"
         >
+
           <i class="fas fa-arrow-up-right-from-square"></i>
+
           View
+
         </a>
 
       </article>
@@ -1037,27 +1156,37 @@
       <article class="tool-card reveal">
 
         <div class="tool-icon">
+
           <i class="fas fa-repeat"></i>
+
         </div>
 
+
         <h2>Level Re-up</h2>
+
 
         <p>
           Reupload your level to another GDPS instead of the original server.
         </p>
 
-        <!-- Replace # with your link -->
+
+        <!-- Put your URL in href -->
+
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/levels/levelReupload.php"
           target="_blank"
           rel="noopener noreferrer"
           class="tool-button"
         >
+
           <i class="fas fa-arrow-up-right-from-square"></i>
+
           View
+
         </a>
 
       </article>
+
 
     </section>
 
@@ -1075,26 +1204,42 @@
       <span id="year"></span>
     </p>
 
+
     <div class="footer-links">
 
       <a href="/terms">
+
         <i class="fas fa-file-contract"></i>
+
         Terms of Service
+
       </a>
+
 
       <a href="/feedback">
+
         <i class="fas fa-question-circle"></i>
+
         Feedback Board
+
       </a>
+
 
       <a href="/contact">
+
         <i class="fas fa-envelope"></i>
+
         Contact
+
       </a>
 
+
       <a href="https://lemongdps.stpg.dev">
+
         <i class="fas fa-server"></i>
+
         Server Status
+
       </a>
 
     </div>
@@ -1117,6 +1262,7 @@
     /* Scroll reveal */
 
     const observer = new IntersectionObserver(
+
       (entries) => {
 
         entries.forEach((entry) => {
@@ -1132,9 +1278,11 @@
         });
 
       },
+
       {
         threshold: 0.08
       }
+
     );
 
 
