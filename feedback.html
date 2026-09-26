@@ -1282,197 +1282,284 @@
   ======================================================== -->
 
 <script>
-  const { useState, useEffect } = React;
+  /* =========================
+     CURRENT YEAR
+  ========================= */
 
-  function FeedbackBoard() {
-
-    const [items, setItems] = useState([]);
-    const [loading, setLoading] = useState(true);
-
-    const SHEET_ID =
-      "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
-
-    const SHEET_GID =
-      "819638605";
-
-    const GVIZ_URL =
-      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+  document.getElementById("year").textContent =
+    new Date().getFullYear();
 
 
-    async function loadFromSheet() {
+  /* =========================
+     GOOGLE SHEETS
+  ========================= */
 
-      setLoading(true);
+  const SHEET_ID =
+    "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
 
-      try {
+  const SHEET_GID =
+    "819638605";
 
-        const response = await fetch(GVIZ_URL);
-
-        if (!response.ok) {
-          throw new Error("Network error");
-        }
-
-        const text = await response.text();
-
-        /*
-          Google Visualization API returns:
-
-          google.visualization.Query.setResponse({...})
-
-          So extract the JSON object.
-        */
-
-        const jsonText =
-          text.substring(
-            text.indexOf("{"),
-            text.lastIndexOf("}") + 1
-          );
-
-        const data =
-          JSON.parse(jsonText);
-
-        const rows =
-          data.table?.rows || [];
+  const GVIZ_URL =
+    `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
 
 
-        const parsed =
-          rows
-            .map((row, index) => {
+  /* =========================
+     HTML ESCAPE
+  ========================= */
 
-              const cells =
-                row.c || [];
-
-              return {
-
-                id:
-                  `feedback_${index}`,
-
-                nickname:
-                  cells[1]?.v
-                    ? String(cells[1].v)
-                    : "Anonymous",
-
-                feedback:
-                  cells[2]?.v
-                    ? String(cells[2].v)
-                    : "",
-
-                topic:
-                  cells[3]?.v
-                    ? String(cells[3].v)
-                    : "General"
-
-              };
-
-            })
-
-            .filter(item =>
-              item.nickname ||
-              item.feedback ||
-              item.topic
-            );
+  function escapeHTML(value) {
+    return String(value ?? "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
+  }
 
 
-        /*
-          Newest feedback first
-        */
+  /* =========================
+     LOAD FEEDBACK
+  ========================= */
 
-        parsed.reverse();
+  async function loadFeedback() {
+
+    const grid =
+      document.getElementById("feedbackGrid");
+
+    const count =
+      document.getElementById("feedbackCount");
+
+    if (!grid) return;
 
 
-        setItems(parsed);
+    try {
 
-      } catch (error) {
+      const response =
+        await fetch(GVIZ_URL);
 
-        console.error(
-          "Failed to load LemonGDPS feedback:",
-          error
-        );
-
-        setItems([]);
-
-      } finally {
-
-        setLoading(false);
-
+      if (!response.ok) {
+        throw new Error("Network error");
       }
 
+
+      const text =
+        await response.text();
+
+
+      const jsonText =
+        text.substring(
+          text.indexOf("{"),
+          text.lastIndexOf("}") + 1
+        );
+
+
+      const data =
+        JSON.parse(jsonText);
+
+
+      const rows =
+        data.table?.rows || [];
+
+
+      const feedbacks =
+        rows
+          .map((row, index) => {
+
+            const cells =
+              row.c || [];
+
+            return {
+
+              id:
+                `feedback-${index}`,
+
+              username:
+                cells[1]?.v
+                  ? String(cells[1].v)
+                  : "Anonymous",
+
+              feedback:
+                cells[2]?.v
+                  ? String(cells[2].v)
+                  : "",
+
+              topic:
+                cells[3]?.v
+                  ? String(cells[3].v)
+                  : ""
+
+            };
+
+          })
+
+          .filter(item =>
+            item.username ||
+            item.feedback ||
+            item.topic
+          );
+
+
+      feedbacks.reverse();
+
+
+      if (count) {
+        count.textContent =
+          feedbacks.length;
+      }
+
+
+      if (feedbacks.length === 0) {
+
+        grid.innerHTML = `
+          <div class="message-card">
+
+            <i class="fas fa-comment-slash"></i>
+
+            <h3>No feedback yet</h3>
+
+            <p>
+              Be the first person to share your feedback!
+            </p>
+
+          </div>
+        `;
+
+        return;
+      }
+
+
+      grid.innerHTML =
+        feedbacks.map((item, index) => {
+
+          return `
+            <article
+              class="feedback-card"
+              style="
+                animation: cardAppear 0.45s ease both;
+                animation-delay: ${Math.min(index * 0.05, 0.5)}s;
+              "
+            >
+
+              <div class="feedback-header">
+
+                <div class="username">
+
+                  <i class="fas fa-user"></i>
+
+                  <span>
+                    ${escapeHTML(
+                      item.username || "Anonymous"
+                    )}
+                  </span>
+
+                </div>
+
+                ${
+                  item.topic
+                    ? `
+                      <div class="topic">
+                        ${escapeHTML(item.topic)}
+                      </div>
+                    `
+                    : ""
+                }
+
+              </div>
+
+
+              <div class="feedback-text">
+
+                ${escapeHTML(
+                  item.feedback ||
+                  "No feedback provided."
+                )}
+
+              </div>
+
+            </article>
+          `;
+
+        }).join("");
+
+
+    } catch (error) {
+
+      console.error(
+        "Failed to load feedback:",
+        error
+      );
+
+
+      if (count) {
+        count.textContent = "0";
+      }
+
+
+      grid.innerHTML = `
+        <div class="message-card">
+
+          <i class="fas fa-triangle-exclamation"></i>
+
+          <h3>Unable to load feedback</h3>
+
+          <p>
+            Please try again later.
+          </p>
+
+        </div>
+      `;
+
     }
 
-
-    useEffect(() => {
-
-      loadFromSheet();
-
-    }, []);
+  }
 
 
-    function submitFeedback() {
+  /* =========================
+     LOAD
+  ========================= */
 
-      window.location.href =
-        "https://forms.gle/1iBvQMKnMqqsv65BA";
-
-    }
-
-
-    return (
-
-      <div>
-
-        <button
-          onClick={submitFeedback}
-        >
-          Submit Feedback
-        </button>
+  loadFeedback();
 
 
-        {loading ? (
+  /* =========================
+     SCROLL REVEAL
+  ========================= */
 
-          <div>
-            Loading feedback...
-          </div>
+  const observer =
+    new IntersectionObserver(
 
-        ) : items.length === 0 ? (
+      (entries) => {
 
-          <div>
-            No feedback yet.
-          </div>
+        entries.forEach((entry) => {
 
-        ) : (
+          if (entry.isIntersecting) {
 
-          <div>
+            entry.target.classList.add("visible");
 
-            {items.map(item => (
+            observer.unobserve(entry.target);
 
-              <article
-                key={item.id}
-              >
+          }
 
-                <h3>
-                  {item.nickname}
-                </h3>
+        });
 
-                <span>
-                  {item.topic}
-                </span>
+      },
 
-                <p>
-                  {item.feedback}
-                </p>
-
-              </article>
-
-            ))}
-
-          </div>
-
-        )}
-
-      </div>
+      {
+        threshold: 0.08
+      }
 
     );
 
-  }
-</script>
 
+  document
+    .querySelectorAll(".reveal")
+    .forEach((element) => {
+
+      observer.observe(element);
+
+    });
+
+</script>
 </body>
 </html>
