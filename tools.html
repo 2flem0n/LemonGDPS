@@ -433,27 +433,55 @@
       padding: 55px 20px 40px;
     }
 
-    .page-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    /*
+      LemonGDPS Icon
+      - Large
+      - Circular
+      - Yellow outline
+      - Same style as Contact page
+    */
 
-      padding: 7px 14px;
+    .page-icon {
+      position: relative;
 
-      margin-bottom: 18px;
+      width: 112px;
+      height: 112px;
 
-      border: 1px solid rgba(255,240,112,0.16);
-      border-radius: 999px;
+      object-fit: cover;
 
-      background: rgba(255,240,112,0.055);
+      display: block;
 
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      margin: 0 auto 28px;
 
-      color: var(--yellow-light);
+      border-radius: 50%;
 
-      font-size: 0.78rem;
-      font-weight: 600;
+      border: 3px solid var(--yellow);
+
+      box-shadow:
+        0 0 0 8px rgba(255,240,112,0.045),
+        0 20px 60px rgba(0,0,0,0.45);
+
+      animation: iconFloat 5s ease-in-out infinite;
+
+      transition: var(--transition);
+    }
+
+    .page-icon:hover {
+      transform: scale(1.04);
+      box-shadow:
+        0 0 0 8px rgba(255,240,112,0.06),
+        0 22px 65px rgba(0,0,0,0.5);
+    }
+
+    @keyframes iconFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
     }
 
     .page-header h1 {
@@ -565,11 +593,6 @@
 
       transition: opacity var(--transition);
     }
-
-    /* IMPORTANT:
-       This selector keeps the hover transform from being
-       overridden by the scroll reveal transform.
-    */
 
     .tool-card.reveal.visible:hover {
       transform: translateY(-6px);
@@ -806,6 +829,15 @@
         padding: 40px 10px 30px;
       }
 
+      .page-icon {
+        width: 92px;
+        height: 92px;
+
+        margin-bottom: 24px;
+
+        border-width: 3px;
+      }
+
       .page-header h1 {
         font-size: 2.7rem;
         letter-spacing: -2px;
@@ -826,6 +858,11 @@
     }
 
     @media (max-width: 430px) {
+
+      .page-icon {
+        width: 82px;
+        height: 82px;
+      }
 
       .page-header h1 {
         font-size: 2.35rem;
@@ -1014,13 +1051,13 @@
 
     <section class="page-header reveal">
 
-      <div class="page-badge">
+      <!-- Large LemonGDPS Icon -->
 
-        <i class="fas fa-wrench"></i>
-
-        LemonGDPS Tools
-
-      </div>
+      <img
+        src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+        alt="LemonGDPS Icon"
+        class="page-icon"
+      >
 
 
       <h1>Tools</h1>
@@ -1059,8 +1096,6 @@
         </p>
 
 
-        <!-- Put your URL in href -->
-
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/reupload/songAdd.php"
           target="_blank"
@@ -1095,8 +1130,6 @@
           Reupload your song using a file and other supported resources.
         </p>
 
-
-        <!-- Put your URL in href -->
 
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/songs"
@@ -1133,8 +1166,6 @@
         </p>
 
 
-        <!-- Put your URL in href -->
-
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/stats/songList.php"
           target="_blank"
@@ -1169,8 +1200,6 @@
           Reupload your level to another GDPS instead of the original server.
         </p>
 
-
-        <!-- Put your URL in href -->
 
         <a
           href="https://lemongdps.alwaysdata.net/dashboard/levels/levelReupload.php"
