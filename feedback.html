@@ -1,26 +1,30 @@
 <!DOCTYPE html>
-
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
-  <meta name="description" content="LemonGDPS Feedback Board - Share your feedback and ideas with the LemonGDPS community." />
+  <meta
+    name="description"
+    content="LemonGDPS Feedback Board - Share your feedback and ideas with the LemonGDPS community."
+  />
 
   <title>LemonGDPS | Feedback</title>
 
-  <link rel="icon" href="https://lemongdps.alwaysdata.net/dashboard/icon.png" />
-  <link rel="manifest" href="/manifest.json" />
+  <link
+    rel="icon"
+    href="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+  />
 
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
     rel="stylesheet"
-  >
+  />
 
   <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-  >
+  />
 
   <style>
     :root {
@@ -35,7 +39,7 @@
 
       --text: #ffffff;
       --text-soft: #fdff91;
-      --text-muted: rgba(255,255,255,0.62);
+      --text-muted: rgba(255, 255, 255, 0.62);
 
       --glass: rgba(35, 35, 3, 0.48);
       --glass-strong: rgba(25, 25, 2, 0.64);
@@ -61,6 +65,9 @@
     body {
       font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
       color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
 
       background:
         radial-gradient(
@@ -74,10 +81,6 @@
           transparent 30%
         ),
         var(--bg);
-
-      min-height: 100vh;
-      overflow-x: hidden;
-      line-height: 1.6;
     }
 
     a {
@@ -85,9 +88,13 @@
       text-decoration: none;
     }
 
-    /* =========================================================
+    button {
+      font-family: inherit;
+    }
+
+    /* ========================================
        BACKGROUND
-    ========================================================= */
+    ======================================== */
 
     .bg-animation {
       position: fixed;
@@ -203,6 +210,7 @@
 
     body::before {
       content: "";
+
       position: fixed;
 
       width: 520px;
@@ -222,6 +230,7 @@
 
     body::after {
       content: "";
+
       position: fixed;
 
       width: 480px;
@@ -239,9 +248,9 @@
       z-index: -4;
     }
 
-    /* =========================================================
+    /* ========================================
        NAVIGATION
-    ========================================================= */
+    ======================================== */
 
     .top-nav-wrapper {
       position: fixed;
@@ -278,7 +287,7 @@
 
       box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.3),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
 
       pointer-events: auto;
     }
@@ -322,7 +331,7 @@
 
       border-radius: 12px;
 
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
 
       font-size: 0.82rem;
       font-weight: 500;
@@ -338,12 +347,14 @@
     .nav-link:hover,
     .nav-link.active {
       color: white;
-      background: rgba(255,240,112,0.08);
+      background: rgba(255, 240, 112, 0.08);
     }
 
     .nav-link:hover {
       transform: translateY(-1px);
     }
+
+    /* More dropdown */
 
     .nav-more {
       position: relative;
@@ -359,7 +370,7 @@
 
       padding: 8px;
 
-      background: rgba(24,24,3,0.78);
+      background: rgba(24, 24, 3, 0.78);
 
       border: 1px solid var(--border);
       border-radius: 16px;
@@ -368,8 +379,8 @@
       -webkit-backdrop-filter: blur(24px) saturate(150%);
 
       box-shadow:
-        0 20px 50px rgba(0,0,0,0.35),
-        inset 0 1px 0 rgba(255,255,255,0.04);
+        0 20px 50px rgba(0, 0, 0, 0.35),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
 
       opacity: 0;
       visibility: hidden;
@@ -393,7 +404,7 @@
 
       border-radius: 10px;
 
-      color: rgba(255,255,255,0.72);
+      color: rgba(255, 255, 255, 0.72);
 
       font-size: 0.82rem;
 
@@ -402,18 +413,20 @@
 
     .nav-more-menu a i {
       width: 18px;
+
       color: var(--yellow);
+
       text-align: center;
     }
 
     .nav-more-menu a:hover {
       color: white;
-      background: rgba(255,240,112,0.08);
+      background: rgba(255, 240, 112, 0.08);
     }
 
-    /* =========================================================
+    /* ========================================
        MAIN
-    ========================================================= */
+    ======================================== */
 
     main {
       width: 100%;
@@ -424,9 +437,9 @@
       padding: 125px 20px 60px;
     }
 
-    /* =========================================================
+    /* ========================================
        PAGE HERO
-    ========================================================= */
+    ======================================== */
 
     .page-hero {
       position: relative;
@@ -455,33 +468,48 @@
 
       background: radial-gradient(
         ellipse,
-        rgba(255,240,112,0.08),
+        rgba(255, 240, 112, 0.08),
         transparent 70%
       );
 
       pointer-events: none;
     }
 
-    .page-badge {
+    /* ========================================
+       LEMON ICON
+    ======================================== */
+
+    .page-icon {
       position: relative;
 
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      width: 112px;
+      height: 112px;
 
-      padding: 7px 14px;
+      object-fit: cover;
+      display: block;
 
-      margin-bottom: 15px;
+      margin: 0 auto 22px;
 
-      border: 1px solid rgba(255,240,112,0.16);
-      border-radius: 999px;
+      border-radius: 50%;
 
-      background: rgba(255,240,112,0.055);
+      border: 3px solid var(--yellow);
 
-      color: var(--yellow-light);
+      box-shadow:
+        0 0 0 8px rgba(255, 240, 112, 0.045),
+        0 20px 60px rgba(0, 0, 0, 0.45);
 
-      font-size: 0.76rem;
-      font-weight: 600;
+      animation: iconFloat 4s ease-in-out infinite;
+    }
+
+    @keyframes iconFloat {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-6px);
+      }
     }
 
     .page-hero h1 {
@@ -517,15 +545,15 @@
 
       margin: 0 auto;
 
-      color: rgba(255,255,255,0.58);
+      color: rgba(255, 255, 255, 0.58);
 
       font-size: 0.9rem;
       line-height: 1.8;
     }
 
-    /* =========================================================
-       ACTION BAR
-    ========================================================= */
+    /* ========================================
+       FEEDBACK TOP
+    ======================================== */
 
     .feedback-top {
       display: flex;
@@ -538,7 +566,7 @@
     }
 
     .feedback-count {
-      color: rgba(255,255,255,0.48);
+      color: rgba(255, 255, 255, 0.48);
 
       font-size: 0.78rem;
     }
@@ -547,12 +575,26 @@
       color: var(--yellow);
     }
 
-    .submit-button {
-      display: inline-flex;
+    .feedback-actions {
+      display: flex;
       align-items: center;
       gap: 9px;
 
-      padding: 11px 18px;
+      flex-shrink: 0;
+    }
+
+    .submit-button {
+      display: inline-flex;
+
+      align-items: center;
+      justify-content: center;
+
+      gap: 9px;
+
+      height: 42px;
+      min-height: 42px;
+
+      padding: 0 18px;
 
       border-radius: 13px;
 
@@ -560,13 +602,22 @@
 
       background: var(--yellow);
 
+      font-family: inherit;
       font-size: 0.82rem;
       font-weight: 600;
 
-      box-shadow:
-        0 8px 25px rgba(255,240,112,0.1);
+      line-height: 1;
+      white-space: nowrap;
 
-      transition: var(--transition);
+      box-sizing: border-box;
+
+      box-shadow:
+        0 8px 25px rgba(255, 240, 112, 0.1);
+
+      transition:
+        background var(--transition),
+        box-shadow var(--transition),
+        transform var(--transition);
     }
 
     .submit-button:hover {
@@ -575,47 +626,48 @@
       transform: translateY(-3px);
 
       box-shadow:
-        0 12px 32px rgba(255,240,112,0.18);
+        0 12px 32px rgba(255, 240, 112, 0.18);
     }
 
-    /* =========================================================
+    /* ========================================
        FEEDBACK GRID
-    ========================================================= */
+    ======================================== */
 
-.feedback-grid {
-  display: grid;
+    .feedback-grid {
+      display: grid;
 
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  gap: 16px;
-}
-.feedback-card {
-  position: relative;
+      gap: 16px;
+    }
 
-  min-height: 0;
+    .feedback-card {
+      position: relative;
 
-  padding: 20px;
+      min-height: 0;
 
-  background: var(--glass);
+      padding: 20px;
 
-  border: 1px solid var(--border);
+      background: var(--glass);
 
-  border-radius: var(--radius);
+      border: 1px solid var(--border);
 
-  backdrop-filter: blur(18px) saturate(135%);
-  -webkit-backdrop-filter: blur(18px) saturate(135%);
+      border-radius: var(--radius);
 
-  box-shadow:
-    0 10px 35px rgba(0,0,0,0.22),
-    inset 0 1px 0 rgba(255,255,255,0.035);
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
 
-  transition:
-    transform var(--transition),
-    border-color var(--transition),
-    background var(--transition),
-    box-shadow var(--transition);
-}
-    
+      box-shadow:
+        0 10px 35px rgba(0, 0, 0, 0.22),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+    }
+
     .feedback-card::before {
       content: "";
 
@@ -631,9 +683,9 @@
 
       background: linear-gradient(
         90deg,
-        rgba(255,240,112,0),
-        rgba(255,240,112,0.45),
-        rgba(255,240,112,0)
+        rgba(255, 240, 112, 0),
+        rgba(255, 240, 112, 0.45),
+        rgba(255, 240, 112, 0)
       );
 
       opacity: 0.7;
@@ -647,20 +699,20 @@
       border-color: var(--border-hover);
 
       box-shadow:
-        0 16px 45px rgba(0,0,0,0.28),
-        0 0 30px rgba(255,240,112,0.035),
-        inset 0 1px 0 rgba(255,255,255,0.05);
+        0 16px 45px rgba(0, 0, 0, 0.28),
+        0 0 30px rgba(255, 240, 112, 0.035),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
-.feedback-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
 
-  gap: 12px;
+      gap: 12px;
 
-  margin-bottom: 12px;
-}
+      margin-bottom: 12px;
+    }
 
     .username {
       display: flex;
@@ -689,9 +741,9 @@
 
       color: var(--yellow);
 
-      background: rgba(255,240,112,0.07);
+      background: rgba(255, 240, 112, 0.07);
 
-      border: 1px solid rgba(255,240,112,0.1);
+      border: 1px solid rgba(255, 240, 112, 0.1);
 
       font-size: 0.78rem;
     }
@@ -712,16 +764,16 @@
 
       color: var(--yellow-light);
 
-      background: rgba(255,240,112,0.065);
+      background: rgba(255, 240, 112, 0.065);
 
-      border: 1px solid rgba(255,240,112,0.13);
+      border: 1px solid rgba(255, 240, 112, 0.13);
 
       font-size: 0.66rem;
       font-weight: 600;
     }
 
     .feedback-text {
-      color: rgba(255,255,255,0.7);
+      color: rgba(255, 255, 255, 0.7);
 
       font-size: 0.82rem;
 
@@ -732,9 +784,9 @@
       word-break: break-word;
     }
 
-    /* =========================================================
+    /* ========================================
        LOADING
-    ========================================================= */
+    ======================================== */
 
     .loading {
       grid-column: 1 / -1;
@@ -748,7 +800,7 @@
 
       padding: 30px;
 
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
 
       background: var(--glass);
 
@@ -780,9 +832,9 @@
       }
     }
 
-    /* =========================================================
+    /* ========================================
        EMPTY / ERROR
-    ========================================================= */
+    ======================================== */
 
     .message-card {
       grid-column: 1 / -1;
@@ -816,14 +868,14 @@
     }
 
     .message-card p {
-      color: rgba(255,255,255,0.5);
+      color: rgba(255, 255, 255, 0.5);
 
       font-size: 0.78rem;
     }
 
-    /* =========================================================
+    /* ========================================
        FOOTER
-    ========================================================= */
+    ======================================== */
 
     footer {
       width: 100%;
@@ -836,9 +888,9 @@
 
       text-align: center;
 
-      border-top: 1px solid rgba(255,240,112,0.08);
+      border-top: 1px solid rgba(255, 240, 112, 0.08);
 
-      color: rgba(255,255,255,0.42);
+      color: rgba(255, 255, 255, 0.42);
 
       font-size: 0.75rem;
     }
@@ -854,7 +906,7 @@
     }
 
     .footer-links a {
-      color: rgba(255,255,255,0.45);
+      color: rgba(255, 255, 255, 0.45);
 
       transition: var(--transition);
     }
@@ -863,12 +915,13 @@
       color: var(--yellow);
     }
 
-    /* =========================================================
+    /* ========================================
        REVEAL
-    ========================================================= */
+    ======================================== */
 
     .reveal {
       opacity: 0;
+
       transform: translateY(20px);
 
       transition:
@@ -878,12 +931,29 @@
 
     .reveal.visible {
       opacity: 1;
+
       transform: translateY(0);
     }
 
-    /* =========================================================
+    /* ========================================
+       CARD APPEAR
+    ======================================== */
+
+    @keyframes cardAppear {
+      from {
+        opacity: 0;
+        transform: translateY(12px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* ========================================
        RESPONSIVE
-    ========================================================= */
+    ======================================== */
 
     @media (max-width: 950px) {
 
@@ -945,6 +1015,13 @@
         padding: 40px 10px 30px;
       }
 
+      .page-icon {
+        width: 96px;
+        height: 96px;
+
+        margin-bottom: 20px;
+      }
+
       .page-hero h1 {
         font-size: clamp(2.3rem, 12vw, 3.5rem);
       }
@@ -953,18 +1030,22 @@
         font-size: 0.82rem;
       }
 
-.feedback-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+      .feedback-top {
+        align-items: center;
 
-  gap: 15px;
+        flex-direction: column;
 
-  margin-bottom: 18px;
-}
+        gap: 12px;
+
+        margin-bottom: 18px;
+      }
+
+      .feedback-actions {
+        width: 100%;
+      }
 
       .submit-button {
-        justify-content: center;
+        width: 100%;
       }
 
       .feedback-card {
@@ -983,16 +1064,23 @@
       .topic {
         align-self: flex-start;
       }
+
+      .feedback-actions {
+        width: 100%;
+      }
+
+      .submit-button {
+        width: 100%;
+      }
     }
   </style>
-
 </head>
 
 <body>
 
-  <!-- =======================================================
+  <!-- ==========================================
        BACKGROUND
-  ======================================================== -->
+  =========================================== -->
 
   <div class="bg-animation" aria-hidden="true">
     <span></span>
@@ -1007,132 +1095,214 @@
     <span></span>
   </div>
 
-  <!-- =======================================================
-       TOP NAV
-  ======================================================== -->
+
+  <!-- ==========================================
+       NAVIGATION
+  =========================================== -->
 
   <div class="top-nav-wrapper">
 
+    <nav class="top-nav">
 
-<nav class="top-nav">
+      <a href="/" class="nav-brand">
 
-  <a href="/" class="nav-brand">
+        <img
+          src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+          alt="LemonGDPS"
+        />
 
-    <img
-      src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
-      alt="LemonGDPS"
-    >
-
-    <span>LemonGDPS</span>
-
-  </a>
-
-
-  <div class="nav-links">
-
-    <a href="/" class="nav-link">
-
-      <i class="fas fa-home"></i>
-
-      <span>Home</span>
-
-    </a>
-
-
-    <a href="/download" class="nav-link">
-
-      <i class="fas fa-download"></i>
-
-      <span>Download</span>
-
-    </a>
-
-
-    <a href="/tools" class="nav-link">
-
-      <i class="fas fa-wrench"></i>
-
-      <span>Tools</span>
-
-    </a>
-
-
-    <a
-      href="https://discord.gg/KwgR2EBEeh"
-      target="_blank"
-      class="nav-link"
-    >
-
-      <i class="fab fa-discord"></i>
-
-      <span>Community</span>
-
-    </a>
-
-
-    <div class="nav-more">
-
-      <a href="#" class="nav-link">
-
-        <i class="fas fa-ellipsis"></i>
-
-        <span>More</span>
+        <span>LemonGDPS</span>
 
       </a>
 
 
-      <div class="nav-more-menu">
+      <div class="nav-links">
 
-        <a href="https://lemongdps.stpg.dev">
+        <a href="/" class="nav-link">
 
-          <i class="fas fa-server"></i>
+          <i class="fas fa-home"></i>
 
-          Server Status
-
-        </a>
-
-
-        <a href="https://lemongdpsdl.pages.dev/">
-
-          <i class="fas fa-skull"></i>
-
-          Demon List
+          <span>Home</span>
 
         </a>
 
 
-        <a href="https://upsilongdpscl.pages.dev/">
+        <a href="/download" class="nav-link">
 
-          <i class="fas fa-fire"></i>
+          <i class="fas fa-download"></i>
 
-          Challenge List
-
-        </a>
-
-
-        <a href="https://upsilongdpspl.pages.dev/">
-
-          <i class="fas fa-mountain"></i>
-
-          Platformer List
+          <span>Download</span>
 
         </a>
 
 
-        <a href="/credit.html">
+        <a href="/tools" class="nav-link">
 
-          <i class="fas fa-hands-helping"></i>
+          <i class="fas fa-wrench"></i>
 
-          Credits
+          <span>Tools</span>
 
         </a>
 
 
-        <a href="/terms">
+        <a
+          href="https://discord.gg/KwgR2EBEeh"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="nav-link"
+        >
 
-          <i class="fas fa-file-contract"></i>
+          <i class="fab fa-discord"></i>
 
-          Terms of Service
+          <span>Community</span>
+
+        </a>
+
+
+        <div class="nav-more">
+
+          <a href="#" class="nav-link">
+
+            <i class="fas fa-ellipsis"></i>
+
+            <span>More</span>
+
+          </a>
+
+
+          <div class="nav-more-menu">
+
+            <a
+              href="https://lemongdps.stpg.dev"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <i class="fas fa-server"></i>
+
+              Server Status
+
+            </a>
+
+
+            <a
+              href="https://lemongdpsdl.pages.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <i class="fas fa-skull"></i>
+
+              Demon List
+
+            </a>
+
+
+            <a
+              href="https://upsilongdpscl.pages.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <i class="fas fa-fire"></i>
+
+              Challenge List
+
+            </a>
+
+
+            <a
+              href="https://upsilongdpspl.pages.dev/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+
+              <i class="fas fa-mountain"></i>
+
+              Platformer List
+
+            </a>
+
+
+            <a href="/credit.html">
+
+              <i class="fas fa-hands-helping"></i>
+
+              Credits
+
+            </a>
+
+
+            <a href="/terms">
+
+              <i class="fas fa-file-contract"></i>
+
+              Terms of Service
+
+            </a>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </nav>
+
+  </div>
+
+
+  <!-- ==========================================
+       MAIN
+  =========================================== -->
+
+  <main>
+
+
+    <!-- PAGE HERO -->
+
+    <section class="page-hero reveal">
+
+      <img
+        src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+        alt="LemonGDPS Icon"
+        class="page-icon"
+      />
+
+      <h1>Feedback Board</h1>
+
+      <p>
+        Share your thoughts, ideas, suggestions, and feedback
+        with the LemonGDPS community.
+      </p>
+
+    </section>
+
+
+    <!-- FEEDBACK TOP -->
+
+    <div class="feedback-top reveal">
+
+      <div class="feedback-count">
+
+        <strong id="feedbackCount">0</strong>
+        feedback posts
+
+      </div>
+
+
+      <div class="feedback-actions">
+
+        <a
+          href="https://forms.gle/1iBvQMKnMqqsv65BA"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="submit-button"
+        >
+
+          <i class="fas fa-pen"></i>
+
+          Submit Feedback
 
         </a>
 
@@ -1140,424 +1310,491 @@
 
     </div>
 
-  </div>
 
-</nav>
+    <!-- FEEDBACK GRID -->
 
+    <section
+      class="feedback-grid reveal"
+      id="feedbackGrid"
+    >
 
-  </div>
+      <div class="loading">
 
-  <!-- =======================================================
-       MAIN
-  ======================================================== -->
+        <i class="fas fa-circle-notch"></i>
 
-  <main>
+        <p>Loading feedback...</p>
 
+      </div>
 
-<!-- PAGE HERO -->
-
-<section class="page-hero reveal">
-
-  <div class="page-badge">
-
-    <i class="fas fa-comment-dots"></i>
-
-    LemonGDPS Community
-
-  </div>
-
-
-  <h1>Feedback Board</h1>
-
-
-  <p>
-    Share your thoughts, ideas, suggestions, and feedback with the
-    LemonGDPS community.
-  </p>
-
-</section>
-
-
-<!-- ACTION BAR -->
-
-<div class="feedback-top reveal">
-
-  <div class="feedback-count">
-
-    <strong id="feedbackCount">0</strong>
-    feedback posts
-
-  </div>
-
-
-  <a
-    href="https://forms.gle/1iBvQMKnMqqsv65BA"
-    target="_blank"
-    class="submit-button"
-  >
-
-    <i class="fas fa-pen"></i>
-
-    Submit Feedback
-
-  </a>
-
-</div>
-
-
-<!-- FEEDBACK -->
-
-<section class="feedback-grid reveal" id="feedbackGrid">
-
-  <div class="loading">
-
-    <i class="fas fa-circle-notch"></i>
-
-    <p>Loading feedback...</p>
-
-  </div>
-
-</section>
-
+    </section>
 
   </main>
 
-  <!-- =======================================================
+
+  <!-- ==========================================
        FOOTER
-  ======================================================== -->
+  =========================================== -->
 
   <footer>
 
-
-<p>
-
-  Website by Lem0n • LemonGDPS &copy;
-
-  <span id="year"></span>
-
-</p>
+    <p>
+      Website by Lem0n • LemonGDPS &copy;
+      <span id="year"></span>
+    </p>
 
 
-<div class="footer-links">
+    <div class="footer-links">
 
-  <a href="/terms">
+      <a href="/terms">
 
-    <i class="fas fa-file-contract"></i>
+        <i class="fas fa-file-contract"></i>
 
-    Terms of Service
+        Terms of Service
 
-  </a>
-
-
-  <a href="/feedback">
-
-    <i class="fas fa-comment-dots"></i>
-
-    Feedback Board
-
-  </a>
+      </a>
 
 
-  <a href="/contact.html">
+      <a href="/feedback">
 
-    <i class="fas fa-envelope"></i>
+        <i class="fas fa-comment-dots"></i>
 
-    Contact
+        Feedback Board
 
-  </a>
+      </a>
 
 
-  <a href="https://lemongdps.stpg.dev">
+      <a href="/contact">
 
-    <i class="fas fa-server"></i>
+        <i class="fas fa-envelope"></i>
 
-    Server Status
+        Contact
 
-  </a>
+      </a>
 
-</div>
 
+      <a
+        href="https://lemongdps.stpg.dev"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+
+        <i class="fas fa-server"></i>
+
+        Server Status
+
+      </a>
+
+    </div>
 
   </footer>
 
-  <!-- =======================================================
+
+  <!-- ==========================================
        JAVASCRIPT
-  ======================================================== -->
+  =========================================== -->
 
-<script>
-  /* =========================
-     CURRENT YEAR
-  ========================= */
+  <script>
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+    /* ========================================
+       CURRENT YEAR
+    ======================================== */
 
-
-  /* =========================
-     GOOGLE SHEETS
-  ========================= */
-
-  const SHEET_ID =
-    "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
-
-  const SHEET_GID =
-    "819638605";
-
-  const GVIZ_URL =
-    `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
 
 
-  /* =========================
-     HTML ESCAPE
-  ========================= */
+    /* ========================================
+       GOOGLE SHEETS
+    ======================================== */
 
-  function escapeHTML(value) {
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
+    const SHEET_ID =
+      "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
 
+    const SHEET_GID =
+      "819638605";
 
-  /* =========================
-     LOAD FEEDBACK
-  ========================= */
-
-  async function loadFeedback() {
-
-    const grid =
-      document.getElementById("feedbackGrid");
-
-    const count =
-      document.getElementById("feedbackCount");
-
-    if (!grid) return;
+    const GVIZ_URL =
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
 
 
-    try {
+    /* ========================================
+       HTML ESCAPE
+    ======================================== */
 
-      const response =
-        await fetch(GVIZ_URL);
+    function escapeHTML(value) {
 
-      if (!response.ok) {
-        throw new Error("Network error");
-      }
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
 
-
-      const text =
-        await response.text();
-
-
-      const jsonText =
-        text.substring(
-          text.indexOf("{"),
-          text.lastIndexOf("}") + 1
-        );
+    }
 
 
-      const data =
-        JSON.parse(jsonText);
+    /* ========================================
+       LOAD FEEDBACK
+    ======================================== */
+
+    async function loadFeedback() {
+
+      const grid =
+        document.getElementById("feedbackGrid");
+
+      const count =
+        document.getElementById("feedbackCount");
 
 
-      const rows =
-        data.table?.rows || [];
-
-
-      const feedbacks =
-        rows
-          .map((row, index) => {
-
-            const cells =
-              row.c || [];
-
-            return {
-
-              id:
-                `feedback-${index}`,
-
-              username:
-                cells[1]?.v
-                  ? String(cells[1].v)
-                  : "Anonymous",
-
-              feedback:
-                cells[2]?.v
-                  ? String(cells[2].v)
-                  : "",
-
-              topic:
-                cells[3]?.v
-                  ? String(cells[3].v)
-                  : ""
-
-            };
-
-          })
-
-          .filter(item =>
-            item.username ||
-            item.feedback ||
-            item.topic
-          );
-
-
-      feedbacks.reverse();
-
-
-      if (count) {
-        count.textContent =
-          feedbacks.length;
-      }
-
-
-      if (feedbacks.length === 0) {
-
-        grid.innerHTML = `
-          <div class="message-card">
-
-            <i class="fas fa-comment-slash"></i>
-
-            <h3>No feedback yet</h3>
-
-            <p>
-              Be the first person to share your feedback!
-            </p>
-
-          </div>
-        `;
-
+      if (!grid) {
         return;
       }
 
 
-      grid.innerHTML =
-        feedbacks.map((item, index) => {
-
-          return `
-            <article
-              class="feedback-card"
-              style="
-                animation: cardAppear 0.45s ease both;
-                animation-delay: ${Math.min(index * 0.05, 0.5)}s;
-              "
-            >
-
-              <div class="feedback-header">
-
-                <div class="username">
-
-                  <i class="fas fa-user"></i>
-
-                  <span>
-                    ${escapeHTML(
-                      item.username || "Anonymous"
-                    )}
-                  </span>
-
-                </div>
-
-                ${
-                  item.topic
-                    ? `
-                      <div class="topic">
-                        ${escapeHTML(item.topic)}
-                      </div>
-                    `
-                    : ""
-                }
-
-              </div>
-
-
-<div class="feedback-text">${escapeHTML(
-  (item.feedback || "No feedback provided.").trim()
-)}</div>
-
-            </article>
-          `;
-
-        }).join("");
-
-
-    } catch (error) {
-
-      console.error(
-        "Failed to load feedback:",
-        error
-      );
-
-
-      if (count) {
-        count.textContent = "0";
-      }
-
-
       grid.innerHTML = `
-        <div class="message-card">
 
-          <i class="fas fa-triangle-exclamation"></i>
+        <div class="loading">
 
-          <h3>Unable to load feedback</h3>
+          <i class="fas fa-circle-notch"></i>
 
-          <p>
-            Please try again later.
-          </p>
+          <p>Loading feedback...</p>
 
         </div>
+
       `;
+
+
+      try {
+
+        const response =
+          await fetch(
+            GVIZ_URL + "&_=" + Date.now(),
+            {
+              cache: "no-store"
+            }
+          );
+
+
+        if (!response.ok) {
+
+          throw new Error(
+            "Network error"
+          );
+
+        }
+
+
+        const text =
+          await response.text();
+
+
+        const start =
+          text.indexOf("{");
+
+        const end =
+          text.lastIndexOf("}");
+
+
+        if (
+          start === -1 ||
+          end === -1
+        ) {
+
+          throw new Error(
+            "Invalid Google Sheets response"
+          );
+
+        }
+
+
+        const jsonText =
+          text.substring(
+            start,
+            end + 1
+          );
+
+
+        const data =
+          JSON.parse(jsonText);
+
+
+        const rows =
+          data.table?.rows || [];
+
+
+        const feedbacks =
+          rows
+            .map((row, index) => {
+
+              const cells =
+                row.c || [];
+
+
+              const username =
+                cells[1]?.v
+                  ? String(cells[1].v).trim()
+                  : "Anonymous";
+
+
+              const feedback =
+                cells[2]?.v
+                  ? String(cells[2].v).trim()
+                  : "";
+
+
+              const topic =
+                cells[3]?.v
+                  ? String(cells[3].v).trim()
+                  : "";
+
+
+              return {
+
+                id:
+                  `feedback-${index}`,
+
+                username,
+
+                feedback,
+
+                topic
+
+              };
+
+            })
+            .filter(item =>
+
+              item.username ||
+              item.feedback ||
+              item.topic
+
+            );
+
+
+        /* Newest feedback first */
+
+        feedbacks.reverse();
+
+
+        /* Update count */
+
+        if (count) {
+
+          count.textContent =
+            feedbacks.length;
+
+        }
+
+
+        /* ==================================
+           EMPTY
+        ================================== */
+
+        if (
+          feedbacks.length === 0
+        ) {
+
+          grid.innerHTML = `
+
+            <div class="message-card">
+
+              <i class="fas fa-comment-slash"></i>
+
+              <h3>No feedback yet</h3>
+
+              <p>
+                Be the first person to share
+                your feedback!
+              </p>
+
+            </div>
+
+          `;
+
+          return;
+
+        }
+
+
+        /* ==================================
+           RENDER
+        ================================== */
+
+        grid.innerHTML =
+          feedbacks
+            .map((item, index) => {
+
+              const username =
+                escapeHTML(
+                  item.username ||
+                  "Anonymous"
+                );
+
+
+              const feedback =
+                escapeHTML(
+                  item.feedback ||
+                  "No feedback provided."
+                );
+
+
+              const topic =
+                escapeHTML(
+                  item.topic
+                );
+
+
+              return `
+
+                <article
+                  class="feedback-card"
+                  style="
+                    animation:
+                      cardAppear
+                      0.45s
+                      ease
+                      both;
+
+                    animation-delay:
+                      ${Math.min(
+                        index * 0.05,
+                        0.5
+                      )}s;
+                  "
+                >
+
+                  <div class="feedback-header">
+
+
+                    <div class="username">
+
+                      <i class="fas fa-user"></i>
+
+                      <span>
+                        ${username}
+                      </span>
+
+                    </div>
+
+
+                    ${
+                      topic
+                        ? `
+
+                          <div class="topic">
+
+                            ${topic}
+
+                          </div>
+
+                        `
+                        : ""
+                    }
+
+                  </div>
+
+
+                  <div class="feedback-text">
+
+                    ${feedback}
+
+                  </div>
+
+                </article>
+
+              `;
+
+            })
+            .join("");
+
+
+      } catch (error) {
+
+        console.error(
+          "Failed to load feedback:",
+          error
+        );
+
+
+        if (count) {
+
+          count.textContent = "0";
+
+        }
+
+
+        grid.innerHTML = `
+
+          <div class="message-card">
+
+            <i class="fas fa-triangle-exclamation"></i>
+
+            <h3>
+              Unable to load feedback
+            </h3>
+
+            <p>
+              Please try again later.
+            </p>
+
+          </div>
+
+        `;
+
+      }
 
     }
 
-  }
+
+    /* ========================================
+       INITIAL LOAD
+    ======================================== */
+
+    loadFeedback();
 
 
-  /* =========================
-     LOAD
-  ========================= */
+    /* ========================================
+       SCROLL REVEAL
+    ======================================== */
 
-  loadFeedback();
+    const observer =
+      new IntersectionObserver(
+        (entries) => {
 
+          entries.forEach((entry) => {
 
-  /* =========================
-     SCROLL REVEAL
-  ========================= */
+            if (
+              entry.isIntersecting
+            ) {
 
-  const observer =
-    new IntersectionObserver(
+              entry.target.classList.add(
+                "visible"
+              );
 
-      (entries) => {
+              observer.unobserve(
+                entry.target
+              );
 
-        entries.forEach((entry) => {
+            }
 
-          if (entry.isIntersecting) {
+          });
 
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-
-      {
-        threshold: 0.08
-      }
-
-    );
+        },
+        {
+          threshold: 0.08
+        }
+      );
 
 
-  document
-    .querySelectorAll(".reveal")
-    .forEach((element) => {
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
 
-      observer.observe(element);
+        observer.observe(element);
 
-    });
+      });
 
-</script>
+  </script>
+
 </body>
 </html>
