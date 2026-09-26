@@ -1,0 +1,1562 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
+  <meta name="description" content="LemonGDPS Feedback Board - Share your feedback and ideas with the LemonGDPS community." />
+
+  <title>LemonGDPS | Feedback</title>
+
+  <link rel="icon" href="https://lemongdps.alwaysdata.net/dashboard/icon.png" />
+  <link rel="manifest" href="/manifest.json" />
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  >
+
+  <style>
+    :root {
+      --yellow: #fff070;
+      --yellow-light: #fdff91;
+      --yellow-soft: #fffaaa;
+      --yellow-hover: #ffffc4;
+
+      --bg: #101000;
+      --bg-2: #171700;
+      --bg-3: #202000;
+
+      --text: #ffffff;
+      --text-soft: #fdff91;
+      --text-muted: rgba(255,255,255,0.62);
+
+      --glass: rgba(35, 35, 3, 0.48);
+      --glass-strong: rgba(25, 25, 2, 0.64);
+      --glass-hover: rgba(48, 48, 5, 0.58);
+
+      --border: rgba(255, 240, 112, 0.14);
+      --border-hover: rgba(255, 240, 112, 0.32);
+
+      --radius: 20px;
+      --transition: 0.25s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, "Segoe UI", sans-serif;
+      color: var(--text);
+
+      background:
+        radial-gradient(
+          circle at 20% 10%,
+          rgba(255, 240, 112, 0.045),
+          transparent 30%
+        ),
+        radial-gradient(
+          circle at 80% 80%,
+          rgba(255, 240, 112, 0.035),
+          transparent 30%
+        ),
+        var(--bg);
+
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       BACKGROUND
+    ========================================================= */
+
+    .bg-animation {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -5;
+    }
+
+    .bg-animation span {
+      position: absolute;
+      display: block;
+
+      background: rgba(255, 233, 111, 0.08);
+      border: 1px solid rgba(255, 240, 112, 0.04);
+
+      bottom: -180px;
+      border-radius: 10px;
+
+      animation: moveUp 22s linear infinite;
+    }
+
+    .bg-animation span:nth-child(1) {
+      left: 10%;
+      width: 140px;
+      height: 140px;
+    }
+
+    .bg-animation span:nth-child(2) {
+      left: 25%;
+      width: 36px;
+      height: 36px;
+      animation-delay: 2s;
+      animation-duration: 14s;
+    }
+
+    .bg-animation span:nth-child(3) {
+      left: 40%;
+      width: 60px;
+      height: 60px;
+      animation-delay: 4s;
+    }
+
+    .bg-animation span:nth-child(4) {
+      left: 60%;
+      width: 24px;
+      height: 24px;
+      animation-delay: 1s;
+      animation-duration: 18s;
+    }
+
+    .bg-animation span:nth-child(5) {
+      left: 75%;
+      width: 120px;
+      height: 120px;
+      animation-delay: 5s;
+    }
+
+    .bg-animation span:nth-child(6) {
+      left: 85%;
+      width: 40px;
+      height: 40px;
+      animation-delay: 7s;
+      animation-duration: 16s;
+    }
+
+    .bg-animation span:nth-child(7) {
+      left: 50%;
+      width: 180px;
+      height: 180px;
+      animation-delay: 10s;
+    }
+
+    .bg-animation span:nth-child(8) {
+      left: 5%;
+      width: 28px;
+      height: 28px;
+      animation-delay: 12s;
+      animation-duration: 30s;
+    }
+
+    .bg-animation span:nth-child(9) {
+      left: 90%;
+      width: 18px;
+      height: 18px;
+      animation-delay: 8s;
+      animation-duration: 26s;
+    }
+
+    .bg-animation span:nth-child(10) {
+      left: 35%;
+      width: 100px;
+      height: 100px;
+      animation-delay: 3s;
+      animation-duration: 20s;
+    }
+
+    @keyframes moveUp {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+      }
+
+      15% {
+        opacity: 1;
+      }
+
+      100% {
+        transform: translateY(-1200px) rotate(540deg);
+        opacity: 0;
+      }
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+
+      width: 520px;
+      height: 520px;
+
+      top: 5%;
+      left: -220px;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.055);
+      filter: blur(110px);
+
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+
+      width: 480px;
+      height: 480px;
+
+      right: -200px;
+      bottom: 0;
+
+      border-radius: 50%;
+
+      background: rgba(255, 240, 112, 0.04);
+      filter: blur(120px);
+
+      pointer-events: none;
+      z-index: -4;
+    }
+
+    /* =========================================================
+       NAVIGATION
+    ========================================================= */
+
+    .top-nav-wrapper {
+      position: fixed;
+
+      top: 0;
+      left: 0;
+      right: 0;
+
+      z-index: 1000;
+
+      padding: 14px 20px;
+
+      pointer-events: none;
+    }
+
+    .top-nav {
+      max-width: 1180px;
+      height: 64px;
+
+      margin: 0 auto;
+      padding: 0 18px;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      background: var(--glass-strong);
+
+      border: 1px solid var(--border);
+      border-radius: 18px;
+
+      backdrop-filter: blur(22px) saturate(150%);
+      -webkit-backdrop-filter: blur(22px) saturate(150%);
+
+      box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.3),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+
+      pointer-events: auto;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      font-size: 1rem;
+      font-weight: 700;
+
+      white-space: nowrap;
+    }
+
+    .nav-brand img {
+      width: 36px;
+      height: 36px;
+
+      object-fit: cover;
+
+      border-radius: 50%;
+      border: 2px solid rgba(255, 240, 112, 0.5);
+
+      box-shadow:
+        0 0 0 4px rgba(255, 240, 112, 0.04);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 12px;
+
+      border-radius: 12px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+      font-weight: 500;
+
+      transition: var(--transition);
+    }
+
+    .nav-link i {
+      color: var(--yellow);
+      font-size: 0.85rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    .nav-link:hover {
+      transform: translateY(-1px);
+    }
+
+    .nav-more {
+      position: relative;
+    }
+
+    .nav-more-menu {
+      position: absolute;
+
+      top: calc(100% + 10px);
+      right: 0;
+
+      width: 220px;
+
+      padding: 8px;
+
+      background: rgba(24,24,3,0.78);
+
+      border: 1px solid var(--border);
+      border-radius: 16px;
+
+      backdrop-filter: blur(24px) saturate(150%);
+      -webkit-backdrop-filter: blur(24px) saturate(150%);
+
+      box-shadow:
+        0 20px 50px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.04);
+
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+
+      transition: 0.2s ease;
+    }
+
+    .nav-more:hover .nav-more-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .nav-more-menu a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      padding: 10px 12px;
+
+      border-radius: 10px;
+
+      color: rgba(255,255,255,0.72);
+
+      font-size: 0.82rem;
+
+      transition: var(--transition);
+    }
+
+    .nav-more-menu a i {
+      width: 18px;
+      color: var(--yellow);
+      text-align: center;
+    }
+
+    .nav-more-menu a:hover {
+      color: white;
+      background: rgba(255,240,112,0.08);
+    }
+
+    /* =========================================================
+       MAIN
+    ========================================================= */
+
+    main {
+      width: 100%;
+      max-width: 1180px;
+
+      margin: 0 auto;
+
+      padding: 125px 20px 60px;
+    }
+
+    /* =========================================================
+       PAGE HERO
+    ========================================================= */
+
+    .page-hero {
+      position: relative;
+
+      text-align: center;
+
+      padding: 55px 20px 45px;
+
+      margin-bottom: 25px;
+
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: "";
+
+      position: absolute;
+
+      width: 500px;
+      height: 300px;
+
+      left: 50%;
+      top: 50%;
+
+      transform: translate(-50%, -50%);
+
+      background: radial-gradient(
+        ellipse,
+        rgba(255,240,112,0.08),
+        transparent 70%
+      );
+
+      pointer-events: none;
+    }
+
+    .page-badge {
+      position: relative;
+
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 7px 14px;
+
+      margin-bottom: 15px;
+
+      border: 1px solid rgba(255,240,112,0.16);
+      border-radius: 999px;
+
+      background: rgba(255,240,112,0.055);
+
+      color: var(--yellow-light);
+
+      font-size: 0.76rem;
+      font-weight: 600;
+    }
+
+    .page-hero h1 {
+      position: relative;
+
+      font-size: clamp(2.5rem, 6vw, 4.2rem);
+
+      line-height: 1.1;
+
+      font-weight: 800;
+
+      letter-spacing: -2px;
+
+      margin-bottom: 12px;
+
+      background: linear-gradient(
+        135deg,
+        #ffffff 20%,
+        var(--yellow) 60%,
+        var(--yellow-light)
+      );
+
+      -webkit-background-clip: text;
+      background-clip: text;
+
+      color: transparent;
+    }
+
+    .page-hero p {
+      position: relative;
+
+      max-width: 650px;
+
+      margin: 0 auto;
+
+      color: rgba(255,255,255,0.58);
+
+      font-size: 0.9rem;
+      line-height: 1.8;
+    }
+
+    /* =========================================================
+       ACTION BAR
+    ========================================================= */
+
+    .feedback-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 15px;
+
+      margin-bottom: 25px;
+    }
+
+    .feedback-count {
+      color: rgba(255,255,255,0.48);
+
+      font-size: 0.78rem;
+    }
+
+    .feedback-count strong {
+      color: var(--yellow);
+    }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+
+      padding: 11px 18px;
+
+      border-radius: 13px;
+
+      color: #282600;
+
+      background: var(--yellow);
+
+      font-size: 0.82rem;
+      font-weight: 600;
+
+      box-shadow:
+        0 8px 25px rgba(255,240,112,0.1);
+
+      transition: var(--transition);
+    }
+
+    .submit-button:hover {
+      background: var(--yellow-hover);
+
+      transform: translateY(-3px);
+
+      box-shadow:
+        0 12px 32px rgba(255,240,112,0.18);
+    }
+
+    /* =========================================================
+       FEEDBACK GRID
+    ========================================================= */
+
+    .feedback-grid {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 16px;
+    }
+
+    .feedback-card {
+      position: relative;
+
+      min-height: 220px;
+
+      padding: 23px;
+
+      background: var(--glass);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      backdrop-filter: blur(18px) saturate(135%);
+      -webkit-backdrop-filter: blur(18px) saturate(135%);
+
+      box-shadow:
+        0 10px 35px rgba(0,0,0,0.22),
+        inset 0 1px 0 rgba(255,255,255,0.035);
+
+      transition:
+        transform var(--transition),
+        border-color var(--transition),
+        background var(--transition),
+        box-shadow var(--transition);
+    }
+
+    .feedback-card::before {
+      content: "";
+
+      position: absolute;
+
+      top: 0;
+      left: 24px;
+      right: 24px;
+
+      height: 2px;
+
+      border-radius: 0 0 10px 10px;
+
+      background: linear-gradient(
+        90deg,
+        rgba(255,240,112,0),
+        rgba(255,240,112,0.45),
+        rgba(255,240,112,0)
+      );
+
+      opacity: 0.7;
+    }
+
+    .feedback-card:hover {
+      transform: translateY(-5px);
+
+      background: var(--glass-hover);
+
+      border-color: var(--border-hover);
+
+      box-shadow:
+        0 16px 45px rgba(0,0,0,0.28),
+        0 0 30px rgba(255,240,112,0.035),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .feedback-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      gap: 12px;
+
+      margin-bottom: 17px;
+    }
+
+    .username {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      min-width: 0;
+
+      color: white;
+
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    .username i {
+      flex-shrink: 0;
+
+      width: 32px;
+      height: 32px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 10px;
+
+      color: var(--yellow);
+
+      background: rgba(255,240,112,0.07);
+
+      border: 1px solid rgba(255,240,112,0.1);
+
+      font-size: 0.78rem;
+    }
+
+    .username span {
+      overflow: hidden;
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .topic {
+      flex-shrink: 0;
+
+      padding: 5px 10px;
+
+      border-radius: 999px;
+
+      color: var(--yellow-light);
+
+      background: rgba(255,240,112,0.065);
+
+      border: 1px solid rgba(255,240,112,0.13);
+
+      font-size: 0.66rem;
+      font-weight: 600;
+    }
+
+    .feedback-text {
+      color: rgba(255,255,255,0.7);
+
+      font-size: 0.82rem;
+
+      line-height: 1.75;
+
+      white-space: pre-wrap;
+
+      word-break: break-word;
+    }
+
+    /* =========================================================
+       LOADING
+    ========================================================= */
+
+    .loading {
+      grid-column: 1 / -1;
+
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+
+      min-height: 240px;
+
+      padding: 30px;
+
+      color: rgba(255,255,255,0.5);
+
+      background: var(--glass);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .loading i {
+      color: var(--yellow);
+
+      font-size: 1.6rem;
+
+      margin-bottom: 12px;
+
+      animation: spin 1s linear infinite;
+    }
+
+    .loading p {
+      font-size: 0.8rem;
+    }
+
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    /* =========================================================
+       EMPTY / ERROR
+    ========================================================= */
+
+    .message-card {
+      grid-column: 1 / -1;
+
+      text-align: center;
+
+      padding: 45px 25px;
+
+      background: var(--glass);
+
+      border: 1px solid var(--border);
+
+      border-radius: var(--radius);
+
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+    }
+
+    .message-card i {
+      color: var(--yellow);
+
+      font-size: 2rem;
+
+      margin-bottom: 15px;
+    }
+
+    .message-card h3 {
+      margin-bottom: 6px;
+
+      font-size: 1rem;
+    }
+
+    .message-card p {
+      color: rgba(255,255,255,0.5);
+
+      font-size: 0.78rem;
+    }
+
+    /* =========================================================
+       FOOTER
+    ========================================================= */
+
+    footer {
+      width: 100%;
+
+      max-width: 1180px;
+
+      margin: 40px auto 0;
+
+      padding: 30px 20px 35px;
+
+      text-align: center;
+
+      border-top: 1px solid rgba(255,240,112,0.08);
+
+      color: rgba(255,255,255,0.42);
+
+      font-size: 0.75rem;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      gap: 18px;
+
+      margin-top: 12px;
+    }
+
+    .footer-links a {
+      color: rgba(255,255,255,0.45);
+
+      transition: var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--yellow);
+    }
+
+    /* =========================================================
+       REVEAL
+    ========================================================= */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+
+      transition:
+        opacity 0.6s ease,
+        transform 0.6s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 950px) {
+
+      .nav-link span {
+        display: none;
+      }
+
+      .nav-link {
+        padding: 10px;
+      }
+
+      .nav-brand span {
+        display: none;
+      }
+
+      .feedback-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 650px) {
+
+      .top-nav-wrapper {
+        padding: 10px;
+      }
+
+      .top-nav {
+        height: 58px;
+
+        padding: 0 10px;
+
+        border-radius: 15px;
+      }
+
+      .nav-links {
+        gap: 1px;
+      }
+
+      .nav-link {
+        padding: 8px;
+      }
+
+      .nav-link i {
+        font-size: 0.8rem;
+      }
+
+      .nav-more-menu {
+        right: -5px;
+      }
+
+      main {
+        padding-top: 90px;
+
+        padding-left: 14px;
+        padding-right: 14px;
+      }
+
+      .page-hero {
+        padding: 40px 10px 30px;
+      }
+
+      .page-hero h1 {
+        font-size: clamp(2.3rem, 12vw, 3.5rem);
+      }
+
+      .page-hero p {
+        font-size: 0.82rem;
+      }
+
+      .feedback-top {
+        align-items: stretch;
+
+        flex-direction: column;
+      }
+
+      .submit-button {
+        justify-content: center;
+      }
+
+      .feedback-card {
+        padding: 19px;
+      }
+    }
+
+    @media (max-width: 430px) {
+
+      .feedback-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+      }
+
+      .topic {
+        align-self: flex-start;
+      }
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <!-- =======================================================
+       BACKGROUND
+  ======================================================== -->
+
+  <div class="bg-animation" aria-hidden="true">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <!-- =======================================================
+       TOP NAV
+  ======================================================== -->
+
+  <div class="top-nav-wrapper">
+
+```
+<nav class="top-nav">
+
+  <a href="/" class="nav-brand">
+
+    <img
+      src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
+      alt="LemonGDPS"
+    >
+
+    <span>LemonGDPS</span>
+
+  </a>
+
+
+  <div class="nav-links">
+
+    <a href="/" class="nav-link">
+
+      <i class="fas fa-home"></i>
+
+      <span>Home</span>
+
+    </a>
+
+
+    <a href="/download" class="nav-link">
+
+      <i class="fas fa-download"></i>
+
+      <span>Download</span>
+
+    </a>
+
+
+    <a href="/tools" class="nav-link">
+
+      <i class="fas fa-wrench"></i>
+
+      <span>Tools</span>
+
+    </a>
+
+
+    <a
+      href="https://discord.gg/KwgR2EBEeh"
+      target="_blank"
+      class="nav-link"
+    >
+
+      <i class="fab fa-discord"></i>
+
+      <span>Community</span>
+
+    </a>
+
+
+    <div class="nav-more">
+
+      <a href="#" class="nav-link">
+
+        <i class="fas fa-ellipsis"></i>
+
+        <span>More</span>
+
+      </a>
+
+
+      <div class="nav-more-menu">
+
+        <a href="https://lemongdps.stpg.dev">
+
+          <i class="fas fa-server"></i>
+
+          Server Status
+
+        </a>
+
+
+        <a href="https://lemongdpsdl.pages.dev/">
+
+          <i class="fas fa-skull"></i>
+
+          Demon List
+
+        </a>
+
+
+        <a href="https://upsilongdpscl.pages.dev/">
+
+          <i class="fas fa-fire"></i>
+
+          Challenge List
+
+        </a>
+
+
+        <a href="https://upsilongdpspl.pages.dev/">
+
+          <i class="fas fa-mountain"></i>
+
+          Platformer List
+
+        </a>
+
+
+        <a href="/credit.html">
+
+          <i class="fas fa-hands-helping"></i>
+
+          Credits
+
+        </a>
+
+
+        <a href="/terms">
+
+          <i class="fas fa-file-contract"></i>
+
+          Terms of Service
+
+        </a>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</nav>
+```
+
+  </div>
+
+  <!-- =======================================================
+       MAIN
+  ======================================================== -->
+
+  <main>
+
+```
+<!-- PAGE HERO -->
+
+<section class="page-hero reveal">
+
+  <div class="page-badge">
+
+    <i class="fas fa-comment-dots"></i>
+
+    LemonGDPS Community
+
+  </div>
+
+
+  <h1>Feedback Board</h1>
+
+
+  <p>
+    Share your thoughts, ideas, suggestions, and feedback with the
+    LemonGDPS community.
+  </p>
+
+</section>
+
+
+<!-- ACTION BAR -->
+
+<div class="feedback-top reveal">
+
+  <div class="feedback-count">
+
+    <strong id="feedbackCount">0</strong>
+    feedback posts
+
+  </div>
+
+
+  <a
+    href="https://forms.gle/1iBvQMKnMqqsv65BA"
+    target="_blank"
+    class="submit-button"
+  >
+
+    <i class="fas fa-pen"></i>
+
+    Submit Feedback
+
+  </a>
+
+</div>
+
+
+<!-- FEEDBACK -->
+
+<section class="feedback-grid reveal" id="feedbackGrid">
+
+  <div class="loading">
+
+    <i class="fas fa-circle-notch"></i>
+
+    <p>Loading feedback...</p>
+
+  </div>
+
+</section>
+```
+
+  </main>
+
+  <!-- =======================================================
+       FOOTER
+  ======================================================== -->
+
+  <footer>
+
+```
+<p>
+
+  Website by Lem0n • LemonGDPS &copy;
+
+  <span id="year"></span>
+
+</p>
+
+
+<div class="footer-links">
+
+  <a href="/terms">
+
+    <i class="fas fa-file-contract"></i>
+
+    Terms of Service
+
+  </a>
+
+
+  <a href="/feedback">
+
+    <i class="fas fa-comment-dots"></i>
+
+    Feedback Board
+
+  </a>
+
+
+  <a href="/contact.html">
+
+    <i class="fas fa-envelope"></i>
+
+    Contact
+
+  </a>
+
+
+  <a href="https://lemongdps.stpg.dev">
+
+    <i class="fas fa-server"></i>
+
+    Server Status
+
+  </a>
+
+</div>
+```
+
+  </footer>
+
+  <!-- =======================================================
+       JAVASCRIPT
+  ======================================================== -->
+
+  <script>
+
+    /* =========================================================
+       CURRENT YEAR
+    ========================================================= */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+    /* =========================================================
+       GOOGLE SHEETS
+    ========================================================= */
+
+    const SHEET_ID =
+      "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
+
+    const SHEET_GID =
+      "819638605";
+
+
+    const SHEET_URL =
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
+
+
+    /* =========================================================
+       ESCAPE HTML
+    ========================================================= */
+
+    function escapeHTML(value) {
+
+      return String(value ?? "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+    }
+
+
+    /* =========================================================
+       LOAD FEEDBACK
+    ========================================================= */
+
+    async function loadFeedback() {
+
+      const grid =
+        document.getElementById("feedbackGrid");
+
+      const count =
+        document.getElementById("feedbackCount");
+
+
+      try {
+
+        const response =
+          await fetch(SHEET_URL);
+
+
+        if (!response.ok) {
+          throw new Error("Unable to fetch Google Sheet.");
+        }
+
+
+        const text =
+          await response.text();
+
+
+        /*
+          Google Visualization API returns JSON
+          wrapped inside a function call.
+        */
+
+        const jsonText =
+          text
+            .replace(/^[^(]+\(/, "")
+            .replace(/\);?\s*$/, "");
+
+
+        const data =
+          JSON.parse(jsonText);
+
+
+        const rows =
+          data.table?.rows || [];
+
+
+        /*
+          Expected columns:
+
+          0 = Timestamp
+          1 = Username
+          2 = Feedback
+          3 = Topic
+        */
+
+
+        const feedbacks =
+          rows
+            .map(row => {
+
+              const cells =
+                row.c || [];
+
+              return {
+
+                username:
+                  cells[1]?.v ?? "",
+
+                feedback:
+                  cells[2]?.v ?? "",
+
+                topic:
+                  cells[3]?.v ?? ""
+
+              };
+
+            })
+            .filter(item =>
+              item.username ||
+              item.feedback ||
+              item.topic
+            );
+
+
+        count.textContent =
+          feedbacks.length;
+
+
+        if (feedbacks.length === 0) {
+
+          grid.innerHTML = `
+
+            <div class="message-card">
+
+              <i class="fas fa-comment-slash"></i>
+
+              <h3>No feedback yet</h3>
+
+              <p>
+                Be the first person to share your feedback!
+              </p>
+
+            </div>
+
+          `;
+
+          return;
+        }
+
+
+        /*
+          Newest feedback first.
+        */
+
+        feedbacks.reverse();
+
+
+        grid.innerHTML =
+          feedbacks
+            .map(item => `
+
+              <article class="feedback-card">
+
+                <div class="feedback-header">
+
+                  <div class="username">
+
+                    <i class="fas fa-user"></i>
+
+                    <span>
+                      ${escapeHTML(item.username || "Anonymous")}
+                    </span>
+
+                  </div>
+
+
+                  ${
+                    item.topic
+                      ? `
+                        <div class="topic">
+                          ${escapeHTML(item.topic)}
+                        </div>
+                      `
+                      : ""
+                  }
+
+                </div>
+
+
+                <div class="feedback-text">
+                  ${escapeHTML(item.feedback || "No feedback provided.")}
+                </div>
+
+              </article>
+
+            `)
+            .join("");
+
+
+      } catch (error) {
+
+        console.error(
+          "Feedback loading error:",
+          error
+        );
+
+
+        count.textContent =
+          "0";
+
+
+        grid.innerHTML = `
+
+          <div class="message-card">
+
+            <i class="fas fa-triangle-exclamation"></i>
+
+            <h3>Unable to load feedback</h3>
+
+            <p>
+              Please try again later.
+            </p>
+
+          </div>
+
+        `;
+
+      }
+
+    }
+
+
+    loadFeedback();
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
+
+    const observer =
+      new IntersectionObserver(
+
+        (entries) => {
+
+          entries.forEach((entry) => {
+
+            if (entry.isIntersecting) {
+
+              entry.target.classList.add("visible");
+
+              observer.unobserve(entry.target);
+
+            }
+
+          });
+
+        },
+
+        {
+          threshold: 0.08
+        }
+
+      );
+
+
+    document
+      .querySelectorAll(".reveal")
+      .forEach((element) => {
+
+        observer.observe(element);
+
+      });
+
+  </script>
+
+</body>
+</html>
