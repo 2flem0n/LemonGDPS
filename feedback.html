@@ -582,41 +582,40 @@
        FEEDBACK GRID
     ========================================================= */
 
-    .feedback-grid {
-      display: grid;
+.feedback-grid {
+  display: grid;
 
-      grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-      gap: 16px;
-    }
+  gap: 16px;
+}
+.feedback-card {
+  position: relative;
 
-    .feedback-card {
-      position: relative;
+  min-height: 0;
 
-      min-height: 220px;
+  padding: 20px;
 
-      padding: 23px;
+  background: var(--glass);
 
-      background: var(--glass);
+  border: 1px solid var(--border);
 
-      border: 1px solid var(--border);
+  border-radius: var(--radius);
 
-      border-radius: var(--radius);
+  backdrop-filter: blur(18px) saturate(135%);
+  -webkit-backdrop-filter: blur(18px) saturate(135%);
 
-      backdrop-filter: blur(18px) saturate(135%);
-      -webkit-backdrop-filter: blur(18px) saturate(135%);
+  box-shadow:
+    0 10px 35px rgba(0,0,0,0.22),
+    inset 0 1px 0 rgba(255,255,255,0.035);
 
-      box-shadow:
-        0 10px 35px rgba(0,0,0,0.22),
-        inset 0 1px 0 rgba(255,255,255,0.035);
-
-      transition:
-        transform var(--transition),
-        border-color var(--transition),
-        background var(--transition),
-        box-shadow var(--transition);
-    }
-
+  transition:
+    transform var(--transition),
+    border-color var(--transition),
+    background var(--transition),
+    box-shadow var(--transition);
+}
+    
     .feedback-card::before {
       content: "";
 
@@ -653,15 +652,15 @@
         inset 0 1px 0 rgba(255,255,255,0.05);
     }
 
-    .feedback-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+.feedback-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-      gap: 12px;
+  gap: 12px;
 
-      margin-bottom: 17px;
-    }
+  margin-bottom: 12px;
+}
 
     .username {
       display: flex;
@@ -954,11 +953,15 @@
         font-size: 0.82rem;
       }
 
-      .feedback-top {
-        align-items: stretch;
+.feedback-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 
-        flex-direction: column;
-      }
+  gap: 15px;
+
+  margin-bottom: 18px;
+}
 
       .submit-button {
         justify-content: center;
