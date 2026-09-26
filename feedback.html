@@ -354,7 +354,9 @@
       transform: translateY(-1px);
     }
 
-    /* More dropdown */
+    /* ========================================
+       MORE DROPDOWN
+    ======================================== */
 
     .nav-more {
       position: relative;
@@ -475,10 +477,6 @@
       pointer-events: none;
     }
 
-    /* ========================================
-       LEMON ICON
-    ======================================== */
-
     .page-icon {
       position: relative;
 
@@ -578,7 +576,6 @@
     .feedback-actions {
       display: flex;
       align-items: center;
-      gap: 9px;
 
       flex-shrink: 0;
     }
@@ -772,6 +769,12 @@
       font-weight: 600;
     }
 
+    /*
+      IMPORTANT:
+      Feedback text keeps real line breaks from Google Sheets,
+      but template indentation/newlines are not added.
+    */
+
     .feedback-text {
       color: rgba(255, 255, 255, 0.7);
 
@@ -782,6 +785,8 @@
       white-space: pre-wrap;
 
       word-break: break-word;
+
+      overflow-wrap: anywhere;
     }
 
     /* ========================================
@@ -1258,7 +1263,6 @@
 
   <main>
 
-
     <!-- PAGE HERO -->
 
     <section class="page-hero reveal">
@@ -1299,11 +1303,7 @@
           rel="noopener noreferrer"
           class="submit-button"
         >
-
-          <i class="fas fa-pen"></i>
-
-          Submit Feedback
-
+          <i class="fas fa-pen"></i> Submit Feedback
         </a>
 
       </div>
@@ -1434,6 +1434,24 @@
 
 
     /* ========================================
+       CLEAN TEXT
+    ======================================== */
+
+    function cleanText(value) {
+
+      if (value === null || value === undefined) {
+        return "";
+      }
+
+      return String(value)
+        .replace(/\r\n/g, "\n")
+        .replace(/\r/g, "\n")
+        .trim();
+
+    }
+
+
+    /* ========================================
        LOAD FEEDBACK
     ======================================== */
 
@@ -1451,17 +1469,8 @@
       }
 
 
-      grid.innerHTML = `
-
-        <div class="loading">
-
-          <i class="fas fa-circle-notch"></i>
-
-          <p>Loading feedback...</p>
-
-        </div>
-
-      `;
+      grid.innerHTML =
+        '<div class="loading"><i class="fas fa-circle-notch"></i><p>Loading feedback...</p></div>';
 
 
       try {
@@ -1531,21 +1540,21 @@
 
 
               const username =
-                cells[1]?.v
-                  ? String(cells[1].v).trim()
-                  : "Anonymous";
+                cleanText(
+                  cells[1]?.v
+                ) || "Anonymous";
 
 
               const feedback =
-                cells[2]?.v
-                  ? String(cells[2].v).trim()
-                  : "";
+                cleanText(
+                  cells[2]?.v
+                );
 
 
               const topic =
-                cells[3]?.v
-                  ? String(cells[3].v).trim()
-                  : "";
+                cleanText(
+                  cells[3]?.v
+                );
 
 
               return {
@@ -1562,13 +1571,15 @@
               };
 
             })
-            .filter(item =>
+            .filter(item => {
 
-              item.username ||
-              item.feedback ||
-              item.topic
+              return (
+                item.username !== "Anonymous" ||
+                item.feedback !== "" ||
+                item.topic !== ""
+              );
 
-            );
+            });
 
 
         /* Newest feedback first */
@@ -1594,22 +1605,8 @@
           feedbacks.length === 0
         ) {
 
-          grid.innerHTML = `
-
-            <div class="message-card">
-
-              <i class="fas fa-comment-slash"></i>
-
-              <h3>No feedback yet</h3>
-
-              <p>
-                Be the first person to share
-                your feedback!
-              </p>
-
-            </div>
-
-          `;
+          grid.innerHTML =
+            '<div class="message-card"><i class="fas fa-comment-slash"></i><h3>No feedback yet</h3><p>Be the first person to share your feedback!</p></div>';
 
           return;
 
@@ -1644,65 +1641,37 @@
                 );
 
 
+              /*
+                IMPORTANT FIX:
+                Do NOT put whitespace/newlines
+                around ${feedback}.
+
+                white-space: pre-wrap keeps
+                actual user line breaks,
+                while the HTML template itself
+                no longer creates fake spaces.
+              */
+
               return `
+<article class="feedback-card" style="animation: cardAppear 0.45s ease both; animation-delay: ${Math.min(index * 0.05, 0.5)}s;">
 
-                <article
-                  class="feedback-card"
-                  style="
-                    animation:
-                      cardAppear
-                      0.45s
-                      ease
-                      both;
+  <div class="feedback-header">
 
-                    animation-delay:
-                      ${Math.min(
-                        index * 0.05,
-                        0.5
-                      )}s;
-                  "
-                >
+    <div class="username">
+      <i class="fas fa-user"></i><span>${username}</span>
+    </div>
 
-                  <div class="feedback-header">
+    ${
+      topic
+        ? `<div class="topic">${topic}</div>`
+        : ""
+    }
 
+  </div>
 
-                    <div class="username">
+  <div class="feedback-text">${feedback}</div>
 
-                      <i class="fas fa-user"></i>
-
-                      <span>
-                        ${username}
-                      </span>
-
-                    </div>
-
-
-                    ${
-                      topic
-                        ? `
-
-                          <div class="topic">
-
-                            ${topic}
-
-                          </div>
-
-                        `
-                        : ""
-                    }
-
-                  </div>
-
-
-                  <div class="feedback-text">
-
-                    ${feedback}
-
-                  </div>
-
-                </article>
-
-              `;
+</article>`;
 
             })
             .join("");
@@ -1718,28 +1687,14 @@
 
         if (count) {
 
-          count.textContent = "0";
+          count.textContent =
+            "0";
 
         }
 
 
-        grid.innerHTML = `
-
-          <div class="message-card">
-
-            <i class="fas fa-triangle-exclamation"></i>
-
-            <h3>
-              Unable to load feedback
-            </h3>
-
-            <p>
-              Please try again later.
-            </p>
-
-          </div>
-
-        `;
+        grid.innerHTML =
+          '<div class="message-card"><i class="fas fa-triangle-exclamation"></i><h3>Unable to load feedback</h3><p>Please try again later.</p></div>';
 
       }
 
