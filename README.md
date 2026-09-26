@@ -48,6 +48,7 @@ We're still working on LemonGDPS, so expect more features, improvements, and upd
 ### GDPS
 🌐 [Website/GDPS Switcher Link](https://lemongdps.alwaysdata.net)<br>
 ⚙️ [GDPS Dashboard/Tools](https://lemongdps.alwaysdata.net/dashboard)<br>
+📩 [Download GDPS](https://lemongdps.pages.dev/download)<br>
 🟢 [Server Status](https://lemongdps.stpg.dev)
 
 ### Socials
