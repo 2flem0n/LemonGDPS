@@ -1281,705 +1281,197 @@
        JAVASCRIPT
   ======================================================== -->
 
- <script>
+<script>
+  const { useState, useEffect } = React;
 
-  /* =========================================================
-     CURRENT YEAR
-  ========================================================= */
+  function FeedbackBoard() {
 
-  document.getElementById("year").textContent =
-    new Date().getFullYear();
+    const [items, setItems] = useState([]);
+    const [loading, setLoading] = useState(true);
 
+    const SHEET_ID =
+      "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
 
-  /* =========================================================
-     GOOGLE SHEETS
-  ========================================================= */
+    const SHEET_GID =
+      "819638605";
 
-  const SHEET_ID =
-    "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
-
-  const SHEET_GID =
-    "819638605";
+    const GVIZ_URL =
+      `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
 
 
-  /* =========================================================
-     ESCAPE HTML
-  ========================================================= */
+    async function loadFromSheet() {
 
-  function escapeHTML(value) {
+      setLoading(true);
 
-    return String(value ?? "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
+      try {
 
-  }
+        const response = await fetch(GVIZ_URL);
+
+        if (!response.ok) {
+          throw new Error("Network error");
+        }
+
+        const text = await response.text();
+
+        /*
+          Google Visualization API returns:
+
+          google.visualization.Query.setResponse({...})
+
+          So extract the JSON object.
+        */
+
+        const jsonText =
+          text.substring(
+            text.indexOf("{"),
+            text.lastIndexOf("}") + 1
+          );
+
+        const data =
+          JSON.parse(jsonText);
+
+        const rows =
+          data.table?.rows || [];
 
 
-  /* =========================================================
-     NORMALIZE HEADER
-  ========================================================= */
+        const parsed =
+          rows
+            .map((row, index) => {
 
-  function normalizeHeader(value) {
+              const cells =
+                row.c || [];
 
-    return String(value ?? "")
-      .trim()
-      .toLowerCase()
-      .replace(/\s+/g, "")
-      .replace(/[_-]/g, "");
+              return {
 
-  }
+                id:
+                  `feedback_${index}`,
+
+                nickname:
+                  cells[1]?.v
+                    ? String(cells[1].v)
+                    : "Anonymous",
+
+                feedback:
+                  cells[2]?.v
+                    ? String(cells[2].v)
+                    : "",
+
+                topic:
+                  cells[3]?.v
+                    ? String(cells[3].v)
+                    : "General"
+
+              };
+
+            })
+
+            .filter(item =>
+              item.nickname ||
+              item.feedback ||
+              item.topic
+            );
 
 
-  /* =========================================================
-     FIND COLUMN
-  ========================================================= */
+        /*
+          Newest feedback first
+        */
 
-  function findColumn(headers, names) {
+        parsed.reverse();
 
-    for (const name of names) {
 
-      const index = headers.findIndex(
-        header =>
-          normalizeHeader(header) ===
-          normalizeHeader(name)
-      );
+        setItems(parsed);
 
-      if (index !== -1) {
-        return index;
+      } catch (error) {
+
+        console.error(
+          "Failed to load LemonGDPS feedback:",
+          error
+        );
+
+        setItems([]);
+
+      } finally {
+
+        setLoading(false);
+
       }
 
     }
 
-    return -1;
 
-  }
+    useEffect(() => {
 
+      loadFromSheet();
 
-  /* =========================================================
-     LOAD FEEDBACK
-  ========================================================= */
-
-  function loadFeedback() {
-
-    const grid =
-      document.getElementById("feedbackGrid");
-
-    const count =
-      document.getElementById("feedbackCount");
+    }, []);
 
 
-    /* Loading */
+    function submitFeedback() {
 
-    grid.innerHTML = `
+      window.location.href =
+        "https://forms.gle/1iBvQMKnMqqsv65BA";
 
-      <div class="loading">
+    }
 
-        <i class="fas fa-circle-notch"></i>
 
-        <p>Loading feedback...</p>
+    return (
+
+      <div>
+
+        <button
+          onClick={submitFeedback}
+        >
+          Submit Feedback
+        </button>
+
+
+        {loading ? (
+
+          <div>
+            Loading feedback...
+          </div>
+
+        ) : items.length === 0 ? (
+
+          <div>
+            No feedback yet.
+          </div>
+
+        ) : (
+
+          <div>
+
+            {items.map(item => (
+
+              <article
+                key={item.id}
+              >
+
+                <h3>
+                  {item.nickname}
+                </h3>
+
+                <span>
+                  {item.topic}
+                </span>
+
+                <p>
+                  {item.feedback}
+                </p>
+
+              </article>
+
+            ))}
+
+          </div>
+
+        )}
 
       </div>
 
-    `;
-
-    count.textContent = "0";
-
-
-    /*
-      Create a unique JSONP callback.
-
-      Google Sheets will call:
-
-      window[callbackName](data)
-    */
-
-    const callbackName =
-      "lemonGDPSFeedback_" +
-      Date.now() +
-      "_" +
-      Math.floor(Math.random() * 100000);
-
-
-    let finished = false;
-
-
-    const script =
-      document.createElement("script");
-
-
-    /* =======================================================
-       CLEANUP
-    ======================================================= */
-
-    function cleanup() {
-
-      if (script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
-
-      try {
-        delete window[callbackName];
-      } catch (error) {
-        window[callbackName] = undefined;
-      }
-
-    }
-
-
-    /* =======================================================
-       TIMEOUT
-    ======================================================= */
-
-    const timeout =
-      setTimeout(() => {
-
-        if (finished) {
-          return;
-        }
-
-        finished = true;
-
-        cleanup();
-
-        console.error(
-          "LemonGDPS Feedback: Google Sheets request timed out."
-        );
-
-
-        count.textContent = "0";
-
-
-        grid.innerHTML = `
-
-          <div class="message-card">
-
-            <i class="fas fa-triangle-exclamation"></i>
-
-            <h3>Unable to load feedback</h3>
-
-            <p>
-              The feedback spreadsheet could not be reached.
-              Please try again later.
-            </p>
-
-          </div>
-
-        `;
-
-      }, 12000);
-
-
-    /* =======================================================
-       GOOGLE SHEETS CALLBACK
-    ======================================================= */
-
-    window[callbackName] =
-      function(data) {
-
-        if (finished) {
-          return;
-        }
-
-        finished = true;
-
-        clearTimeout(timeout);
-
-        cleanup();
-
-
-        try {
-
-          /* Make sure Google returned a table */
-
-          if (
-            !data ||
-            !data.table
-          ) {
-
-            throw new Error(
-              "Invalid Google Sheets response."
-            );
-
-          }
-
-
-          const table =
-            data.table;
-
-
-          const columns =
-            table.cols || [];
-
-
-          const rows =
-            table.rows || [];
-
-
-          /* =================================================
-             GET COLUMN HEADERS
-          ================================================= */
-
-          const headers =
-            columns.map(column => {
-
-              return (
-                column.label ||
-                column.id ||
-                ""
-              );
-
-            });
-
-
-          console.log(
-            "LemonGDPS Feedback Headers:",
-            headers
-          );
-
-
-          /* =================================================
-             FIND NICKNAME / FEEDBACK / TOPIC
-          ================================================= */
-
-          let nicknameIndex =
-            findColumn(
-              headers,
-              [
-                "Nickname",
-                "Username",
-                "Name"
-              ]
-            );
-
-
-          let feedbackIndex =
-            findColumn(
-              headers,
-              [
-                "Feedback",
-                "Comment",
-                "Message"
-              ]
-            );
-
-
-          let topicIndex =
-            findColumn(
-              headers,
-              [
-                "Topic",
-                "Category"
-              ]
-            );
-
-
-          /*
-            Google Forms normally creates:
-
-            0 = Timestamp
-            1 = Nickname
-            2 = Feedback
-            3 = Topic
-          */
-
-          if (nicknameIndex === -1) {
-            nicknameIndex = 1;
-          }
-
-          if (feedbackIndex === -1) {
-            feedbackIndex = 2;
-          }
-
-          if (topicIndex === -1) {
-            topicIndex = 3;
-          }
-
-
-          console.log(
-            "LemonGDPS Feedback Columns:",
-            {
-              nicknameIndex,
-              feedbackIndex,
-              topicIndex
-            }
-          );
-
-
-          /* =================================================
-             CONVERT ROWS
-          ================================================= */
-
-          const feedbacks =
-            rows
-              .map(row => {
-
-                const cells =
-                  row.c || [];
-
-
-                function getCell(index) {
-
-                  if (
-                    index < 0 ||
-                    !cells[index]
-                  ) {
-                    return "";
-                  }
-
-
-                  const cell =
-                    cells[index];
-
-
-                  /*
-                    Google Sheets can return
-                    different cell formats.
-
-                    v = raw value
-                    f = formatted value
-                  */
-
-                  if (
-                    cell.v !== undefined &&
-                    cell.v !== null
-                  ) {
-
-                    return String(cell.v);
-
-                  }
-
-
-                  if (
-                    cell.f !== undefined &&
-                    cell.f !== null
-                  ) {
-
-                    return String(cell.f);
-
-                  }
-
-
-                  return "";
-
-                }
-
-
-                return {
-
-                  username:
-                    getCell(nicknameIndex).trim(),
-
-                  feedback:
-                    getCell(feedbackIndex).trim(),
-
-                  topic:
-                    getCell(topicIndex).trim()
-
-                };
-
-              })
-
-
-              /*
-                Ignore completely empty rows.
-              */
-
-              .filter(item => {
-
-                return (
-                  item.username ||
-                  item.feedback ||
-                  item.topic
-                );
-
-              });
-
-
-          /* =================================================
-             COUNT
-          ================================================= */
-
-          count.textContent =
-            feedbacks.length;
-
-
-          /* =================================================
-             EMPTY
-          ================================================= */
-
-          if (feedbacks.length === 0) {
-
-            grid.innerHTML = `
-
-              <div class="message-card">
-
-                <i class="fas fa-comment-slash"></i>
-
-                <h3>No feedback yet</h3>
-
-                <p>
-                  Be the first person to share your feedback!
-                </p>
-
-              </div>
-
-            `;
-
-            return;
-
-          }
-
-
-          /* =================================================
-             NEWEST FIRST
-          ================================================= */
-
-          feedbacks.reverse();
-
-
-          /* =================================================
-             RENDER
-          ================================================= */
-
-          grid.innerHTML =
-            feedbacks
-              .map((item, index) => {
-
-                const username =
-                  escapeHTML(
-                    item.username || "Anonymous"
-                  );
-
-
-                const feedback =
-                  escapeHTML(
-                    item.feedback ||
-                    "No feedback provided."
-                  );
-
-
-                const topic =
-                  escapeHTML(
-                    item.topic || ""
-                  );
-
-
-                return `
-
-                  <article
-                    class="feedback-card"
-                    style="
-                      animation: cardAppear 0.45s ease both;
-                      animation-delay: ${Math.min(index * 0.05, 0.5)}s;
-                    "
-                  >
-
-                    <div class="feedback-header">
-
-                      <div class="username">
-
-                        <i class="fas fa-user"></i>
-
-                        <span>
-                          ${username}
-                        </span>
-
-                      </div>
-
-
-                      ${
-                        topic
-                          ? `
-                            <div class="topic">
-                              ${topic}
-                            </div>
-                          `
-                          : ""
-                      }
-
-                    </div>
-
-
-                    <div class="feedback-text">
-                      ${feedback}
-                    </div>
-
-                  </article>
-
-                `;
-
-              })
-              .join("");
-
-
-        } catch (error) {
-
-          console.error(
-            "LemonGDPS Feedback: Error processing data.",
-            error
-          );
-
-
-          count.textContent = "0";
-
-
-          grid.innerHTML = `
-
-            <div class="message-card">
-
-              <i class="fas fa-triangle-exclamation"></i>
-
-              <h3>Unable to load feedback</h3>
-
-              <p>
-                The feedback data could not be processed.
-              </p>
-
-            </div>
-
-          `;
-
-        }
-
-      };
-
-
-    /* =======================================================
-       SCRIPT ERROR
-    ======================================================= */
-
-    script.onerror =
-      function() {
-
-        if (finished) {
-          return;
-        }
-
-        finished = true;
-
-        clearTimeout(timeout);
-
-        cleanup();
-
-
-        console.error(
-          "LemonGDPS Feedback: Google Sheets request failed."
-        );
-
-
-        count.textContent = "0";
-
-
-        grid.innerHTML = `
-
-          <div class="message-card">
-
-            <i class="fas fa-triangle-exclamation"></i>
-
-            <h3>Unable to load feedback</h3>
-
-            <p>
-              Please make sure the Google Sheet is publicly accessible.
-            </p>
-
-          </div>
-
-        `;
-
-      };
-
-
-    /* =======================================================
-       GOOGLE VISUALIZATION API JSONP URL
-    ======================================================= */
-
-    const sheetURL =
-      "https://docs.google.com/spreadsheets/d/" +
-      SHEET_ID +
-      "/gviz/tq" +
-      "?gid=" +
-      encodeURIComponent(SHEET_GID) +
-      "&tqx=" +
-      encodeURIComponent(
-        "out:json;responseHandler:" +
-        callbackName
-      ) +
-      "&t=" +
-      Date.now();
-
-
-    console.log(
-      "LemonGDPS Feedback: Loading sheet..."
     );
-
-
-    console.log(
-      "LemonGDPS Feedback URL:",
-      sheetURL
-    );
-
-
-    /* =======================================================
-       LOAD JSONP
-    ======================================================= */
-
-    script.src =
-      sheetURL;
-
-
-    document.head.appendChild(script);
 
   }
-
-
-  /* =========================================================
-     START
-  ========================================================= */
-
-  loadFeedback();
-
-
-  /* =========================================================
-     SCROLL REVEAL
-  ========================================================= */
-
-  const observer =
-    new IntersectionObserver(
-
-      (entries) => {
-
-        entries.forEach((entry) => {
-
-          if (entry.isIntersecting) {
-
-            entry.target.classList.add("visible");
-
-            observer.unobserve(entry.target);
-
-          }
-
-        });
-
-      },
-
-      {
-        threshold: 0.08
-      }
-
-    );
-
-
-  document
-    .querySelectorAll(".reveal")
-    .forEach((element) => {
-
-      observer.observe(element);
-
-    });
-
 </script>
 
 </body>
