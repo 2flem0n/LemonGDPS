@@ -1471,14 +1471,9 @@
               </div>
 
 
-              <div class="feedback-text">
-
-                ${escapeHTML(
-                  item.feedback ||
-                  "No feedback provided."
-                )}
-
-              </div>
+<div class="feedback-text">${escapeHTML(
+  (item.feedback || "No feedback provided.").trim()
+)}</div>
 
             </article>
           `;
