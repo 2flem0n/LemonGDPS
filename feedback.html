@@ -6,7 +6,7 @@
   <meta name="google-site-verification" content="ma9ixtL04ZaSWjvOhxWdfkyeqDctJDTlz8WM6bIMzG0" />
   <meta
     name="description"
-    content="LemonGDPS Feedback Board - Share your feedback and ideas with the LemonGDPS community."
+    content="Share your feedback and ideas with the LemonGDPS community."
   />
 
   <title>LemonGDPS | Feedback</title>
@@ -92,9 +92,7 @@
       font-family: inherit;
     }
 
-    /* ========================================
-       BACKGROUND
-    ======================================== */
+    /* Background */
 
     .bg-animation {
       position: fixed;
@@ -210,7 +208,6 @@
 
     body::before {
       content: "";
-
       position: fixed;
 
       width: 520px;
@@ -230,7 +227,6 @@
 
     body::after {
       content: "";
-
       position: fixed;
 
       width: 480px;
@@ -248,9 +244,7 @@
       z-index: -4;
     }
 
-    /* ========================================
-       NAVIGATION
-    ======================================== */
+    /* Navigation */
 
     .top-nav-wrapper {
       position: fixed;
@@ -354,9 +348,7 @@
       transform: translateY(-1px);
     }
 
-    /* ========================================
-       MORE DROPDOWN
-    ======================================== */
+    /* More */
 
     .nav-more {
       position: relative;
@@ -426,9 +418,7 @@
       background: rgba(255, 240, 112, 0.08);
     }
 
-    /* ========================================
-       MAIN
-    ======================================== */
+    /* Main */
 
     main {
       width: 100%;
@@ -439,9 +429,7 @@
       padding: 125px 20px 60px;
     }
 
-    /* ========================================
-       PAGE HERO
-    ======================================== */
+    /* Hero */
 
     .page-hero {
       position: relative;
@@ -457,7 +445,6 @@
 
     .page-hero::before {
       content: "";
-
       position: absolute;
 
       width: 500px;
@@ -549,9 +536,7 @@
       line-height: 1.8;
     }
 
-    /* ========================================
-       FEEDBACK TOP
-    ======================================== */
+    /* Feedback Top */
 
     .feedback-top {
       display: flex;
@@ -626,9 +611,7 @@
         0 12px 32px rgba(255, 240, 112, 0.18);
     }
 
-    /* ========================================
-       FEEDBACK GRID
-    ======================================== */
+    /* Feedback Grid */
 
     .feedback-grid {
       display: grid;
@@ -667,7 +650,6 @@
 
     .feedback-card::before {
       content: "";
-
       position: absolute;
 
       top: 0;
@@ -769,12 +751,6 @@
       font-weight: 600;
     }
 
-    /*
-      IMPORTANT:
-      Feedback text keeps real line breaks from Google Sheets,
-      but template indentation/newlines are not added.
-    */
-
     .feedback-text {
       color: rgba(255, 255, 255, 0.7);
 
@@ -789,9 +765,7 @@
       overflow-wrap: anywhere;
     }
 
-    /* ========================================
-       LOADING
-    ======================================== */
+    /* Loading */
 
     .loading {
       grid-column: 1 / -1;
@@ -837,9 +811,7 @@
       }
     }
 
-    /* ========================================
-       EMPTY / ERROR
-    ======================================== */
+    /* Message */
 
     .message-card {
       grid-column: 1 / -1;
@@ -878,9 +850,7 @@
       font-size: 0.78rem;
     }
 
-    /* ========================================
-       FOOTER
-    ======================================== */
+    /* Footer */
 
     footer {
       width: 100%;
@@ -920,9 +890,7 @@
       color: var(--yellow);
     }
 
-    /* ========================================
-       REVEAL
-    ======================================== */
+    /* Reveal */
 
     .reveal {
       opacity: 0;
@@ -940,9 +908,7 @@
       transform: translateY(0);
     }
 
-    /* ========================================
-       CARD APPEAR
-    ======================================== */
+    /* Card */
 
     @keyframes cardAppear {
       from {
@@ -956,12 +922,9 @@
       }
     }
 
-    /* ========================================
-       RESPONSIVE
-    ======================================== */
+    /* Responsive */
 
     @media (max-width: 950px) {
-
       .nav-link span {
         display: none;
       }
@@ -980,7 +943,6 @@
     }
 
     @media (max-width: 650px) {
-
       .top-nav-wrapper {
         padding: 10px;
       }
@@ -1059,7 +1021,6 @@
     }
 
     @media (max-width: 430px) {
-
       .feedback-header {
         align-items: flex-start;
 
@@ -1083,9 +1044,7 @@
 
 <body>
 
-  <!-- ==========================================
-       BACKGROUND
-  =========================================== -->
+  <!-- Background -->
 
   <div class="bg-animation" aria-hidden="true">
     <span></span>
@@ -1100,55 +1059,35 @@
     <span></span>
   </div>
 
-
-  <!-- ==========================================
-       NAVIGATION
-  =========================================== -->
+  <!-- Navigation -->
 
   <div class="top-nav-wrapper">
-
     <nav class="top-nav">
 
       <a href="/" class="nav-brand">
-
         <img
           src="https://lemongdps.alwaysdata.net/dashboard/icon.png"
           alt="LemonGDPS"
         />
-
         <span>LemonGDPS</span>
-
       </a>
-
 
       <div class="nav-links">
 
         <a href="/" class="nav-link">
-
           <i class="fas fa-home"></i>
-
           <span>Home</span>
-
         </a>
-
 
         <a href="/download" class="nav-link">
-
           <i class="fas fa-download"></i>
-
           <span>Download</span>
-
         </a>
-
 
         <a href="/tools" class="nav-link">
-
           <i class="fas fa-wrench"></i>
-
           <span>Tools</span>
-
         </a>
-
 
         <a
           href="https://discord.gg/KwgR2EBEeh"
@@ -1156,24 +1095,16 @@
           rel="noopener noreferrer"
           class="nav-link"
         >
-
           <i class="fab fa-discord"></i>
-
           <span>Community</span>
-
         </a>
-
 
         <div class="nav-more">
 
           <a href="#" class="nav-link">
-
             <i class="fas fa-ellipsis"></i>
-
             <span>More</span>
-
           </a>
-
 
           <div class="nav-more-menu">
 
@@ -1182,88 +1113,58 @@
               target="_blank"
               rel="noopener noreferrer"
             >
-
               <i class="fas fa-server"></i>
-
               Server Status
-
             </a>
-
 
             <a
               href="https://lemongdpsdl.pages.dev/"
               target="_blank"
               rel="noopener noreferrer"
             >
-
               <i class="fas fa-skull"></i>
-
               Demon List
-
             </a>
 
-
             <a
-              href="https://upsilongdpscl.pages.dev/"
+              href="https://lemongdpscl.pages.dev/"
               target="_blank"
               rel="noopener noreferrer"
             >
-
               <i class="fas fa-fire"></i>
-
               Challenge List
-
             </a>
 
-
             <a
-              href="https://upsilongdpspl.pages.dev/"
+              href="https://lemongdpspl.pages.dev/"
               target="_blank"
               rel="noopener noreferrer"
             >
-
               <i class="fas fa-mountain"></i>
-
               Platformer List
-
             </a>
-
 
             <a href="/credit">
-
               <i class="fas fa-hands-helping"></i>
-
               Credits
-
             </a>
 
-
             <a href="/terms">
-
               <i class="fas fa-file-contract"></i>
-
               Terms of Service
-
             </a>
 
           </div>
-
         </div>
-
       </div>
-
     </nav>
-
   </div>
 
-
-  <!-- ==========================================
-       MAIN
-  =========================================== -->
+  <!-- Main -->
 
   <main>
 
-    <!-- PAGE HERO -->
+    <!-- Hero -->
 
     <section class="page-hero reveal">
 
@@ -1282,18 +1183,14 @@
 
     </section>
 
-
-    <!-- FEEDBACK TOP -->
+    <!-- Feedback Top -->
 
     <div class="feedback-top reveal">
 
       <div class="feedback-count">
-
         <strong id="feedbackCount">0</strong>
         feedback posts
-
       </div>
-
 
       <div class="feedback-actions">
 
@@ -1307,11 +1204,9 @@
         </a>
 
       </div>
-
     </div>
 
-
-    <!-- FEEDBACK GRID -->
+    <!-- Feedback Grid -->
 
     <section
       class="feedback-grid reveal"
@@ -1319,21 +1214,14 @@
     >
 
       <div class="loading">
-
         <i class="fas fa-circle-notch"></i>
-
         <p>Loading feedback...</p>
-
       </div>
 
     </section>
-
   </main>
 
-
-  <!-- ==========================================
-       FOOTER
-  =========================================== -->
+  <!-- Footer -->
 
   <footer>
 
@@ -1342,70 +1230,45 @@
       <span id="year"></span>
     </p>
 
-
     <div class="footer-links">
 
       <a href="/terms">
-
         <i class="fas fa-file-contract"></i>
-
         Terms of Service
-
       </a>
-
 
       <a href="/feedback">
-
         <i class="fas fa-comment-dots"></i>
-
         Feedback Board
-
       </a>
-
 
       <a href="/contact">
-
         <i class="fas fa-envelope"></i>
-
         Contact
-
       </a>
-
 
       <a
         href="https://lemongdps.stpg.dev"
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <i class="fas fa-server"></i>
-
         Server Status
-
       </a>
 
     </div>
-
   </footer>
 
-
-  <!-- ==========================================
-       JAVASCRIPT
-  =========================================== -->
+  <!-- JavaScript -->
 
   <script>
 
-    /* ========================================
-       CURRENT YEAR
-    ======================================== */
+    /* Year */
 
     document.getElementById("year").textContent =
       new Date().getFullYear();
 
-
-    /* ========================================
-       GOOGLE SHEETS
-    ======================================== */
+    /* Google Sheets */
 
     const SHEET_ID =
       "1enmAUgnt3Z_vnofseWQENBhJJcN7Zc79Wv1QXO-291w";
@@ -1416,29 +1279,20 @@
     const GVIZ_URL =
       `https://docs.google.com/spreadsheets/d/${SHEET_ID}/gviz/tq?tqx=out:json&gid=${SHEET_GID}`;
 
-
-    /* ========================================
-       HTML ESCAPE
-    ======================================== */
+    /* Escape */
 
     function escapeHTML(value) {
-
       return String(value ?? "")
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
         .replace(/>/g, "&gt;")
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
-
     }
 
-
-    /* ========================================
-       CLEAN TEXT
-    ======================================== */
+    /* Clean */
 
     function cleanText(value) {
-
       if (value === null || value === undefined) {
         return "";
       }
@@ -1447,13 +1301,9 @@
         .replace(/\r\n/g, "\n")
         .replace(/\r/g, "\n")
         .trim();
-
     }
 
-
-    /* ========================================
-       LOAD FEEDBACK
-    ======================================== */
+    /* Load */
 
     async function loadFeedback() {
 
@@ -1463,15 +1313,12 @@
       const count =
         document.getElementById("feedbackCount");
 
-
       if (!grid) {
         return;
       }
 
-
       grid.innerHTML =
         '<div class="loading"><i class="fas fa-circle-notch"></i><p>Loading feedback...</p></div>';
-
 
       try {
 
@@ -1483,19 +1330,14 @@
             }
           );
 
-
         if (!response.ok) {
-
           throw new Error(
             "Network error"
           );
-
         }
-
 
         const text =
           await response.text();
-
 
         const start =
           text.indexOf("{");
@@ -1503,18 +1345,14 @@
         const end =
           text.lastIndexOf("}");
 
-
         if (
           start === -1 ||
           end === -1
         ) {
-
           throw new Error(
             "Invalid Google Sheets response"
           );
-
         }
-
 
         const jsonText =
           text.substring(
@@ -1522,14 +1360,11 @@
             end + 1
           );
 
-
         const data =
           JSON.parse(jsonText);
 
-
         const rows =
           data.table?.rows || [];
-
 
         const feedbacks =
           rows
@@ -1538,68 +1373,44 @@
               const cells =
                 row.c || [];
 
-
               const username =
                 cleanText(
                   cells[1]?.v
                 ) || "Anonymous";
-
 
               const feedback =
                 cleanText(
                   cells[2]?.v
                 );
 
-
               const topic =
                 cleanText(
                   cells[3]?.v
                 );
 
-
               return {
-
                 id:
                   `feedback-${index}`,
-
                 username,
-
                 feedback,
-
                 topic
-
               };
 
             })
             .filter(item => {
-
               return (
                 item.username !== "Anonymous" ||
                 item.feedback !== "" ||
                 item.topic !== ""
               );
-
             });
-
-
-        /* Newest feedback first */
 
         feedbacks.reverse();
 
-
-        /* Update count */
-
         if (count) {
-
           count.textContent =
             feedbacks.length;
-
         }
-
-
-        /* ==================================
-           EMPTY
-        ================================== */
 
         if (
           feedbacks.length === 0
@@ -1609,13 +1420,7 @@
             '<div class="message-card"><i class="fas fa-comment-slash"></i><h3>No feedback yet</h3><p>Be the first person to share your feedback!</p></div>';
 
           return;
-
         }
-
-
-        /* ==================================
-           RENDER
-        ================================== */
 
         grid.innerHTML =
           feedbacks
@@ -1627,30 +1432,16 @@
                   "Anonymous"
                 );
 
-
               const feedback =
                 escapeHTML(
                   item.feedback ||
                   "No feedback provided."
                 );
 
-
               const topic =
                 escapeHTML(
                   item.topic
                 );
-
-
-              /*
-                IMPORTANT FIX:
-                Do NOT put whitespace/newlines
-                around ${feedback}.
-
-                white-space: pre-wrap keeps
-                actual user line breaks,
-                while the HTML template itself
-                no longer creates fake spaces.
-              */
 
               return `
 <article class="feedback-card" style="animation: cardAppear 0.45s ease both; animation-delay: ${Math.min(index * 0.05, 0.5)}s;">
@@ -1676,7 +1467,6 @@
             })
             .join("");
 
-
       } catch (error) {
 
         console.error(
@@ -1684,33 +1474,22 @@
           error
         );
 
-
         if (count) {
-
           count.textContent =
             "0";
-
         }
-
 
         grid.innerHTML =
           '<div class="message-card"><i class="fas fa-triangle-exclamation"></i><h3>Unable to load feedback</h3><p>Please try again later.</p></div>';
 
       }
-
     }
 
-
-    /* ========================================
-       INITIAL LOAD
-    ======================================== */
+    /* Initial load */
 
     loadFeedback();
 
-
-    /* ========================================
-       SCROLL REVEAL
-    ======================================== */
+    /* Reveal */
 
     const observer =
       new IntersectionObserver(
@@ -1739,7 +1518,6 @@
           threshold: 0.08
         }
       );
-
 
     document
       .querySelectorAll(".reveal")
