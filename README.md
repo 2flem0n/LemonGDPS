@@ -11,7 +11,7 @@
   
   [![GDPS Version](https://img.shields.io/badge/version-1.0-yellow)](https://lemongdps.alwaysdata.net/dashboard)
   [![Server Status](https://img.shields.io/badge/status-🟢_Alive-green)](https://lemongdps.stpg.dev)
-  [![Community Age](https://img.shields.io/badge/active_since-2026_September-blue)]()
+  [![Community Age](https://img.shields.io/badge/active_since-2026_August-blue)]()
 
 </div>
 
