@@ -39,7 +39,6 @@ We're still working on LemonGDPS, so expect more features, improvements, and upd
 
 ### 🚩 Planned Features
 - **Better experiences for you, and everyone**
-- **Lists (DL, CL, PL)**
 
 ---
 
@@ -54,6 +53,10 @@ We're still working on LemonGDPS, so expect more features, improvements, and upd
 ### Socials
 🔗 [GDPS Discord Server](https://discord.gg/KwgR2EBEeh)<br>
 🔗 [GDPS YouTube](https://youtube.com/@Lemon-GDPS)
+
+### Lists
+🔗 [Demon List](https://lemongdpsdl.pages.dev/)<br>
+🔗 [Challenge List](https://lemongdpscl.pages.dev/)
 
 ---
 
